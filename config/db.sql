@@ -46,12 +46,12 @@ CREATE TABLE IF NOT EXISTS product (
 
 INSERT INTO product(name, image, content, category_id, price, sale_price)
 values('Beige Sweater','product-1.jpg','chua co content',2, 290, 133),
-('Pink Sweater','product-2.jpg','chua co content',1, 100, null),
-('Gray Sweater','product-3.jpg','chua co content',2, 130, null),
-('Denim Shirt','product-4.jpg','chua co content',5, 125, null),
+('Pink Sweater','product-2.jpg','chua co content',1, 100, 98),
+('Gray Sweater','product-3.jpg','chua co content',2, 130, 100),
+('Denim Shirt','product-4.jpg','chua co content',5, 125, 100),
 ('Black Skirt','product-8.jpg','chua co content',1, 170, 155),
-('Gray Sweater','product-6.jpg','chua co content',6, 123, null),
-('Gray Sweater','product-7.jpg','chua co content',7, 145, null);
+('Gray Sweater','product-6.jpg','chua co content',6, 123, 69),
+('Gray Sweater','product-7.jpg','chua co content',7, 145, 122);
 
 ALTER TABLE product ADD 
 FOREIGN KEY FK_PRODUDT_CATEGORY (category_id)
