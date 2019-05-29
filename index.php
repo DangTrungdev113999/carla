@@ -1,6 +1,12 @@
 <?php
 	include 'header.php';
 	$banner = mysqli_query($conn, "select * from banner");
+	$products = mysqli_query($conn, 'select * from product');
+	$Woman = mysqli_query($conn, 'select * from product where category_id = 2');
+	$Man = mysqli_query($conn, 'select * from product where category_id = 1');
+	$Accessories = mysqli_query($conn, 'select * from product where category_id = 7');
+	$Tranding = mysqli_query($conn, 'select * from product where category_id = 5');
+	$topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 	// echo $banner
 ?>
 		<!-- End header -->
@@ -117,9 +123,10 @@
 								</div>
 								<div class="grid">
 									<div class="grid-item group1">
+										<?php foreach($Woman as $n => $sp): ?>
 										<div class="product-card">
 											<div class="product-card-logo">
-												<img src="public/img/product-1.jpg" alt="img">
+												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 												<div class="tag-list">
 													<div class="tag">New</div>
 													<div class="tag sale-tag">-40%</div>
@@ -138,15 +145,17 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4">Beige Sweater</a>
-												<p class="price">$133 <span class="sale">$290</span></p>
+												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price">$<?php echo $sp['price'] ?><span class="sale"><?php echo $sp['sale_price'] ?></span></p>
 											</div>
 										</div>
+									<?php  endforeach; ?>
 									</div>
 									<div class="grid-item group2">
+										<?php  foreach($Man as $m => $sp): ?>
 										<div class="product-card">
 											<div class="product-card-logo">
-												<img src="public/img/product-2.jpg" alt="img">
+												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 												<div class="tag-list">
 													<div class="tag">Hot</div>
 												</div>
@@ -164,64 +173,19 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4">Pink Sweater</a>
-												<p class="price">$100</p>
+												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price">$ <?php echo $sp['price'] ?> </p>
 											</div>
 										</div>
+									<?php endforeach; ?>
 									</div>
 									<div class="grid-item group3">
+										<?php  foreach($Accessories as $m => $sp): ?>
 										<div class="product-card">
 											<div class="product-card-logo">
-												<img src="public/img/product-3.jpg" alt="img">
-												<ul class="product-card__control">
-													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-												</ul>
-											</div>
-											<div class="product-card-info">
-												<ul class="rating">
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star-half"></span></li>
-												</ul>
-												<a href="product-card.php" class="h4">Gray Sweater</a>
-												<p class="price">$130</p>
-											</div>
-										</div>
-									</div>
-									<div class="grid-item group4">
-										<div class="product-card">
-											<div class="product-card-logo">
-												<img src="public/img/product-4.jpg" alt="img">
-												<ul class="product-card__control">
-													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-												</ul>
-											</div>
-											<div class="product-card-info">
-												<ul class="rating">
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star-half"></span></li>
-													<li><span class="mdi mdi-star-outline"></span></li>
-												</ul>
-												<a href="product-card.php" class="h4">Denim Shirt</a>
-												<p class="price">$125</p>
-											</div>
-										</div>
-									</div>
-									<div class="grid-item group5">
-										<div class="product-card">
-											<div class="product-card-logo">
-												<img src="public/img/product-5.jpg" alt="img">
+												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 												<div class="tag-list">
-													<div class="tag">New</div>
-													<div class="tag sale-tag">-50%</div>
+													<div class="tag">Hot</div>
 												</div>
 												<ul class="product-card__control">
 													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
@@ -234,41 +198,23 @@
 													<li><span class="mdi mdi-star"></span></li>
 													<li><span class="mdi mdi-star"></span></li>
 													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-												</ul>
-												<a href="product-card.php" class="h4">Black Dress</a>
-												<p class="price">$123 <span class="sale">$290</span></p>
-											</div>
-										</div>
-									</div>
-									<div class="grid-item group5">
-										<div class="product-card">
-											<div class="product-card-logo">
-												<img src="public/img/product-6.jpg" alt="img">
-												<ul class="product-card__control">
-													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-												</ul>
-											</div>
-											<div class="product-card-info">
-												<ul class="rating">
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4">Gray Sweater</a>
-												<p class="price">$123</p>
+												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price">$ <?php echo $sp['price'] ?> </p>
 											</div>
 										</div>
+									<?php endforeach; ?>
 									</div>
 									<div class="grid-item group4">
+										<?php  foreach($Tranding as $m => $sp): ?>
 										<div class="product-card">
 											<div class="product-card-logo">
-												<img src="public/img/product-7.jpg" alt="img">
+												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
+												<div class="tag-list">
+													<div class="tag">Hot</div>
+												</div>
 												<ul class="product-card__control">
 													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
@@ -283,15 +229,20 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4">Shirt Mango</a>
-												<p class="price">$150</p>
+												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price">$ <?php echo $sp['price'] ?> </p>
 											</div>
 										</div>
+									<?php endforeach; ?>
 									</div>
-									<div class="grid-item group2">
+									<div class="grid-item group5">
+										<?php  foreach($topRated as $m => $sp): ?>
 										<div class="product-card">
 											<div class="product-card-logo">
-												<img src="public/img/product-8.jpg" alt="img">
+												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
+												<div class="tag-list">
+													<div class="tag">Hot</div>
+												</div>
 												<ul class="product-card__control">
 													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
@@ -303,17 +254,17 @@
 													<li><span class="mdi mdi-star"></span></li>
 													<li><span class="mdi mdi-star"></span></li>
 													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
+													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4">Black Skirt</a>
-												<p class="price">$170</p>
+												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price">$ <?php echo $sp['price'] ?> </p>
 											</div>
 										</div>
-									</div>
-								</div>
-								<a href="#" class="link">Load More</a>
+									<?php endforeach; ?>
+									</div>								
 							</div>
+							<a href="#" class="link">Load More</a>
 						</div>
 					</div>
 				</div>
