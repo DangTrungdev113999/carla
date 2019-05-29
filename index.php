@@ -129,7 +129,10 @@
 												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 												<div class="tag-list">
 													<div class="tag">New</div>
-													<div class="tag sale-tag">-40%</div>
+													<div class="tag sale-tag"><?php 
+													if($sp['sale_price'])
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
+													 ?>%</div>
 												</div>
 												<ul class="product-card__control">
 													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
@@ -146,18 +149,35 @@
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
 												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$<?php echo $sp['price'] ?><span class="sale"><?php echo $sp['sale_price'] ?></span></p>
+												<p class="price">$<?php 
+												if ($sp['sale_price'])
+													echo $sp['sale_price'];	
+												else
+													echo $sp['price'];																						
+												?>
+												<span class="sale">
+													<?php 
+												if($sp['sale_price']) {													
+												}
+													echo $sp['price']
+												 ?>
+												 	
+												 </span></p>
 											</div>
 										</div>
 									<?php  endforeach; ?>
 									</div>
 									<div class="grid-item group2">
-										<?php  foreach($Man as $m => $sp): ?>
+										<?php foreach($Man as $n => $sp): ?>
 										<div class="product-card">
 											<div class="product-card-logo">
 												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 												<div class="tag-list">
-													<div class="tag">Hot</div>
+													<div class="tag">New</div>
+													<div class="tag sale-tag"><?php 
+													if($sp['sale_price'])
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
+													 ?>%</div>
 												</div>
 												<ul class="product-card__control">
 													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
@@ -174,18 +194,35 @@
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
 												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$ <?php echo $sp['price'] ?> </p>
+												<p class="price">$<?php 
+												if ($sp['sale_price'])
+													echo $sp['sale_price'];	
+												else
+													echo $sp['price'];																						
+												?>
+												<span class="sale">
+													<?php 
+												if($sp['sale_price']) {													
+												}
+													echo $sp['price']
+												 ?>
+												 	
+												 </span></p>
 											</div>
 										</div>
-									<?php endforeach; ?>
+									<?php  endforeach; ?>
 									</div>
 									<div class="grid-item group3">
-										<?php  foreach($Accessories as $m => $sp): ?>
+										<?php foreach($Accessories as $n => $sp): ?>
 										<div class="product-card">
 											<div class="product-card-logo">
 												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 												<div class="tag-list">
-													<div class="tag">Hot</div>
+													<div class="tag">New</div>
+													<div class="tag sale-tag"><?php 
+													if($sp['sale_price'])
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
+													 ?>%</div>
 												</div>
 												<ul class="product-card__control">
 													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
@@ -202,18 +239,35 @@
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
 												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$ <?php echo $sp['price'] ?> </p>
+												<p class="price">$<?php 
+												if ($sp['sale_price'])
+													echo $sp['sale_price'];	
+												else
+													echo $sp['price'];																						
+												?>
+												<span class="sale">
+													<?php 
+												if($sp['sale_price']) {													
+												}
+													echo $sp['price']
+												 ?>
+												 	
+												 </span></p>
 											</div>
 										</div>
-									<?php endforeach; ?>
+									<?php  endforeach; ?>
 									</div>
 									<div class="grid-item group4">
-										<?php  foreach($Tranding as $m => $sp): ?>
+										<?php foreach($Tranding as $n => $sp): ?>
 										<div class="product-card">
 											<div class="product-card-logo">
 												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 												<div class="tag-list">
-													<div class="tag">Hot</div>
+													<div class="tag">New</div>
+													<div class="tag sale-tag"><?php 
+													if($sp['sale_price'])
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
+													 ?>%</div>
 												</div>
 												<ul class="product-card__control">
 													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
@@ -230,18 +284,35 @@
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
 												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$ <?php echo $sp['price'] ?> </p>
+												<p class="price">$<?php 
+												if ($sp['sale_price'])
+													echo $sp['sale_price'];	
+												else
+													echo $sp['price'];																						
+												?>
+												<span class="sale">
+													<?php 
+												if($sp['sale_price']) {													
+												}
+													echo $sp['price']
+												 ?>
+												 	
+												 </span></p>
 											</div>
 										</div>
-									<?php endforeach; ?>
+									<?php  endforeach; ?>
 									</div>
 									<div class="grid-item group5">
-										<?php  foreach($topRated as $m => $sp): ?>
+										<?php foreach($topRated as $n => $sp): ?>
 										<div class="product-card">
 											<div class="product-card-logo">
 												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 												<div class="tag-list">
-													<div class="tag">Hot</div>
+													<div class="tag">New</div>
+													<div class="tag sale-tag"><?php 
+													if($sp['sale_price'])
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
+													 ?>%</div>
 												</div>
 												<ul class="product-card__control">
 													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
@@ -258,10 +329,23 @@
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
 												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$ <?php echo $sp['price'] ?> </p>
+												<p class="price">$<?php 
+												if ($sp['sale_price'])
+													echo $sp['sale_price'];	
+												else
+													echo $sp['price'];																						
+												?>
+												<span class="sale">
+													<?php 
+												if($sp['sale_price']) {													
+												}
+													echo $sp['price']
+												 ?>
+												 	
+												 </span></p>
 											</div>
 										</div>
-									<?php endforeach; ?>
+									<?php  endforeach; ?>
 									</div>								
 							</div>
 							<a href="#" class="link">Load More</a>
