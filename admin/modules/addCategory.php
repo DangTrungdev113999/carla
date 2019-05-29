@@ -11,7 +11,8 @@
 		$insertData = "INSERT INTO category(name, created, ordering, `status`, parent_id) 
 		VALUES('$categoryName','$created', '$ordering', '$status','$parentId' )";
 
-		mysqli_query($conn, $insertData);
+		mysqli_query($conn, $insertData) or die("lỗi thêm mới danh mục sản phẩm");
+		// header("location:");
 
 	};
  ?>
