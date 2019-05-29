@@ -6,7 +6,7 @@
 		$created = ($_POST['created']) ? $_POST['created'] : '3/11/2019';
 		$parentId = ($_POST['parent_id']) ? $_POST['parent_id'] : 0;
 		$ordering = ($_POST['ordering']) ? $_POST['ordering'] : 0;
-		$status = ($_POST['status']) ? $_POST['status'] : 1; // 1 là hiện, 0 là ẩn
+		$status = (isset($_POST['status'])) ? isset($_POST['status']) : 1;  // 1 là hiện, 0 là ẩn
 
 		$insertData = "INSERT INTO category(name, created, ordering, `status`, parent_id) 
 		VALUES('$categoryName','$created', '$ordering', '$status','$parentId' )";
@@ -43,7 +43,7 @@
 						            <div class="row">
 						                <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
 						                    <label class="be-checkbox custom-control custom-checkbox">
-						                        <input type="checkbox" name="status" value="0" class="custom-control-input"><span class="custom-control-label">status</span>
+						                        <input type="checkbox" name="status" value="1" class="custom-control-input"><span class="custom-control-label">status</span>
 						                    </label>
 						                </div>
 						                <div class="col-sm-6 pl-0">
@@ -60,5 +60,5 @@
 			</div>
 		</div>
 <?php
-	include '../pages/footer.php'
+	include '../footer.php';
 ?>

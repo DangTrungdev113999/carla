@@ -203,20 +203,21 @@ John Abraham</h5>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Category</a>
+                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11"><i class="fas fa-align-left"></i> Category</a>
                                 <div id="submenu-11" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
                                             <a class="nav-link" href="../modules/addCategory.php">Thêm mới</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../modules/categorys.php">danh sách</a>
+                                            <a class="nav-link" href="../modules/categories.php">danh sách</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-12" aria-controls="submenu-12">Product</a>
+                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-12" aria-controls="submenu-12"><i class="fas fa-bullseye"></i> Product</a>
                                 <div id="submenu-12" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
