@@ -46,8 +46,8 @@
                                 </thead>
                                 <tbody>
                                 	<?php
-                                		$selectData = "SELECT * FROM product";
-                                		$result = mysqli_query($conn, $selectData);
+                                		$selectDataFromPro = "SELECT * FROM product";
+                                		$result = mysqli_query($conn, $selectDataFromPro) or die("lỗi truy xuất danh sách sản phẩm".$selectDataFromPro);
                                 		if(mysqli_num_rows($result) > 0) {
                                 			$count = 0;
                                 			while($row = mysqli_fetch_assoc($result)) {
