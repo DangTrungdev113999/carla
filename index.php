@@ -1,12 +1,22 @@
 <?php
 	include 'header.php';
 	$banner = mysqli_query($conn, "select * from banner");
+	// LẤY RA DÁNH SÁCH BANNER
+
+		// LẤY RA TẤT CẢ PRODUCT
 	$products = mysqli_query($conn, 'select * from product');
+
+
+	// LẤY RA CÁC DANH MỤC THEO CATEFORY_ID
 	$Woman = mysqli_query($conn, 'select * from product where category_id = 2');
 	$Man = mysqli_query($conn, 'select * from product where category_id = 1');
 	$Accessories = mysqli_query($conn, 'select * from product where category_id = 7');
 	$Tranding = mysqli_query($conn, 'select * from product where category_id = 5');
 	$topRated = mysqli_query($conn, 'select * from product where category_id = 6');
+
+
+	$newArrivals = mysqli_query($conn, 'SELECT * FROM PRODUCT ORDER BY ID DESC');
+	// LẤY RA DANH SÁCH CÁC SP MỚI THÊM VÀO 
 	// echo $banner
 ?>
 		<!-- End header -->
@@ -128,14 +138,16 @@
 											<div class="product-card-logo">
 												<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 												<div class="tag-list">
-													<div class="tag">New</div>
+													<div class="tag">New</div>													
 													<div class="tag sale-tag"><?php 
-													if($sp['sale_price'])
-														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
-													 ?>%</div>
+													if($sp['sale_price']){
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 );
+														echo '%';
+													}
+													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -148,7 +160,7 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
 												<p class="price">$<?php 
 												if ($sp['sale_price'])
 													echo $sp['sale_price'];	
@@ -175,12 +187,14 @@
 												<div class="tag-list">
 													<div class="tag">New</div>
 													<div class="tag sale-tag"><?php 
-													if($sp['sale_price'])
-														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
-													 ?>%</div>
+													if($sp['sale_price']){
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 );
+														echo '%';
+													}
+													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -193,7 +207,7 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
 												<p class="price">$<?php 
 												if ($sp['sale_price'])
 													echo $sp['sale_price'];	
@@ -220,12 +234,14 @@
 												<div class="tag-list">
 													<div class="tag">New</div>
 													<div class="tag sale-tag"><?php 
-													if($sp['sale_price'])
-														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
-													 ?>%</div>
+													if($sp['sale_price']){
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 );
+														echo '%';
+													}
+													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -238,7 +254,7 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
 												<p class="price">$<?php 
 												if ($sp['sale_price'])
 													echo $sp['sale_price'];	
@@ -265,12 +281,14 @@
 												<div class="tag-list">
 													<div class="tag">New</div>
 													<div class="tag sale-tag"><?php 
-													if($sp['sale_price'])
-														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
-													 ?>%</div>
+													if($sp['sale_price']){
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 );
+														echo '%';
+													}
+													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -283,7 +301,7 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
 												<p class="price">$<?php 
 												if ($sp['sale_price'])
 													echo $sp['sale_price'];	
@@ -310,12 +328,14 @@
 												<div class="tag-list">
 													<div class="tag">New</div>
 													<div class="tag sale-tag"><?php 
-													if($sp['sale_price'])
-														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 )
-													 ?>%</div>
+													if($sp['sale_price']){
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 );
+														echo '%';
+													}
+													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -328,7 +348,7 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-card.php" class="h4"><?php echo $sp['name'] ?></a>
+												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
 												<p class="price">$<?php 
 												if ($sp['sale_price'])
 													echo $sp['sale_price'];	
@@ -422,18 +442,26 @@
 										<span class="mdi mdi-arrow-right new-arrivals-next slider-arrow"></span>
 									</div>
 								</div>
-								<div class="	">
+								<div class="new-arrivals-slider-wrap">
 									<div class="new-arrivals-slider">
+										<?php foreach($newArrivals as $n => $sp): ?>
 										<div class="slider-card">
 											<div class="product-card">
 												<div class="product-card-logo">
-													<img src="public/img/product-1.jpg" alt="img">
+													<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 													<div class="tag-list">
 														<div class="tag">New</div>
-														<div class="tag sale-tag">-40%</div>
+														<div class="tag sale-tag">
+															<?php 
+															if($sp['sale_price']){
+																echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 );
+																echo '%';
+															}
+															 ?>
+														</div>
 													</div>
 													<ul class="product-card__control">
-														<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
+														<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
 														<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 														<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 													</ul>
@@ -446,116 +474,26 @@
 														<li><span class="mdi mdi-star-half"></span></li>
 														<li><span class="mdi mdi-star-outline"></span></li>
 													</ul>
-													<a href="product-card.php" class="h4">Beige Sweater</a>
-													<p class="price">$133 <span class="sale">$290</span></p>
+													<a href="product-card.html" class="h4"><?php echo $sp['name'] ?></a>
+													<p class="price">
+														<?php 
+														if ($sp['sale_price'])
+															echo $sp['sale_price'];	
+														else
+															echo $sp['price'];																						
+														?>
+													<span class="sale">
+													<?php 
+													if($sp['sale_price']) {													
+													}
+													echo $sp['price']
+												 	?>											
+													</span>
+												</p>
 												</div>
 											</div>
 										</div>
-										<div class="slider-card">
-											<div class="product-card">
-												<div class="product-card-logo">
-													<img src="public/img/product-2.jpg" alt="img">
-													<div class="tag-list">
-														<div class="tag">New</div>
-													</div>
-													<ul class="product-card__control">
-														<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-														<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-														<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-													</ul>
-												</div>
-												<div class="product-card-info">
-													<ul class="rating">
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star-half"></span></li>
-														<li><span class="mdi mdi-star-outline"></span></li>
-													</ul>
-													<a href="product-card.php" class="h4">Pink Sweater</a>
-													<p class="price">$100</p>
-												</div>
-											</div>
-										</div>
-										<div class="slider-card">
-											<div class="product-card">
-												<div class="product-card-logo">
-													<div class="tag-list">
-														<div class="tag">New</div>
-													</div>
-													<img src="public/img/product-3.jpg" alt="img">
-													<ul class="product-card__control">
-														<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-														<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-														<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-													</ul>
-												</div>
-												<div class="product-card-info">
-													<ul class="rating">
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star-half"></span></li>
-													</ul>
-													<a href="product-card.php" class="h4">Gray Sweater</a>
-													<p class="price">$130</p>
-												</div>
-											</div>
-										</div>
-										<div class="slider-card">
-											<div class="product-card">
-												<div class="product-card-logo">
-													<div class="tag-list">
-														<div class="tag">New</div>
-													</div>
-													<img src="public/img/product-4.jpg" alt="img">
-													<ul class="product-card__control">
-														<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-														<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-														<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-													</ul>
-												</div>
-												<div class="product-card-info">
-													<ul class="rating">
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star-half"></span></li>
-														<li><span class="mdi mdi-star-outline"></span></li>
-													</ul>
-													<a href="product-card.php" class="h4">Denim Shirt</a>
-													<p class="price">$125</p>
-												</div>
-											</div>
-										</div>
-										<div class="slider-card">
-											<div class="product-card">
-												<div class="product-card-logo">
-													<img src="public/img/product-5.jpg" alt="img">
-													<div class="tag-list">
-														<div class="tag">New</div>
-														<div class="tag sale-tag">-50%</div>
-													</div>
-													<ul class="product-card__control">
-														<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-														<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-														<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-													</ul>
-												</div>
-												<div class="product-card-info">
-													<ul class="rating">
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-														<li><span class="mdi mdi-star"></span></li>
-													</ul>
-													<a href="product-card.php" class="h4">Black Dress</a>
-													<p class="price">$123 <span class="sale">$290</span></p>
-												</div>
-											</div>
-										</div>
+									<?php endforeach; ?>								
 									</div>
 								</div>
 							</div>
@@ -563,6 +501,7 @@
 					</div>
 				</div>
 			</section>
+
 			<!-- End new arrivals -->
 			<!-- Begin instagram widget wrap -->
 			<section class="instagram-widget-wrap">
@@ -655,6 +594,11 @@
 		<!-- End home content -->
 		<div class="back-top" id="backTop"><p>up!</p></div>
 		<!-- Begin footer -->
+		<script>	
+			function addCart(){
+				alert('Add to cart success');
+			}
+		</script>
 <?php
 	include 'footer.php'
 ?>
