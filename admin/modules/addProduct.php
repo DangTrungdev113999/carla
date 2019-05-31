@@ -1,6 +1,7 @@
 <?php
 	include '../header.php';
 
+
 	if (isset($_POST['addNew'])) {
 		$productName = $_POST['productName'];
 		$image = $_POST['image'];
@@ -11,14 +12,32 @@
 		$status = (isset($_POST['status'])) ? isset($_POST['status']) : 1;
 		$created = ($_POST['created']) ? $_POST['created'] : '12/11/2019';
 
-		$insertData = "INSERT INTO product(name, image, content, category_id, price, sale_price, status, created)
+		$insertDataToPro = "INSERT INTO product(name, image, content, category_id, price, sale_price, status, created)
 						VALUES('$productName', '$image', '$content', '$category_id', '$price', '$sale_price', '$status', '$created')";
 
-		mysqli_query($conn, $insertData);
+		mysqli_query($conn, $insertDataToPro) or die("thêm mới sản phẩm thát bại".$insertDataToPro);
 	};
 ?>
     <div class="dashboard-wrapper">
         <div class="container-fluid dashboard-content">
+			<div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">Add new Product table</h2>
+                        <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Admin</a></li>
+                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tables</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Product Table</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 		    <div class="row">
 		        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 		            <div class="card">
@@ -31,15 +50,24 @@
 		                        </div>
 		                        <div class="form-group">
 		                            <label for="image">Product image</label>
-		                            <input id="image" type="text" name="image" required="" placeholder="Enter the link of image"  class="form-control">
-		                        </div>
-		                        <div class="form-group">
-		                            <label for="content">Content</label>
-		                            <input id="content" type="text" name="content" required="" placeholder="Enter the content"  class="form-control">
+		                            <input id="image" type="file" name="image" class="form-control">
 		                        </div>
 		                        <div class="form-group">
 		                            <label for="category_id">Category</label>
-		                            <input id="category_id" type="text" name="category_id" required=""  placeholder="Enter the category"  class="form-control">
+		                            <select name="category_id" id="category_id" class="form-control">
+		                            	<option value="">--Choose category type--</option>
+		                            	<?php
+		                            		$selectDataFromCat = "SELECT * FROM category";
+											$resultCat = mysqli_query($conn, $selectDataFromCat) or die("lỗi truy xuất danh mục sản phẩm".$selectDataFromCat);
+		                            		while($rowCat = mysqli_fetch_assoc($resultCat)) {
+		                            	?>
+
+		                            	<option value="<?php echo $rowCat['id'] ?>"><?php echo $rowCat['name'] ?></option>
+
+		                            	<?php 
+		                            		} 
+		                            	?>
+		                            </select>
 		                        </div>
 		                        <div class="form-group">
 		                            <label for="price">Price</label>
@@ -53,6 +81,10 @@
 		                            <label for="created">created</label>
 		                            <input id="created" type="date" name="created" value="" placeholder="Enter the created"  class="form-control">
 		                        </div>
+		                        <div class="form-group">
+		                            <label for="content">Content</label>
+		                            <textarea name="content" id="content" placeholder="Enter the discription" class="form-control" rows="10" cols="50"></textarea>
+		                        </div>
 
 					            <div class="row">
 					                <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
@@ -62,7 +94,7 @@
 					                </div>
 					                <div class="col-sm-6 pl-0">
 					                    <p class="text-right">
-					                        <button type="submit" name="addNew" class="btn btn-space btn-info">Add new</button>
+					                        <button type="submit" name="addNew" class="btn btn-space btn-dark">Add new</button>
 					                    </p>
 					                </div>
 					            </div>
@@ -71,6 +103,23 @@
 		            </div>
 		        </div>
 		    </div>
+
+			<div class="footer">
+	            <div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+	                        Copyright © 2019 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+	                    </div>
+	                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+	                        <div class="text-md-right footer-links d-none d-sm-block">
+	                            <a href="javascript: void(0);">About</a>
+	                            <a href="javascript: void(0);">Support</a>
+	                            <a href="javascript: void(0);">Contact Us</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
 		</div>
 	</div>
 <?php
