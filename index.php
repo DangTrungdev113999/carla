@@ -160,10 +160,12 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$<?php 
-												if ($sp['sale_price'])
+												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price"><?php 
+												if ($sp['sale_price']){
+													echo '$';
 													echo $sp['sale_price'];	
+												}
 												else
 													echo $sp['price'];																						
 												?>
@@ -207,10 +209,12 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$<?php 
-												if ($sp['sale_price'])
+												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price"><?php 
+												if ($sp['sale_price']){
+													echo '$';
 													echo $sp['sale_price'];	
+												}
 												else
 													echo $sp['price'];																						
 												?>
@@ -254,10 +258,12 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$<?php 
-												if ($sp['sale_price'])
+												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price"><?php 
+												if ($sp['sale_price']){
+													echo '$';
 													echo $sp['sale_price'];	
+												}
 												else
 													echo $sp['price'];																						
 												?>
@@ -301,10 +307,12 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$<?php 
-												if ($sp['sale_price'])
+												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price"><?php 
+												if ($sp['sale_price']){
+													echo '$';
 													echo $sp['sale_price'];	
+												}
 												else
 													echo $sp['price'];																						
 												?>
@@ -348,10 +356,12 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-page.php" class="h4"><?php echo $sp['name'] ?></a>
-												<p class="price">$<?php 
-												if ($sp['sale_price'])
+												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4"><?php echo $sp['name'] ?></a>
+												<p class="price"><?php 
+												if ($sp['sale_price']){
+													echo '$';
 													echo $sp['sale_price'];	
+												}
 												else
 													echo $sp['price'];																						
 												?>
@@ -474,11 +484,14 @@
 														<li><span class="mdi mdi-star-half"></span></li>
 														<li><span class="mdi mdi-star-outline"></span></li>
 													</ul>
-													<a href="product-card.html" class="h4"><?php echo $sp['name'] ?></a>
+													<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4">
+														<?php echo $sp['name'] ?></a>
 													<p class="price">
 														<?php 
-														if ($sp['sale_price'])
+														if ($sp['sale_price']){
+															echo '$';
 															echo $sp['sale_price'];	
+														}
 														else
 															echo $sp['price'];																						
 														?>

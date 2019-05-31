@@ -1,5 +1,19 @@
 <?php
-	include 'header.php'
+	include 'header.php';
+
+
+	$idProduct = $_GET['id'] ? $_GET['id'] : null;
+	if($idProduct){
+		$detail_product = mysqli_query($conn, "select * from product where id = '$idProduct' ");
+	}
+	else{
+		$detail_product = null;
+	}
+	
+
+	// echo $banner;
+	// echo $_GET;
+	// echo '$detail_product';
 ?>
 		<!-- End header -->
 		<!-- Begin page name -->
@@ -29,9 +43,11 @@
 							<div class="product-preview">
 								<div class="vertical-slider-1-wrap">
 									<div class="vertical-slider-1">
+										<?php foreach($detail_product as $key => $sp): ?>
 										<div class="slider-card">
-											<img src="public/img/product-page-sm-1.jpg" alt="img">
+											<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 										</div>
+										<?php endforeach; ?>
 										<div class="slider-card">
 											<img src="public/img/product-page-sm-2.jpg" alt="img">
 										</div>
@@ -43,38 +59,62 @@
 									<button type="button" class="vertical-nav next"><span class="mdi mdi-arrow-down"></span></button>
 								</div>
 								<div class="big-slider-1 photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
-									<div class="slider-card">
+									<?php foreach($detail_product as $key => $sp): ?>
+									<div class="slider-card">										
 										<a href="img/product-page-big-1-2.jpg" itemprop="contentUrl" data-size="458x600">
-											<img src="public/img/product-page-big-1-2.jpg" itemprop="thumbnail" alt="Image description">
+											<img src="public/img/<?php echo $sp['image'] ?>" itemprop="thumbnail" alt="Image description" width="100%">
 										</a>
 									</div>
+								<?php endforeach; ?>
 									<div class="slider-card">
 										<a href="img/product-page-big-1.jpg" itemprop="contentUrl" data-size="458x600">
-											<img src="public/img/product-page-big-1.jpg" itemprop="thumbnail" alt="Image description">
+											<img src="public/img/product-page-big-1.jpg" itemprop="thumbnail" alt="Image description" width="100%">
 										</a>
 									</div>
+
 									<div class="slider-card">
 										<a href="img/product-page-big-1-3.jpg" itemprop="contentUrl" data-size="458x600">
-											<img src="public/img/product-page-big-1-3.jpg" itemprop="thumbnail" alt="Image description">
+											<img src="public/img/product-page-big-1-3.jpg" itemprop="thumbnail" alt="Image description" width="100%">
 										</a>
 									</div>
 								</div>
 							</div>
 							<div class="product-section-description all-description">
-								<h2>Carla Black Dress</h2>
+								<?php foreach($detail_product as $key => $sp): ?>
+								<h2>
+									<?php echo $sp['name'] ?>								 	
+								 </h2>
 								<div class="product-review">
 									<ul class="rating">
 										<li><span class="mdi mdi-star"></span></li>
 										<li><span class="mdi mdi-star"></span></li>
 										<li><span class="mdi mdi-star"></span></li>
 										<li><span class="mdi mdi-star-half"></span></li>
-										<li><span class="mdi mdi-star-outline"></span></li>
+											<li><span class="mdi mdi-star-outline"></span></li>
 									</ul>
 									<p>5 Review</p>
 									<a href="#">Add your review</a>
 								</div>
 								<div class="product-available">
-									<p class="price">$133 <span class="sale">$290</span></p>
+									<p class="price"><?php 
+														if ($sp['sale_price']){
+															echo '$';
+															echo $sp['sale_price'];	
+														}
+														else{
+															echo $sp['price'];									
+														}
+														?>																					
+									 <span class="sale">
+									 	<?php 
+									 	if($sp['sale_price']){		
+									 		echo '$';
+									 		echo $sp['price'];											
+									 	}
+									
+									?>	
+									</span>
+									</p>
 									<div class="available">
 										<div class="left">
 											<img src="public/img/label.png" alt="img">
@@ -140,6 +180,7 @@
 										</ul>
 									</li>
 								</ul>
+							<?php endforeach; ?>
 							</div>
 						</section>
 					</div>
