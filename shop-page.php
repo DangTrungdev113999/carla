@@ -1,5 +1,28 @@
 <?php
-	include 'header.php'
+	include 'header.php';
+
+	$Categories = $_GET['name'] ? $_GET['name'] : null;
+		$Products = mysqli_query($conn, 'select * from product');
+	$LastestProduct = mysqli_query($conn, 'SELECT  * FROM product
+	ORDER BY id DESC LIMIT 3');
+	if($Categories === 'woman'){
+		$Products = mysqli_query($conn, 'select * from product where category_id = 2');
+		$LastestProduct = mysqli_query($conn, 'SELECT  * FROM product where category_id = 2
+	ORDER BY id DESC LIMIT 3');
+	};
+	if($Categories === 'man'){
+		$Products = mysqli_query($conn, 'select * from product where category_id = 1');
+		$LastestProduct = mysqli_query($conn, 'SELECT  * FROM product where category_id = 1
+	ORDER BY id DESC LIMIT 3');
+	};
+	if($Categories === 'accesories'){
+		$Products = mysqli_query($conn, 'select * from product where category_id = 7');
+		$LastestProduct = mysqli_query($conn, 'SELECT  * FROM product where category_id = 7
+	ORDER BY id DESC LIMIT 3');
+	};
+
+	
+
 ?>
 		<!-- End header -->
 		<!-- Begin page name -->
@@ -19,7 +42,6 @@
 			</div>
 		</section>
 		<!-- End page name -->
-		
 		<!-- Begin shop page content -->
 		<main class="shop-page-content-1">
 			<div class="container">
@@ -144,33 +166,29 @@
 							<div class="main-sidebar-latest-product">
 								<h4 class="filter-head filter-head-active">Latest Product <span class="mdi mdi-chevron-down"></span></h4>
 								<ul class="latest-product-list">
+									<?php foreach($LastestProduct as $key => $sp): ?>
 									<li>
 										<figure class="latest-product">
-											<a href="product-page.php"><img src="public/img/latest-post-1.jpg" alt="img"></a>
+											<a href="product-page.php?id=<?php echo $sp['id'] ?>"><img src="public/img/
+												<?php echo $sp['image'] ?>
+												" alt="img"></a>
 											<figcaption class="latest-product__desc">
-												<a href="product-page.php" class="h5">Mini Beige Sweater by Brand Name</a>
-												<p class="price">$256</p>
+												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h5">
+												<?php echo $sp['name'] ?>
+											</a>
+												<p class="price"><?php 
+												if ($sp['sale_price']){
+													echo '$';
+													echo $sp['sale_price'];	
+												}
+												else
+													echo $sp['price'];						
+												?>
+											</p>
 											</figcaption>
 										</figure>
-									</li>
-									<li>
-										<figure class="latest-product">
-											<a href="product-page.php"><img src="public/img/latest-post-2.jpg" alt="img"></a>
-											<figcaption class="latest-product__desc">
-												<a href="product-page.php" class="h5">Mini Beige Sweater by Brand Name</a>
-												<p class="price">$256</p>
-											</figcaption>
-										</figure>
-									</li>
-									<li>
-										<figure class="latest-product">
-											<a href="product-page.php"><img src="public/img/latest-post-3.jpg" alt="img"></a>
-											<figcaption class="latest-product__desc">
-												<a href="product-page.php" class="h5">Mini Beige Sweater by Brand Name</a>
-												<p class="price">$256</p>
-											</figcaption>
-										</figure>
-									</li>
+									</li>	
+									<?php endforeach; ?>								
 								</ul>
 							</div>
 						</aside>
@@ -203,12 +221,20 @@
 								</div>
 							</form>
 							<div class="product-list">
+								<?php foreach($Products as $key => $sp): ?>
 								<div class="product-card">
 									<div class="product-card-logo">
-										<img src="public/img/product-1.jpg" alt="img">
+										<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
 										<div class="tag-list">
 											<div class="tag">New</div>
-											<div class="tag sale-tag">-40%</div>
+											<div class="tag sale-tag">
+												<?php 
+													if($sp['sale_price']){
+														echo round(($sp['price']-$sp['sale_price'])/$sp['price'] *100,0 );
+														echo '%';
+													}
+													 ?>
+											</div>
 										</div>
 										<ul class="product-card__control">
 											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
@@ -224,248 +250,29 @@
 											<li><span class="mdi mdi-star-half"></span></li>
 											<li><span class="mdi mdi-star-outline"></span></li>
 										</ul>
-										<a href="product-card.php" class="h4">Beige Sweater</a>
-										<p class="price">$133 <span class="sale">$290</span></p>
+										<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4">
+											<?php echo $sp['name'] ?>
+										</a>
+										<p class="price">
+											<?php 
+												if ($sp['sale_price']){
+													echo '$';
+													echo $sp['sale_price'];	
+												}
+												else
+													echo $sp['price'];						
+												?>
+											<span class="sale">
+											<?php 
+												if($sp['sale_price']) {													
+												}
+													echo $sp['price']
+												 ?>
+											</span>
+										</p>
 									</div>
 								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-2.jpg" alt="img">
-										<div class="tag-list">
-											<div class="tag">Hot</div>
-										</div>
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-half"></span></li>
-											<li><span class="mdi mdi-star-outline"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Pink Sweater</a>
-										<p class="price">$100</p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-3.jpg" alt="img">
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-half"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Gray Sweater</a>
-										<p class="price">$130</p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-4.jpg" alt="img">
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-half"></span></li>
-											<li><span class="mdi mdi-star-outline"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Denim Shirt</a>
-										<p class="price">$125</p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-5.jpg" alt="img">
-										<div class="tag-list">
-											<div class="tag">New</div>
-											<div class="tag sale-tag">-50%</div>
-										</div>
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Black Dress</a>
-										<p class="price">$123 <span class="sale">$290</span></p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-6.jpg" alt="img">
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-half"></span></li>
-											<li><span class="mdi mdi-star-outline"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Gray Sweater</a>
-										<p class="price">$123</p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-7.jpg" alt="img">
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-half"></span></li>
-											<li><span class="mdi mdi-star-outline"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Shirt Mango</a>
-										<p class="price">$150</p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-8.jpg" alt="img">
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-outline"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Black Skirt</a>
-										<p class="price">$170</p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-9.jpg" alt="img">
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-outline"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">White Dress</a>
-										<p class="price">$70</p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-10.jpg" alt="img">
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-outline"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Blouse Mango</a>
-										<p class="price">$105</p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-11.jpg" alt="img">
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-outline"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Shirt Top Shop</a>
-										<p class="price">$80</p>
-									</div>
-								</div>
-								<div class="product-card">
-									<div class="product-card-logo">
-										<img src="public/img/product-12.jpg" alt="img">
-										<ul class="product-card__control">
-											<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
-										</ul>
-									</div>
-									<div class="product-card-info">
-										<ul class="rating">
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star"></span></li>
-											<li><span class="mdi mdi-star-outline"></span></li>
-										</ul>
-										<a href="product-card.php" class="h4">Beige Sweater</a>
-										<p class="price">$110</p>
-									</div>
-								</div>
+							<?php endforeach; ?>
 							</div>
 							<a href="#" class="link">Load More</a>
 						</section>
