@@ -1,15 +1,13 @@
 <?php
 if (isset($_POST['addNew'])) {
 	$table = 'category';
-	$data = '_POST';
+	$data = $_POST;
 	$data['status'] = (isset($data['status'])) ? isset($data['status']) : 0; 
 
 	$sqlInsert = insertData($table, $data);
 
-
-
 	mysqli_query($conn, $sqlInsert) or die("lỗi thêm mới danh mục sản phẩm".$sqlInsert);
-	header("location: categories.php");
+	header("location: index.php?module=categories");
 
 };
 ?>
@@ -38,18 +36,18 @@ if (isset($_POST['addNew'])) {
 		<div class="card">
 			<h5 class="card-header">Add new Categories</h5>
 			<div class="card-body">
-				<form action="" name="" method="post" id="basicform" data-parsley-validate="">
+				<form action="" name="" method="POST" id="basicform" data-parsley-validate="">
 					<div class="form-group">
 						<label for="name">Category name</label>
 						<input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="created">Created</label>
-						<input id="created" type="date" name="created" placeholder="Enter the created"  class="form-control">
-					</div>
-					<div class="form-group">
 						<label for="parent_id">Parent id</label>
 						<input id="parent_id" type="number" name="parent_id" placeholder="Enter the Parent id"  class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="created">Created</label>
+						<input id="created" type="date" name="created" placeholder="Enter the created"  class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="ordering">Ordering</label>

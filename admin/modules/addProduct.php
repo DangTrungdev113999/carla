@@ -25,7 +25,7 @@ if(isset($_POST['addNew'])) {
 	$sqlInsert = insertData($table, $data);
 
 	mysqli_query($conn, $sqlInsert) or die("lỗi thêm mới danh mục sản phẩm ".$sqlInsert);
-	header("location: products.php");
+	header("location: index.php?module=products");
 
 };
 ?>

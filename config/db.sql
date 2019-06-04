@@ -24,13 +24,13 @@ CREATE TABLE IF NOT EXISTS category (
 
 
 INSERT INTO category(name, parent_id, ordering)
-values('Man',1,1),
-('Woman',2,2),
+values('Man',0,1),
+('Woman',0,2),
 ('shirt',1,3),
 ('dress',2,4),
-('accessories',0, 5),
-('trading',0,6),
-('topRate',0,7);
+('accessories',1, 5),
+('trading',1,6),
+('topRate',2,7);
 
 CREATE TABLE IF NOT EXISTS product (
   id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
