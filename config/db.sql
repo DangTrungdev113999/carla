@@ -44,6 +44,21 @@ CREATE TABLE IF NOT EXISTS product (
   created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+
+CREATE TABLE IF NOT EXISTS color (
+	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name varchar(150) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS size (
+	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name varchar(150) NOT NULL
+);
+insert into color(name)
+values('white'),('red'),('blue'),('yellow'),('green');
+insert into size(name)
+values('S'),('M'),('L'),('XL'),('XXL');
+
 INSERT INTO product(name, image, content, category_id, price, sale_price)
 values('Beige Sweater','product-1.jpg','chua co content',2, 290, 133),
 ('Pink Sweater','product-2.jpg','chua co content',1, 100, 98),
@@ -76,8 +91,16 @@ CREATE TABLE IF NOT EXISTS orders (
 	phone varchar(50) NULL,
 	address varchar(100) NULL,
 	status tinyint(1) DEFAULT '0' COMMENT '0 là chưa duyệt, 1 là đã duyệt, 2 là đã giao hàng',
+	color_id int not null default '1',
+	size_id int not null default '1',
 	created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+alter TABLE orders ADD
+FOREIGN KEY FK_COLOR_DETAIL (color_id)
+references color(id);
+alter TABLE orders ADD
+FOREIGN KEY FK_SIZE_DETAIL (size_id)
+references size(id);
 
 CREATE TABLE IF NOT EXISTS order_detail (
 	order_id int NOT NULL,
@@ -86,6 +109,7 @@ CREATE TABLE IF NOT EXISTS order_detail (
 	price int NOT NULL,
 	PRIMARY KEY(product_id,order_id)
 );
+
 
 ALTER TABLE order_detail ADD 
 FOREIGN KEY FK_PRODUDT_DETAIL (product_id)
