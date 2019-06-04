@@ -6,7 +6,6 @@
 		// LẤY RA TẤT CẢ PRODUCT
 	$products = mysqli_query($conn, 'select * from product');
 
-
 	// LẤY RA CÁC DANH MỤC THEO CATEFORY_ID
 	$Woman = mysqli_query($conn, 'select * from product where category_id = 2');
 	$Man = mysqli_query($conn, 'select * from product where category_id = 1');
@@ -18,6 +17,7 @@
 	$newArrivals = mysqli_query($conn, 'SELECT * FROM PRODUCT ORDER BY ID DESC');
 	// LẤY RA DANH SÁCH CÁC SP MỚI THÊM VÀO 
 	// echo $banner
+	
 ?>
 		<!-- End header -->
 		<!-- Begin home content -->
@@ -147,7 +147,9 @@
 													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart(
+														<?php echo $sp['id']; ?>
+													)"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -160,7 +162,8 @@
 													<li><span class="mdi mdi-star-half"></span></li>
 													<li><span class="mdi mdi-star-outline"></span></li>
 												</ul>
-												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4"><?php echo $sp['name'] ?></a>
+												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4"><?php echo $sp['name'];
+												 ?></a>
 												<p class="price"><?php 
 												if ($sp['sale_price']){
 													echo '$';
@@ -171,10 +174,10 @@
 												?>
 												<span class="sale">
 													<?php 
-												if($sp['sale_price']) {													
+												if($sp['sale_price']) {									echo $sp['price'];				
 												}
-													echo $sp['price']
-												 ?>
+													
+											?>
 												 	
 												 </span></p>
 											</div>
@@ -196,7 +199,9 @@
 													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart(
+														<?php echo $sp['id']; ?>
+													)"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -220,9 +225,9 @@
 												?>
 												<span class="sale">
 													<?php 
-												if($sp['sale_price']) {													
+												if($sp['sale_price']) {								echo $sp['price'];		
 												}
-													echo $sp['price']
+													
 												 ?>
 												 	
 												 </span></p>
@@ -245,7 +250,9 @@
 													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart(
+														<?php echo $sp['id']; ?>
+													)"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -269,9 +276,10 @@
 												?>
 												<span class="sale">
 													<?php 
-												if($sp['sale_price']) {													
+												if($sp['sale_price']) {			
+															echo $sp['price'];	
 												}
-													echo $sp['price']
+													
 												 ?>
 												 	
 												 </span></p>
@@ -294,7 +302,9 @@
 													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart(
+														<?php echo $sp['id']; ?>
+													)"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -318,9 +328,9 @@
 												?>
 												<span class="sale">
 													<?php 
-												if($sp['sale_price']) {													
+												if($sp['sale_price']) {									echo $sp['price'];				
 												}
-													echo $sp['price']
+													
 												 ?>
 												 	
 												 </span></p>
@@ -343,7 +353,9 @@
 													 ?></div>
 												</div>
 												<ul class="product-card__control">
-													<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
+													<li><a><span class="mdi mdi-cart-outline" onclick="addCart(
+														<?php echo $sp['id']; ?>
+													)"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
@@ -367,9 +379,9 @@
 												?>
 												<span class="sale">
 													<?php 
-												if($sp['sale_price']) {													
+												if($sp['sale_price']) {									echo $sp['price'];				
 												}
-													echo $sp['price']
+													
 												 ?>
 												 	
 												 </span></p>
@@ -471,7 +483,9 @@
 														</div>
 													</div>
 													<ul class="product-card__control">
-														<li><a><span class="mdi mdi-cart-outline" onclick="addCart()"></span></a></li>
+														<li><a><span class="mdi mdi-cart-outline" onclick="addCart(
+															<?php echo $sp['id']; ?>
+														)"></span></a></li>
 														<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 														<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 													</ul>
@@ -497,9 +511,9 @@
 														?>
 													<span class="sale">
 													<?php 
-													if($sp['sale_price']) {													
+													if($sp['sale_price']) {							echo $sp['price'];				
 													}
-													echo $sp['price']
+													
 												 	?>											
 													</span>
 												</p>
@@ -608,8 +622,8 @@
 		<div class="back-top" id="backTop"><p>up!</p></div>
 		<!-- Begin footer -->
 		<script>	
-			function addCart(){
-				alert('Add to cart success');
+			function addCart(id){
+				alert('thêm sản phẩm thành công ' + id);
 			}
 		</script>
 <?php
