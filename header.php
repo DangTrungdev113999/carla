@@ -35,6 +35,7 @@
 		
 		<!--====>> Index CSS <<====-->
 		<link href="public/css/index.css" type="text/css" rel="stylesheet" />
+		<link rel="stylesheet" href="public/css/style.css" />
 	</head>
 	<body class="home-page">
 		<div class="preloader">
@@ -123,6 +124,12 @@
 									</form>
 								</div>
 							</nav>
+						</div>
+						<div class="header-cart">
+							<div class="cart-count" >
+								<a href="account.php" class='glyphicon glyphicon-user' id="iconAccount" >								
+								</a>
+							</div>
 						</div>
 						<div class="header-cart">
 							<div class="cart-count">
