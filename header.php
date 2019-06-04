@@ -37,7 +37,7 @@ $products = mysqli_query($conn, 'select * from product');
 	
 	<!--====>> Index CSS <<====-->
 	<link href="public/css/index.css" type="text/css" rel="stylesheet" />
-	<link rel="stylesheet" href="public/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="./public/css/myStyle.css" />
 </head>
 <body class="home-page">
 	<div class="preloader">
@@ -127,9 +127,9 @@ $products = mysqli_query($conn, 'select * from product');
 							</div>
 						</nav>
 					</div>
-					<div class="header-cart">
+					<div id="AcountContainer">
 						<div class="cart-count" >
-							<a href="account.php" class='glyphicon glyphicon-user' id="iconAccount" >								
+							<a href="account.php" class='glyphicon glyphicon-user' id="iconAccount" >	
 							</a>
 						</div>
 					</div>

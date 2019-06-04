@@ -1,0 +1,13 @@
+#iconAccount {
+	color:gray;
+	text-align: center;
+	font-size: 50px;
+	margin: 30px;	
+}
+#AcountContainer{
+	height: 100px;
+	width: 100px;
+}
+.addToCart{
+	width: 200px;
+}
