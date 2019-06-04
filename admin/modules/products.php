@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-header">
-                        <h2 class="pageheader-title">Products list table</h2>
+                        <h2 class="pageheader-title">Products list table <a href="addProduct.php" class="badge badge-success">Add New</a></h2>
                         <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
@@ -46,7 +46,7 @@
                                 </thead>
                                 <tbody>
                                 	<?php
-                                		$selectDataFromPro = "SELECT * FROM product";
+                                		$selectDataFromPro = "SELECT  p.*, c.name as 'cat_name' FROM category c JOIN product p ON c.id = p.category_id";
                                 		$result = mysqli_query($conn, $selectDataFromPro) or die("lỗi truy xuất danh sách sản phẩm".$selectDataFromPro);
                                 		if(mysqli_num_rows($result) > 0) {
                                 			$count = 0;
@@ -58,17 +58,17 @@
                                         <td><?php echo $row["name"] ?></td>
                                         <td><?php echo $row['image'] ?></td>
                                         <td><?php echo $row['content'] ?></td>
-                                        <td><?php echo $row['category_id'] ?></td>
+                                        <td><?php echo $row['cat_name'] ?></td>
                                         <td><?php echo $row['price'] ?></td>
                                         <td><?php echo $row['sale_price'] ?></td>
                                         <td><?php echo ($row['status']) ? 'shown' : 'hide' ?></td>
                                         <td><?php echo $row['created'] ?></td>
-                                        <td>
-                                        	<a href="" title="">
-                                        		<i class="fas fa-edit"></i>
+                                        <td class="btn-group-xs">
+                                        	<a href="" class="badge badge-primary">
+                                        		<i class="fas fa-edit fas-xs"></i>
                                         	</a>
-                                        	<a href="" title="">
-                                        		<i class="fas fa-trash-alt"></i>
+                                        	<a href="" class="badge badge-danger">
+                                        		<i class="fas fa-trash-alt fas-xs"></i>
                                         	</a>
                                         </td>
                                     </tr>

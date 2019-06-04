@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Categorys list table</h2>
+                            <h2 class="pageheader-title">Categorys list table  <a href="addCategory.php" class="badge badge-success">Add new</a></h2>
                             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
@@ -59,13 +59,13 @@
                                         <td><?php echo ($row['status']) ? 'Shown' : 'Hide' ?></td>
                                         <td><?php echo $row['ordering'] ?></td>
                                         <td><?php echo $row['created'] ?></td>
-                                        <td>
-                                        	<a href="editCategory.php" title="">
-                                        		<i class="fas fa-edit"></i>
-                                        	</a>
-                                        	<a href="" title="">
-                                        		<i class="fas fa-trash-alt"></i>
-                                        	</a>
+                                        <td class="btn-group-xs">
+                                            <a href="" class="badge badge-primary">
+                                                <i class="fas fa-edit fas-xs"></i>
+                                            </a>
+                                            <a href="" class="badge badge-danger">
+                                                <i class="fas fa-trash-alt fas-xs"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 			<?php } // đóng ngoặt của while bên dưới là ngoặc của if

@@ -1,6 +1,7 @@
 <?php
     ob_start();
     include '../config/connect.php';
+    include 'function.php';
 ?>
 
 <!doctype html>
