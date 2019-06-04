@@ -27,7 +27,7 @@ INSERT INTO category(name, parent_id, ordering)
 values('Man',1,1),
 ('Woman',2,2),
 ('shirt',1,3),
-('dress',1,4),
+('dress',2,4),
 ('accessories',0, 5),
 ('trading',0,6),
 ('topRate',0,7);

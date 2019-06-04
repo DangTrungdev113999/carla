@@ -1,14 +1,15 @@
 <?php
 	include 'header.php';
 
-
+	$productdefault = 
 	$idProduct = $_GET['id'] ? $_GET['id'] : null;
 	if($idProduct){
 		$detail_product = mysqli_query($conn, "select * from product where id = '$idProduct' ");
 	}
 	else{
 		$detail_product = null;
-	}
+	};
+	
 	
 
 	// echo $banner;

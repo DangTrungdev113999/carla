@@ -1,6 +1,7 @@
 <?php
     ob_start();
     include '../config/connect.php';
+    include 'function.php';
 ?>
 
 <!doctype html>
@@ -157,71 +158,24 @@
                             <li class="nav-divider">
                                 Menu
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
-                                <div id="submenu-1" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">E-Commerce</a>
-                                            <div id="submenu-1-2" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="index.php">E Commerce Dashboard</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product.php">Product List</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-single.php">Product Single</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-checkout.php">Product Checkout</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.php">Finance</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.php">Sales</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>
-                                            <div id="submenu-1-1" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="dashboard-influencer.php">Influencer</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-finder.php">Influencer Finder</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-profile.php">Influencer Profile</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
                             
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11">Category</a>
+                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11"><i class="fas fa-align-left"></i> Category</a>
                                 <div id="submenu-11" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
                                             <a class="nav-link" href="modules/addCategory.php">Thêm mới</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="modules/categorys.php">danh sách</a>
+                                            <a class="nav-link" href="modules/categories.php">danh sách</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-12" aria-controls="submenu-12">Product</a>
+                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-12" aria-controls="submenu-12"><i class="fas fa-bullseye"></i> Product</a>
                                 <div id="submenu-12" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
@@ -232,6 +186,71 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-13" aria-controls="submenu-13"><i class="fas fa-bullseye"></i>Product Image</a>
+                                <div id="submenu-13" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="modules/addProductImage.php">Thêm mới</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="modules/productImages.php">Danh sách</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-14" aria-controls="submenu-14"><i class="fas fa-bullseye"></i> Banner </a>
+                                <div id="submenu-14" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="modules/addBanner.php">Danh sách</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-15" aria-controls="submenu-15"><i class="fas fa-bullseye"></i> Order </a>
+                                <div id="submenu-15" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="modules/Orders.php">Danh sách</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-16" aria-controls="submenu-16"><i class="fas fa-bullseye"></i> comments </a>
+                                <div id="submenu-16" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="modules/comments.php">Danh sách</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-17" aria-controls="submenu-17"><i class="fas fa-bullseye"></i> Post </a>
+                                <div id="submenu-17" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="modules/addPost.php">Thêm mới</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="modules/posts.php">Danh sách</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-divider">
+                                Templates
                             </li>
 
                             <li class="nav-item ">

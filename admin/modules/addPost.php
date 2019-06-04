@@ -1,18 +1,18 @@
 <?php
 	include '../header.php';
 
-
 	if (isset($_POST['addNew'])) {
-		$table = 'category';
-		$data = '_POST';
-		$data['status'] = (isset($data['status'])) ? isset($data['status']) : 0; 
+		$categoryName = $_POST['categoryName'];
+		$created = ($_POST['created']) ? $_POST['created'] : '3/11/2019';
+		$parentId = ($_POST['parent_id']) ? $_POST['parent_id'] : 0;
+		$ordering = ($_POST['ordering']) ? $_POST['ordering'] : 0;
+		$status = (isset($_POST['status'])) ? isset($_POST['status']) : 1;  // 1 là hiện, 0 là ẩn
 
-		$sqlInsert = insertData($table, $data);
+		$insertDataToCat = "INSERT INTO category(name, created, ordering, `status`, parent_id) 
+		VALUES('$categoryName','$created', '$ordering', '$status','$parentId' )";
 
-
-
-		mysqli_query($conn, $sqlInsert) or die("lỗi thêm mới danh mục sản phẩm".$sqlInsert);
-		header("location: categories.php");
+		mysqli_query($conn, $insertDataToCat) or die("lỗi thêm mới danh mục sản phẩm".$insertDataToCat);
+		// header("location:");
 
 	};
  ?>
@@ -21,14 +21,14 @@
 				<div class="row">
 		            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		                <div class="page-header">
-		                    <h2 class="pageheader-title">Add new Category table <a href="categories.php" class="badge badge-success">list</a></h2>
+		                    <h2 class="pageheader-title">Add new Product table</h2>
 		                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
 		                    <div class="page-breadcrumb">
 		                        <nav aria-label="breadcrumb">
 		                            <ol class="breadcrumb">
 		                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Admin</a></li>
 		                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tables</a></li>
-		                                <li class="breadcrumb-item active" aria-current="page">Category Table</li>
+		                                <li class="breadcrumb-item active" aria-current="page">Product Table</li>
 		                            </ol>
 		                        </nav>
 		                    </div>
@@ -43,8 +43,8 @@
 			                <div class="card-body">
 			                    <form action="" name="" method="post" id="basicform" data-parsley-validate="">
 			                        <div class="form-group">
-			                            <label for="name">Category name</label>
-			                            <input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">
+			                            <label for="categoryName">Category name</label>
+			                            <input id="categoryName" type="text" name="categoryName" required="" placeholder="Enter the category name"  class="form-control">
 			                        </div>
 			                        <div class="form-group">
 			                            <label for="created">Created</label>

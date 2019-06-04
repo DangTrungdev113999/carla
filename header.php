@@ -105,9 +105,9 @@
 											<li><a href="typography.php">Typography</a></li>
 										</ul>
 									</li>
-									<li><a href="shop-page.php">Woman</a></li>
-									<li><a href="shop-page.php">Man</a></li>
-									<li><a href="shop-page.php">Accesories</a></li>
+									<li><a href="shop-page.php?name=woman">Woman</a></li>
+									<li><a href="shop-page.php?name=man">Man</a></li>
+									<li><a href="shop-page.php?name=accesories">Accesories</a></li>
 								</ul>
 								<div class="header-search">
 									<span class="mdi mdi-magnify"></span>
