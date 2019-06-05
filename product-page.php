@@ -205,7 +205,7 @@ else{
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Thông tin sản phẩm</h4>
+        <h4 class="modal-title" id="myModalLabel">Add products success <3</h4>
       </div>
       <br>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -224,7 +224,9 @@ else{
       <br>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" >	
+        	<a href="cart.php" style="color:white;font-weight: 700;">Check out your cart</a>
+        </button>
       </div>
     </div>
   </div>

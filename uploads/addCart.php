@@ -6,9 +6,10 @@ if(isset($_POST['id']) && isset($_POST['quantity'])  ){
 	$quantity = $_POST['quantity'];
 	$detail_product = mysqli_query($conn, "select * from product where id = '$id' ");
 	$row = mysqli_fetch_row($detail_product);
+	$price = $row[5];
+	print_r($price);
+	if(isset($row[6])){
 	$price = $row[6];
-	if(isset($row[7])){
-	$price = $row[7];
 	}
 	if(!isset($_SESSION['cart']) ){
 		$cart = array();
