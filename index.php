@@ -25,10 +25,20 @@ $products = mysqli_query($conn, 'select * from product');
 	<!-- End home content -->
 	<div class="back-top" id="backTop"><p>up!</p></div>
 	<!-- Begin footer -->
-	<script>	
-		function addCart(id){
-			alert('thêm sản phẩm thành công ' + id);
-		}
+	<script>
+			function addToCart(id,quantity){
+				$.post('uploads/addCart.php', {'id':id,'quantity':quantity},(data)=>{
+					img = $('#anh_'+id).attr("src");
+					$('#anhModal').attr({
+						'src':img,
+					})
+					$('#nameCart').text($('#nameProduct_'+id).text());
+					$('#priceCart').text($('#priceProduct_'+id).text());
+					$('#quantityCart').text(quantity);
+				})
+				console.log(id, quantity);
+				$('#myModal').modal();
+			}
 	</script>
 	<?php
 	include 'footer.php'

@@ -42,12 +42,12 @@ include 'header.php'
 						</div>
 					</div>
 					
-						<div id="listCart">
+					<div id="listCart">
 						<?php 
 						if(isset(($_SESSION["cart"])) && sizeof($_SESSION["cart"],0) > 0 ){ 
-						$total=0;
-						?>
-							<div class="cart-products-list" >
+							$total=0;
+							?>
+							<div class="cart-products-list" style="width: 100%;" >
 								<?php foreach($_SESSION["cart"] as $key => $sp): ?>
 									<div class="cart__item">
 										<div class="row" id="itemCart<?php echo $key; ?>">
@@ -97,14 +97,14 @@ include 'header.php'
 									</div>
 								<?php endforeach; ?>
 							</div>
-						
-						<div class="cart-controls">
-							<div class="inner-wrap">
-								<a href="#" class="clear-cart button border">Clear Cart</a>
-								<a href="#" class="button white">Update Cart</a>
+
+							<div class="cart-controls">
+								<div class="inner-wrap">
+									<a href="#" class="clear-cart button border">Clear Cart</a>
+									<a href="#" class="button white">Update Cart</a>
+								</div>
+								<a href="#" class="button border">Continue</a>
 							</div>
-							<a href="#" class="button border">Continue</a>
-						</div>
 						</div>
 					<?php }else{
 						echo "<br/>
@@ -134,8 +134,9 @@ include 'header.php'
 						<input type="text" name="code" placeholder="Enter your code here">
 						<button type="submit" class="border">Apply Coupon</button>
 					</form>
-					<?php if(isset($total)){ ?>
-						<div class="invoice-wrap" >
+					
+					<div class="invoice-wrap" >
+						<?php if(isset($total)){ ?>
 							<div class="invoice">
 								<div class="invoice-info">
 									<div class="inner-invoice" id="totalPrice">
@@ -163,10 +164,12 @@ include 'header.php'
 										?></span></h3>
 									</div>
 								</div>
-								<a href="checkout.html" class="button border">Procesed to Checkout</a>
+								<a href="checkout.html" class="button border" 
+								id="closeCheckout" >Procesed to Checkout</a>
 							</div>
-						</div>
-					<?php } ?>
+						<?php } ?>
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -183,6 +186,9 @@ include 'header.php'
 			$( "#listCart" ).load( "http://localhost:88/carla/cart.php #listCart");
 			$( "#totalPrice" ).load( "http://localhost:88/carla/cart.php #totalPrice");
 		});
+		if(quantity <=0){
+			$( "#closeCheckout" ).load( "http://localhost:88/carla/cart.php #closeCheckout");
+		}
 	}
 	function updateQuantity2(id, number){
 		quantity = $("#quantity_"+id).val();
@@ -191,6 +197,9 @@ include 'header.php'
 			$( "#listCart" ).load( "http://localhost:88/carla/cart.php #listCart");
 			$( "#totalPrice" ).load( "http://localhost:88/carla/cart.php #totalPrice");
 		});
+		if(quantity <=0){
+			$( "#closeCheckout" ).load( "http://localhost:88/carla/cart.php #closeCheckout");
+		}
 	}
 </script>
 <?php
