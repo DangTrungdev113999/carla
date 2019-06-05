@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="page-header">
-            <h2 class="pageheader-title">Products list table <a href="index.php?module=addProduct" class="badge badge-success">Add New</a></h2>
+            <h2 class="pageheader-title">Products list table <a href="index.php?module=addBanner" class="badge badge-success">Add New</a></h2>
             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
             <div class="page-breadcrumb">
                 <nav aria-label="breadcrumb">
@@ -28,22 +28,31 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">image</th>
-                            <th scope="col">Content</th>
+                            <th scope="col">Banner Name</th>
+                            <th scope="col">Image</th>
                             <th scope="col">created</th>
                             <th scope="col">ordering</th>
+                            <th scope="col">Content</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            $sqlSelect = "SELECT * FROM banner";
+                            $result = mysqli_query($conn, $sqlSelect);
+                            if (mysqli_num_rows($result) > 0) {
+                                $i = 0;
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $i++;
+
+                        ?>
                         <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th scope="row"><?php echo $i ?></th>
+                            <td><?php echo $row['name'] ?></td>
+                            <td><?php echo $row['image'] ?></td>
+                            <td><?php echo $row['created'] ?></td>
+                            <td><?php echo $row['ordering'] ?></td>
+                            <td><?php echo $row['content'] ?></td>
                             <td class="btn-group-xs">
                                 <a href="index.php?module=editBanner&id=<?php echo $row['id'] ?>" class="badge badge-primary">
                                     <i class="fas fa-edit fas-xs"></i>
@@ -53,6 +62,9 @@
                                 </a>
                             </td>
                         </tr>
+                    <?php }
+                            }
+                            ?>
                     </tbody>
                 </table>
             </div>

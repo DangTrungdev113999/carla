@@ -1,8 +1,19 @@
+<?php
+	if (isset($_POST['addNew'])) {
+		$table = 'banner';
+		$data = $_POST;
+		$data['status'] = (isset($data['status'])) ? isset($data['status']) : 0;
 
+		$sqlInsert = insertData($table, $data);
+
+		mysqli_query($conn, $sqlInsert) or die('lỗi thêm mới banner '.$sqlInsert);
+		header("location: index.php?module=banners");
+	}
+?>
 <div class="row">
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="page-header">
-			<h2 class="pageheader-title">Add new Banner table</h2>
+			<h2 class="pageheader-title">Add new Banner table  <a href="index.php?module=banners" class="badge badge-success">list</a></h2>
 			<p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
 			<div class="page-breadcrumb">
 				<nav aria-label="breadcrumb">

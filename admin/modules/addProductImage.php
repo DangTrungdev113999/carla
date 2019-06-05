@@ -1,4 +1,13 @@
-
+<?php
+	if (isset($_POST['addNew'])) {
+		$table =  'product_image';
+		$data = $_POST;
+		
+		$sqlInsert = insertData($table, $data);
+		mysqli_query($conn, $sqlInsert) or die('lỗi thêm mới product_image'.$sqlInsert);
+		header("location: index.php?module=productImages");
+	}
+?>
 <div class="row">
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="page-header">
@@ -22,10 +31,10 @@
 		<div class="card">
 			<h5 class="card-header">Add new Product Images</h5>
 			<div class="card-body">
-				<form action="" name="product" method="POST" id="basicform" enctype="multipart/form-data" data-parsley-validate="">
+				<form action="" name="banner" method="POST" id="basicform" enctype="multipart/form-data" data-parsley-validate="">
 					<div class="form-group">
-						<label for="category_id">Product's Image</label>
-						<select name="category_id" id="category_id" class="form-control">
+						<label for="product_id">Product's Image</label>
+						<select name="product_id" id="product_id" class="form-control">
 							<option value="">--Choose category type--</option>
 							<?php 
 								$sqlSelect = "SELECT * FROM product";
@@ -49,9 +58,6 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
-							<label class="be-checkbox custom-control custom-checkbox">
-								<input type="checkbox" name="status" value="0" class="custom-control-input"><span class="custom-control-label">status</span>
-							</label>
 						</div>
 						<div class="col-sm-6 pl-0">
 							<p class="text-right">

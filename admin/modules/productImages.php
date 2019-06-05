@@ -1,7 +1,7 @@
 <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-header">
-                        <h2 class="pageheader-title">Products list table  <a href="index.php?module=addProduct" class="badge badge-success">list</a></h2>
+                        <h2 class="pageheader-title">Products list table  <a href="index.php?module=addProductImage" class="badge badge-success">list</a></h2>
                         <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
@@ -54,7 +54,7 @@
                                         	<a href="index.php?module=editProductImage&id=<?php echo $row['id'] ?>" title="" class="badge badge-primary">
                                         		<i class="fas fa-edit"></i>
                                         	</a>
-                                        	<a href="index.php?module=delProductImage&id=<?php echo $row['id'] ?>" title="" class="badge badge-primary">
+                                        	<a href="index.php?module=delProductImage&id=<?php echo $row['id'] ?>" title="" class="badge badge-danger">
                                         		<i class="fas fa-trash-alt"></i>
                                         	</a>
                                         </td>

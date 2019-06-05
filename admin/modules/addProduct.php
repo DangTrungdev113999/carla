@@ -23,7 +23,6 @@ if(isset($_POST['addNew'])) {
 	$data = $_POST;
 
 	// file upload
-	
 	$path = '../uploads/';
 	$fileName = '';
 	$type = [
