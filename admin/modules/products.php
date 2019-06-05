@@ -23,7 +23,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="card">
                         <h5 class="card-header text-center text-capitalize">Products list</h5>
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -51,18 +51,20 @@
                                     <tr>
                                         <th scope="row"><?php echo $count ?></th>
                                         <td><?php echo $row["name"] ?></td>
-                                        <td><?php echo $row['image'] ?></td>
-                                        <td><?php echo $row['content'] ?></td>
+                                        <td>
+                                            <img src="../<?php echo $row['image'] ?>" width ='50' class='img-responsive' alt="">
+                                        </td>
+                                        <td class=""><?php echo $row['content'] ?></td>
                                         <td><?php echo $row['cat_name'] ?></td>
                                         <td><?php echo $row['price'] ?></td>
                                         <td><?php echo $row['sale_price'] ?></td>
                                         <td><?php echo ($row['status']) ? 'shown' : 'hide' ?></td>
                                         <td><?php echo $row['created'] ?></td>
                                         <td class="btn-group-xs">
-                                        	<a href="" class="badge badge-primary">
+                                        	<a href="index.php?module=editProduct&id=<?php echo $row['id'] ?>" class="badge badge-primary">
                                         		<i class="fas fa-edit fas-xs"></i>
                                         	</a>
-                                        	<a href="" class="badge badge-danger">
+                                        	<a href="index.php?module=delProduct&id=<?php echo $row['id'] ?>" class="badge badge-danger">
                                         		<i class="fas fa-trash-alt fas-xs"></i>
                                         	</a>
                                         </td>

@@ -24,13 +24,13 @@ CREATE TABLE IF NOT EXISTS category (
 
 
 INSERT INTO category(name, parent_id, ordering)
-values('Man',1,1),
-('Woman',2,2),
+values('Man',0,1),
+('Woman',0,2),
 ('shirt',1,3),
 ('dress',2,4),
-('accessories',0, 5),
-('trading',0,6),
-('topRate',0,7);
+('accessories',1, 5),
+('trading',1,6),
+('topRate',2,7);
 
 CREATE TABLE IF NOT EXISTS product (
   id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -60,13 +60,13 @@ insert into size(name)
 values('S'),('M'),('L'),('XL'),('XXL');
 
 INSERT INTO product(name, image, content, category_id, price, sale_price)
-values('Beige Sweater','product-1.jpg','chua co content',2, 290, 133),
-('Pink Sweater','product-2.jpg','chua co content',1, 100, 98),
-('Gray Sweater','product-3.jpg','chua co content',2, 130, 100),
-('Denim Shirt','product-4.jpg','chua co content',5, 125, 100),
-('Black Skirt','product-8.jpg','chua co content',1, 170, 155),
-('Gray Sweater','product-6.jpg','chua co content',6, 123, 69),
-('Gray Sweater','product-7.jpg','chua co content',7, 145, 122);
+values('Beige Sweater','uploads/product-1.jpg','this is the content',2, 290, 133),
+('Pink Sweater','uploads/product-2.jpg','this is the content.',1, 100, 98),
+('Gray Sweater','uploads/product-3.jpg','this is the content?',2, 130, 100),
+('Denim Shirt','uploads/product-4.jpg','this is the content?',5, 125, 100),
+('Black Skirt','uploads/product-3.jpg','this is the content.',1, 170, 155),
+('Gray Sweater','uploads/product-6.jpg','this is the content!',6, 123, 69),
+('Gray Sweater','uploads/product-1.jpg','this is the content!',7, 145, 122);
 
 ALTER TABLE product ADD 
 FOREIGN KEY FK_PRODUDT_CATEGORY (category_id)

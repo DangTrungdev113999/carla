@@ -56,10 +56,10 @@
                                         <td><?php echo $row['ordering'] ?></td>
                                         <td><?php echo $row['created'] ?></td>
                                         <td class="btn-group-xs">
-                                            <a href="" class="badge badge-primary">
+                                            <a href="index.php?module=editCategory&id=<?php echo $row['id'] ?>" class="badge badge-primary">
                                                 <i class="fas fa-edit fas-xs"></i>
                                             </a>
-                                            <a href="" class="badge badge-danger">
+                                            <a href="index.php?module=delCategory&id=<?php echo $row['id'] ?>" class="badge badge-danger">
                                                 <i class="fas fa-trash-alt fas-xs"></i>
                                             </a>
                                         </td>
