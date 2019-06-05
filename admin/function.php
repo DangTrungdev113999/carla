@@ -47,5 +47,5 @@
 
 	// 	$sqlUpdate = "UPDATE $table SET $update WHERE id = $id";
 	// 	return $sqlUpdate;
-	// }
+	// };
  ?>

@@ -26,12 +26,15 @@ if(isset($_POST['addNew'])) {
 	
 	$path = '../uploads/';
 	$fileName = '';
+	$type = [
+	'image/jpeg',
+	'image/jpg',
+	'image/png',
+	'image/gif'
+	];
 
 	if (isset($_FILES["image"])) {
-		if ($_FILES['image']['type'] === 'image/jpeg' 
-			|| $_FILES['image']['type'] === 'image/jpg' 
-			|| $_FILES['image']['type'] === 'image/png' 
-			|| $_FILES['image']['type'] === 'image/gif' ) {
+		if (in_array($_FILES['image']['type'], $type)) {
 
 			if ($_FILES['image']['size'] <= 9999999) {
 
