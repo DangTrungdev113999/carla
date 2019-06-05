@@ -13,31 +13,33 @@
 	};
 
 
-	if(isset($_POST['addNew'])) {
-		$catName = $_POST['name'];
-		$parent_id = $_POST['parent_id'];
-		$ordering = $_POST['ordering'];
-		$created = $_POST['created'];
-		$status = (isset($_POST['status'])) ? isset($_POST['status']) : 0; 
-
-		$sqlUpdate = "UPDATE category SET name = '$catName', parent_id = '$parent_id', 
-		`status` = '$status', ordering = '$ordering', created = '$created' WHERE id=".$_GET['id'];
-
-		mysqli_query($conn, $sqlUpdate) or die("lỗi update danh mục sản phẩm".$sqlUpdate);
-		header("location: index.php?module=categories");
-	};
-	
 	// if(isset($_POST['addNew'])) {
-	// 	$table = 'category';
-	// 	$data = $_POST;
-	// 	$id = $_GET['id'];
-	// 	$data['status'] = (isset($data['status'])) ? isset($data['status']) : 0; 
+	// 	$catName = $_POST['name'];
+	// 	$parent_id = $_POST['parent_id'];
+	// 	$ordering = $_POST['ordering'];
+	// 	$created = $_POST['created'];
+	// 	$status = (isset($_POST['status'])) ? isset($_POST['status']) : 0; 
 
-	// 	$sqlUpdate = updateData($table, $data, $id);
+	// 	$sqlUpdate = "UPDATE category SET name = '$catName', parent_id = '$parent_id', 
+	// 	`status` = '$status', ordering = '$ordering', created = '$created' WHERE id=".$_GET['id'];
 
 	// 	mysqli_query($conn, $sqlUpdate) or die("lỗi update danh mục sản phẩm".$sqlUpdate);
 	// 	header("location: index.php?module=categories");
 	// };
+	
+
+	// using function to update data
+	if(isset($_POST['addNew'])) {
+		$table = 'category';
+		$data = $_POST;
+		$data['status'] = (isset($data['status'])) ? isset($data['status']) : 0; 
+		$condition = " WHERE id=".$_GET['id'];
+
+		$sqlUpdate = updateData($table, $data, $condition);
+
+		mysqli_query($conn, $sqlUpdate) or die("lỗi update danh mục sản phẩm".$sqlUpdate);
+		header("location: index.php?module=categories");
+	};
 ?>
 
 <div class="row">
