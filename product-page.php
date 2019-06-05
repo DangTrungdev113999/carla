@@ -16,12 +16,6 @@ else{
 	$detail_product = null;
 };
 
-
-
-
-
-
-
 	// echo $banner;
 	// echo $_GET;
 	// echo '$detail_product';
@@ -72,8 +66,8 @@ else{
 							<div class="big-slider-1 photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
 								<?php foreach($detail_product as $key => $sp): ?>
 									<div class="slider-card">										
-										<a href="img/product-page-big-1-2.jpg" itemprop="contentUrl" data-size="458x600">
-											<img src="public/img/<?php echo $sp['image'] ?>" itemprop="thumbnail" alt="Image description" width="100%">
+										<a href="public/img/<?php echo $sp['image'] ?>" itemprop="contentUrl" data-size="458x600">
+											<img src="public/img/<?php echo $sp['image'] ?>" itemprop="thumbnail" alt="Image description" id='anh' width="100%">
 										</a>
 									</div>
 								<?php endforeach; ?>
@@ -92,7 +86,7 @@ else{
 						</div>
 						<div class="product-section-description all-description">
 							<?php foreach($detail_product as $key => $sp): ?>
-								<h2>
+								<h2 id="nameProduct">
 									<?php echo $sp['name'] ?>								 	
 								</h2>
 								<div class="product-review">
@@ -107,7 +101,8 @@ else{
 									<a href="#">Add your review</a>
 								</div>
 								<div class="product-available">
-									<p class="price"><?php 
+									<p class="price" ><span id="priceProduct">
+										<?php 
 									if ($sp['sale_price']){
 										echo '$';
 										echo $sp['sale_price'];	
@@ -115,7 +110,8 @@ else{
 									else{
 										echo $sp['price'];									
 									}
-									?>																					
+									?>	
+									</span>												
 									<span class="sale">
 										<?php 
 										if($sp['sale_price']){		
@@ -161,13 +157,13 @@ else{
 								<div class="product-form-control">
 									<div class="counter-area">
 										<span class="counter-button minus">-</span>
-										<input type="text" name="counter" value="1">
+										<input type="text" name="counter" id='quantity' value="1">
 										<span class="counter-button plus">+</span>
 									</div>
 									<a 
-									style="width: 100%; color:black;line-height: 20px;font-size:20px; font-weight: 800" 
+									style="width: 40%; color:black;line-height: 20px;font-size:20px; font-weight: 800"
 									class='btn btn-primary' 
-									onclick="addToCart(<?php echo $sp['id'] ?>)" >
+									onclick="addToCart(<?php echo $sp['id'] ?>,quantity.value)" >
 										Add to Cart
 								</a>
 									<a href="#" class="control"><span class="mdi mdi-content-copy"></span></a>
@@ -202,6 +198,37 @@ else{
 			</div>
 		</div>
 	</div>
+	<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Thông tin sản phẩm</h4>
+      </div>
+      <br>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      	<a href="#" class="thumbnail">
+      		<img id="anhModal">
+      	</a>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      	<p>Name:<span id="nameCart" ></span></p>
+      	<p>Price:<span id="priceCart"></span></p>
+      	<p>Quantity:<span id="quantityCart"></span></p>
+      	<p><span></span></p>
+      	</div>
+      </div>
+      <br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 	
 	<!-- Begin product tab -->
 	<section class="product-tab">
@@ -481,8 +508,17 @@ else{
 		<div class="back-top" id="backTop"><p>up!</p></div>
 		<!-- Begin footer -->
 		<script>
-			function addToCart(id){
-				alert(id);
+			function addToCart(id,quantity){
+				$.post('uploads/addCart.php', {'id':id,'quantity':quantity},(data)=>{
+					img = $('#anh').attr("src");
+					$('#anhModal').attr({
+						'src':img,
+					})
+					$('#nameCart').text($('#nameProduct').text());
+					$('#priceCart').text($('#priceProduct').text());
+					$('#quantityCart').text(quantity);
+				})
+				$('#myModal').modal();
 			}
 		</script>
 		<?php
