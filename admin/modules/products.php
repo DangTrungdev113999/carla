@@ -41,8 +41,8 @@
                                 </thead>
                                 <tbody>
                                 	<?php
-                                		$selectDataFromPro = "SELECT  p.*, c.name as 'cat_name' FROM category c JOIN product p ON c.id = p.category_id";
-                                		$result = mysqli_query($conn, $selectDataFromPro) or die("lỗi truy xuất danh sách sản phẩm".$selectDataFromPro);
+                                		$selectData = "SELECT  p.*, c.name as 'cat_name' FROM category c JOIN product p ON c.id = p.category_id";
+                                		$result = mysqli_query($conn, $selectData) or die("lỗi truy xuất danh sách sản phẩm".$selectData);
                                 		if(mysqli_num_rows($result) > 0) {
                                 			$count = 0;
                                 			while($row = mysqli_fetch_assoc($result)) {

@@ -29,47 +29,35 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Content </th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Sale Price</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">account_id</th>
+                                        <th scope="col">product_id</th>
+                                        <th scope="col">name </th>
+                                        <th scope="col">email</th>
+                                        <th scope="col">phone</th>
+                                        <th scope="col">content</th>
                                         <th scope="col">Create</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<?php
-                                		$selectDataFromPro = "SELECT * FROM product";
-                                		$result = mysqli_query($conn, $selectDataFromPro) or die("lỗi truy xuất danh sách sản phẩm".$selectDataFromPro);
-                                		if(mysqli_num_rows($result) > 0) {
-                                			$count = 0;
-                                			while($row = mysqli_fetch_assoc($result)) {
-                                				$count++;
-                                	?>
                                     <tr>
-                                        <th scope="row"><?php echo $count ?></th>
-                                        <td><?php echo $row["name"] ?></td>
-                                        <td><?php echo $row['image'] ?></td>
-                                        <td><?php echo $row['content'] ?></td>
-                                        <td><?php echo $row['category_id'] ?></td>
-                                        <td><?php echo $row['price'] ?></td>
-                                        <td><?php echo $row['sale_price'] ?></td>
-                                        <td><?php echo ($row['status']) ? 'shown' : 'hide' ?></td>
-                                        <td><?php echo $row['created'] ?></td>
-                                        <td>
-                                        	<a href="" title="">
-                                        		<i class="fas fa-edit"></i>
-                                        	</a>
-                                        	<a href="" title="">
-                                        		<i class="fas fa-trash-alt"></i>
-                                        	</a>
+                                        <th scope="row"></th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="btn-group-xs">
+                                            <a href="index.php?module=editComment&id=<?php echo $row['id'] ?>" class="badge badge-primary">
+                                                <i class="fas fa-edit fas-xs"></i>
+                                            </a>
+                                            <a href="index.php?module=delComment&id=<?php echo $row['id'] ?>" class="badge badge-danger">
+                                                <i class="fas fa-trash-alt fas-xs"></i>
+                                            </a>
                                         </td>
                                     </tr>
-			                                <?php }
-			                            }?>
                                 </tbody>
                             </table>
                         </div>

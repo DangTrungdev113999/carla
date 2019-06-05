@@ -109,7 +109,21 @@
                                     <a class="nav-link" href="index.php?module=addBanner">Add new</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=addBanner">list</a>
+                                    <a class="nav-link" href="index.php?module=Banners">list</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                   <li class="nav-item">
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-17" aria-controls="submenu-17"><i class="fas fa-bullseye"></i> Post </a>
+                        <div id="submenu-17" class="collapse submenu" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=addPost">Add new</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=posts">list</a>
                                 </li>
                             </ul>
                         </div>
@@ -137,19 +151,6 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-17" aria-controls="submenu-17"><i class="fas fa-bullseye"></i> Post </a>
-                        <div id="submenu-17" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=addPost">Add new</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=posts">list</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
                     <!-- ====================================== -->
                 </ul>
             </div>
