@@ -21,9 +21,45 @@
 if(isset($_POST['addNew'])) {
 	$table = 'product';
 	$data = $_POST;
-	$data['status'] = (isset($data['status'])) ? (isset($data['status'])) : 0;
-	$sqlInsert = insertData($table, $data);
 
+	// file upload
+	
+	$path = '../uploads/';
+	$fileName = '';
+
+	if (isset($_FILES["image"])) {
+		if ($_FILES['image']['type'] === 'image/jpeg' 
+			|| $_FILES['image']['type'] === 'image/jpg' 
+			|| $_FILES['image']['type'] === 'image/png' 
+			|| $_FILES['image']['type'] === 'image/gif' ) {
+
+			if ($_FILES['image']['size'] <= 9999999) {
+
+				if ($_FILES['image']['error'] === 0) {
+					// pass file to server
+					$filename = $_FILES["image"]["tmp_name"];
+					$destination = $path.$_FILES['image']['name'];
+					move_uploaded_file($filename, $destination);
+					$fileName .= 'uploads/'.$_FILES['image']['name'];
+				} else {
+					echo 'lỗi file';
+				}
+			} else {
+				echo 'dung lượng ảnh quá lớn';
+			}
+		} else {
+			echo 'không đúng định dạng';
+		}
+
+		// echo "<pre/>";
+		// print_r($_FILES);
+		// die;
+	};
+
+
+	$data['status'] = (isset($data['status'])) ? (isset($data['status'])) : 0;
+	$data['image'] = $fileName;
+	$sqlInsert = insertData($table, $data);
 	mysqli_query($conn, $sqlInsert) or die("lỗi thêm mới danh mục sản phẩm ".$sqlInsert);
 	header("location: index.php?module=products");
 
@@ -52,7 +88,7 @@ if(isset($_POST['addNew'])) {
 		<div class="card">
 			<h5 class="card-header">Add new Products</h5>
 			<div class="card-body">
-				<form action="" name="product" method="POST" id="basicform" data-parsley-validate="">
+				<form action="" name="product" method="POST" enctype="multipart/form-data" id="basicform" data-parsley-validate="">
 					<div class="form-group">
 						<label for="name">Product name</label>
 						<input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">
