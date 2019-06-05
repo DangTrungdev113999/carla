@@ -26,6 +26,18 @@
 		mysqli_query($conn, $sqlUpdate) or die("lỗi update danh mục sản phẩm".$sqlUpdate);
 		header("location: index.php?module=categories");
 	};
+	
+	// if(isset($_POST['addNew'])) {
+	// 	$table = 'category';
+	// 	$data = $_POST;
+	// 	$id = $_GET['id'];
+	// 	$data['status'] = (isset($data['status'])) ? isset($data['status']) : 0; 
+
+	// 	$sqlUpdate = updateData($table, $data, $id);
+
+	// 	mysqli_query($conn, $sqlUpdate) or die("lỗi update danh mục sản phẩm".$sqlUpdate);
+	// 	header("location: index.php?module=categories");
+	// };
 ?>
 
 <div class="row">

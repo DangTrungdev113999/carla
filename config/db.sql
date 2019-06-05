@@ -60,13 +60,13 @@ insert into size(name)
 values('S'),('M'),('L'),('XL'),('XXL');
 
 INSERT INTO product(name, image, content, category_id, price, sale_price)
-values('Beige Sweater','uploads/product-1.jpg','Lorem ipsum dolor sit. Lorem ipsum dolor sit amet, consectetur.',2, 290, 133),
-('Pink Sweater','uploads/product-2.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, voluptatem.',1, 100, 98),
-('Gray Sweater','uploads/product-3.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, quas?',2, 130, 100),
-('Denim Shirt','uploads/product-4.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, ratione?',5, 125, 100),
-('Black Skirt','uploads/product-3.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, porro.',1, 170, 155),
-('Gray Sweater','uploads/product-6.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sed!',6, 123, 69),
-('Gray Sweater','uploads/product-1.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, error!',7, 145, 122);
+values('Beige Sweater','uploads/product-1.jpg','this is the content',2, 290, 133),
+('Pink Sweater','uploads/product-2.jpg','this is the content.',1, 100, 98),
+('Gray Sweater','uploads/product-3.jpg','this is the content?',2, 130, 100),
+('Denim Shirt','uploads/product-4.jpg','this is the content?',5, 125, 100),
+('Black Skirt','uploads/product-3.jpg','this is the content.',1, 170, 155),
+('Gray Sweater','uploads/product-6.jpg','this is the content!',6, 123, 69),
+('Gray Sweater','uploads/product-1.jpg','this is the content!',7, 145, 122);
 
 ALTER TABLE product ADD 
 FOREIGN KEY FK_PRODUDT_CATEGORY (category_id)

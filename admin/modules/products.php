@@ -23,8 +23,8 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="card">
                         <h5 class="card-header text-center text-capitalize">Products list</h5>
-                        <div class="card-body ">
-                            <table class="table table-responsive">
+                        <div class="card-body table-responsive">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -61,10 +61,10 @@
                                         <td><?php echo ($row['status']) ? 'shown' : 'hide' ?></td>
                                         <td><?php echo $row['created'] ?></td>
                                         <td class="btn-group-xs">
-                                        	<a href="" class="badge badge-primary">
+                                        	<a href="index.php?module=editProduct&id=<?php echo $row['id'] ?>" class="badge badge-primary">
                                         		<i class="fas fa-edit fas-xs"></i>
                                         	</a>
-                                        	<a href="" class="badge badge-danger">
+                                        	<a href="index.php?module=delProduct&id=<?php echo $row['id'] ?>" class="badge badge-danger">
                                         		<i class="fas fa-trash-alt fas-xs"></i>
                                         	</a>
                                         </td>
