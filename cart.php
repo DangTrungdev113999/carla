@@ -89,7 +89,10 @@ include 'header.php'
 											</div>
 											<div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
 												<div class="cart-product_options">
-													<span class="mdi mdi-close delete-cart_product"></span>
+													<span 
+													class="mdi mdi-close delete-cart_product"
+													onclick="deleteProduct(<?php echo $key; ?>)"
+													></span>
 													<span class="mdi mdi-border-color correct_product"></span>
 												</div>
 											</div>
@@ -169,7 +172,6 @@ include 'header.php'
 							</div>
 						<?php } ?>
 					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -179,29 +181,6 @@ include 'header.php'
 <div class="bg-popup"></div>
 <div class="back-top" id="backTop"><p>up!</p></div>
 <!-- Begin footer -->
-<script>
-	function updateQuantity1(id){
-		quantity = $("#quantity_"+id).val();
-		$.post('uploads/updateCart.php', {"id":id, "quantity":quantity}, function(data){
-			$( "#listCart" ).load( "http://localhost:88/carla/cart.php #listCart");
-			$( "#totalPrice" ).load( "http://localhost:88/carla/cart.php #totalPrice");
-		});
-		if(quantity <=0){
-			$( "#closeCheckout" ).load( "http://localhost:88/carla/cart.php #closeCheckout");
-		}
-	}
-	function updateQuantity2(id, number){
-		quantity = $("#quantity_"+id).val();
-		quantity=parseInt(quantity) + number;
-		$.post('uploads/updateCart.php', {"id":id, "quantity":quantity}, function(data){
-			$( "#listCart" ).load( "http://localhost:88/carla/cart.php #listCart");
-			$( "#totalPrice" ).load( "http://localhost:88/carla/cart.php #totalPrice");
-		});
-		if(quantity <=0){
-			$( "#closeCheckout" ).load( "http://localhost:88/carla/cart.php #closeCheckout");
-		}
-	}
-</script>
 <?php
-include 'footer.php'
+include 'footer.php';
 ?>
