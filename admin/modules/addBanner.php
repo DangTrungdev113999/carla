@@ -1,11 +1,39 @@
 <?php
+
 	if (isset($_POST['addNew'])) {
+
+		$type = [
+			'image/jpg',
+			'image/png',
+			'image/gif',
+			'image/jpeg'
+		];
+		$path = '../uploads/';
+		$fileName = '';
+		if (isset($_FILES['image'])) {
+			if (in_array($_FILES['image']['type'], $type)) {
+				if ($_FILES['image']['size'] < 99999999) {
+					if ($_FILES['image']['error'] === 0) {
+						$filename = $_FILES['image']['tmp_name'];
+						$destination = $path.$_FILES['image']['name'];
+						move_uploaded_file($filename, $destination);
+						$fileName .= 'uploads/'.$_FILES['image']['name'];
+					} else {
+						echo 'lỗi upload';
+					}
+				} else {
+					echo 'ảnh heo à sao mà dung lượng lớn vậy';
+				}
+			} else {
+				echo 'không đúng định dạng ảnh';
+			}
+		}
+
 		$table = 'banner';
 		$data = $_POST;
 		$data['status'] = (isset($data['status'])) ? isset($data['status']) : 0;
-
+		$data['image'] = $fileName;
 		$sqlInsert = insertData($table, $data);
-
 		mysqli_query($conn, $sqlInsert) or die('lỗi thêm mới banner '.$sqlInsert);
 		header("location: index.php?module=banners");
 	}
@@ -33,7 +61,7 @@
 		<div class="card">
 			<h5 class="card-header">Add new Banner</h5>
 			<div class="card-body">
-				<form action="" name="banner" method="POST" id="basicform" data-parsley-validate="">
+				<form action="" name="banner" method="POST" enctype="multipart/form-data" id="basicform" data-parsley-validate="">
 					<div class="form-group">
 						<label for="name">Banner name</label>
 						<input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">

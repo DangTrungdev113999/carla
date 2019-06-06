@@ -49,7 +49,9 @@
                         <tr>
                             <th scope="row"><?php echo $i ?></th>
                             <td><?php echo $row['name'] ?></td>
-                            <td><?php echo $row['image'] ?></td>
+                            <td>
+                                <img src="../<?php echo $row['image'] ?>" width="50" class="img-responsive img-thumbnail" alt="">
+                            </td>
                             <td><?php echo $row['created'] ?></td>
                             <td><?php echo $row['ordering'] ?></td>
                             <td><?php echo $row['content'] ?></td>
