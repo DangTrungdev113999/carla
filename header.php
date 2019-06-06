@@ -143,7 +143,13 @@ $products = mysqli_query($conn, 'select * from product');
 				<div class="header-cart">
 					<div class="cart-count">
 						<span class="mdi mdi-cart-outline"></span>
-						<div class="cart-count_number">26</div>
+						<div class="cart-count_number" id="sizeCart" >
+							<div class="cart-count_number" id="sizeCart2">
+							<?php if(isset($_SESSION["cart"])){
+							echo sizeof($_SESSION["cart"]);
+							}; ?>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

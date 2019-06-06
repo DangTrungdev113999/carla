@@ -39,9 +39,6 @@ if(isset($_POST['id']) && isset($_POST['quantity'])  ){
 	}
 	$_SESSION["cart"] = $cart;
 
-	echo '<pre>';
-	print_r($_SESSION["cart"]);
-
 
 }
 

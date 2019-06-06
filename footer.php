@@ -114,7 +114,7 @@
 		
 		<!-- ===> MY JS <==== -->
 		<script src="public/js/common.js"></script>
-		<script src="public/js/addToCart.js"></script>
+		<script src="public/js/ActionCart.js"></script>
 	</body>
 
 <!-- Mirrored from carla-html.buzline.org/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 May 2019 08:27:31 GMT -->

@@ -4,12 +4,13 @@
 		<h2>Cart</h2>
 		<span class="mdi mdi-close popup-cart__close"></span>
 	</div>
-	<?php 
-	if(isset(($_SESSION["cart"])) && sizeof($_SESSION["cart"],0) > 0 ){ 
-		?>
-		<div class="popup-cart__content" id="sub-cart">
+	<div class="popup-cart__content" id="sub-cart">
+		<?php 
+		if(isset(($_SESSION["cart"])) && sizeof($_SESSION["cart"],0) > 0 ){ 
+			?>
+
 			<?php foreach($_SESSION["cart"] as $key => $sp): ?>
-				<div class="product-card-small">
+				<div class="product-card-small"  >
 					<a href="product-page.php">
 						<img src="public/img/<?php  echo $sp['image'] ?>" alt="img"></a>
 						<div class="product-card-small__content">
@@ -34,20 +35,14 @@
 							</div>
 						</div>
 					<?php  endforeach; ?>
+					<?php }else{
+					echo "<h3>Your cart don't have any products</h3>";
+					} ?>
 				</div>
 				<div class="popup-cart__buttons">
 					<a href="cart.php" class="button white">View Cart</a>
 					<a href="checkout.php" class="button">Checkout</a>
 				</div>
-			<?php }else{
-				echo "<h3>Your cart don't have any products</h3>";
-			} ?>
+	
 		</div>
-<script>	
-	function deleteProduct(id){
-		$.post('uploads/deleteProduct.php', {"id":id}, function(data){
-			$( "#sub-cart" ).load( "http://localhost:88/carla #sub-cart");
-		});
-	}
-</script>
 
