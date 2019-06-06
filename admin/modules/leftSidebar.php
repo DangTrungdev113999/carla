@@ -59,6 +59,21 @@
                         </div>
                     </li>
                     <!-- ================================= -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-111" aria-controls="submenu-111"><i class="fas fa-align-left"></i> Account</a>
+                        <div id="submenu-111" class="collapse submenu" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=addAccount">Add new</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=accounts">list</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11"><i class="fas fa-align-left"></i> Category</a>
                         <div id="submenu-11" class="collapse submenu" style="">

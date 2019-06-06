@@ -13,6 +13,10 @@ CREATE TABLE IF NOT EXISTS account (
   created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO account(name, email, phone, password, address, level) 
+VALUES("trung", "trung@gmail.com", "01234", "123123", "hà nội",1),
+("luan", "luan@gmail.com", "01234", "123123", "hà nội",1);
+
 CREATE TABLE IF NOT EXISTS category (
   id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name varchar(100) NOT NULL UNIQUE,

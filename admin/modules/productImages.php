@@ -47,14 +47,14 @@
                                         <th scope="row"><?php echo $i ?></th>
                                         <td><?php echo $row['proName'] ?></td>
                                         <td>
-                                            <img src="" width="50" alt="">
+                                            <img src="../<?php echo $row['image'] ?>" class="img-responsive img-thumbnail" width="50" alt="">
                                         </td>
                                         <td><?php echo $row['ordering'] ?></td>
                                         <td class="btn-group-xs">
                                         	<a href="index.php?module=editProductImage&id=<?php echo $row['id'] ?>" title="" class="badge badge-primary">
                                         		<i class="fas fa-edit"></i>
                                         	</a>
-                                        	<a href="index.php?module=delProductImage&id=<?php echo $row['id'] ?>" title="" class="badge badge-danger">
+                                        	<a href="index.php?module=delete&table=product_image&location=productImages&id=<?php echo $row['id'] ?>" title="" class="badge badge-danger">
                                         		<i class="fas fa-trash-alt"></i>
                                         	</a>
                                         </td>

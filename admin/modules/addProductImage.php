@@ -1,8 +1,37 @@
 <?php
 	if (isset($_POST['addNew'])) {
+
+		$type = [
+			'image/jpg',
+			'image/jpeg',
+			'image/png',
+			'image/gif'
+		];
+		$path = '../uploads/';
+		$fileName = '';
+		if (isset($_FILES['image'])) {
+			if (in_array($_FILES['image']['type'], $type)) {
+				if ($_FILES['imge']['size'] < 999999) {
+					if ($_FILES['image']['error'] === 0) {
+
+						$filename = $_FILES['image']['tmp_name'];
+						$destination = $path.$_FILES['image']['name'];
+						move_uploaded_file($filename, $destination);
+						$fileName .= "uploads/".$_FILES['image']['name'];
+					} else {
+						echo 'lỗi file upload';
+					}
+				} else {
+					echo 'dung lượng file quá lớn';
+				}
+			} else {
+				echo 'không đúng định dạng ảnh';
+			}
+		}
+
 		$table =  'product_image';
 		$data = $_POST;
-		
+		$data['image'] = $fileName;
 		$sqlInsert = insertData($table, $data);
 		mysqli_query($conn, $sqlInsert) or die('lỗi thêm mới product_image'.$sqlInsert);
 		header("location: index.php?module=productImages");
