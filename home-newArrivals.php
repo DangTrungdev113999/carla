@@ -1,6 +1,6 @@
 <?php 
 $newArrivals = mysqli_query($conn, 'SELECT * FROM PRODUCT ORDER BY ID DESC');
- ?>
+?>
 <section class="new-arrivals-section">
 	<div class="container">
 		<div class="row">
@@ -32,9 +32,9 @@ $newArrivals = mysqli_query($conn, 'SELECT * FROM PRODUCT ORDER BY ID DESC');
 												</div>
 											</div>
 											<ul class="product-card__control">
-												<li><a><span class="mdi mdi-cart-outline" onclick="addCart(
+												<li><a><span class="mdi mdi-cart-outline" onclick="addToCart(
 													<?php echo $sp['id']; ?>
-													)"></span></a></li>
+													,1)"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>

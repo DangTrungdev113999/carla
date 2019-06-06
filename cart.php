@@ -52,7 +52,7 @@ include 'header.php'
 									<div class="cart__item">
 										<div class="row" id="itemCart<?php echo $key; ?>">
 											<div class="col-xs-12 col-sm-4 col-md-5 col-lg-5 d-flex">
-												<a href="product-page.html" class="cart-product__logo">
+												<a href="product-page.php?id=<?php echo $key;  ?>" class="cart-product__logo">
 													<img src="public/img/<?php echo $sp['image']; ?>" alt="img">
 												</a>
 												<div class="cart-product-info">
@@ -137,9 +137,9 @@ include 'header.php'
 					
 					<div class="invoice-wrap" >
 						<?php if(isset($total)){ ?>
-							<div class="invoice">
+							<div class="invoice" id="totalPrice">
 								<div class="invoice-info">
-									<div class="inner-invoice" id="totalPrice">
+									<div class="inner-invoice">
 										<div class="list-invoice">
 											<h5>Subtotal : <span><?php 
 											if(isset($total)){

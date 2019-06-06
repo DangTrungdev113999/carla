@@ -22,24 +22,10 @@ $products = mysqli_query($conn, 'select * from product');
 	<!-- Begin new arrivals -->
 	<?php include('home-newArrivals.php'); ?> <!-- addCart -->
 </main>
-	<!-- End home content -->
-	<div class="back-top" id="backTop"><p>up!</p></div>
-	<!-- Begin footer -->
-	<script>
-			function addToCart(id,quantity){
-				$.post('uploads/addCart.php', {'id':id,'quantity':quantity},(data)=>{
-					img = $('#anh_'+id).attr("src");
-					$('#anhModal').attr({
-						'src':img,
-					})
-					$('#nameCart').text($('#nameProduct_'+id).text());
-					$('#priceCart').text($('#priceProduct_'+id).text());
-					$('#quantityCart').text(quantity);
-				})
-				console.log(id, quantity);
-				$('#myModal').modal();
-			}
-	</script>
-	<?php
-	include 'footer.php'
-	?>
+<!-- End home content -->
+<div class="back-top" id="backTop"><p>up!</p></div>
+<!-- Begin footer -->
+<?php include('modal-Cart.php'); ?>
+<?php
+include 'footer.php'
+?>
