@@ -56,8 +56,13 @@ $topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 							<li><span class="mdi mdi-star-half"></span></li>
 							<li><span class="mdi mdi-star-outline"></span></li>
 						</ul>
-						<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4" id="nameProduct_<?php echo $sp["id"]; ?>"><?php echo $sp['name'];
-						?></a>
+						<a href="product-page.php?id=<?php echo $sp['id'] ?>" 
+							class="h4" 
+							id="nameProduct_<?php echo $sp["id"]; ?>"
+							>
+							<?php echo $sp['name'];
+							?>
+						</a>
 						<p class="price">
 							<span id="priceProduct_<?php echo $sp['id'] ?>">
 								<?php 
@@ -71,7 +76,8 @@ $topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 							</span>
 							<span class="sale">
 								<?php 
-								if($sp['sale_price']) {									echo $sp['price'];				
+								if($sp['sale_price']) {									
+									echo $sp['price'];				
 							}
 
 							?>
@@ -317,4 +323,3 @@ $topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 			</div>
 		</section>
 		<!-- modal  -->
-		<?php include('modal-Cart.php'); ?>
