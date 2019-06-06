@@ -1,8 +1,19 @@
+<?php
+	if (isset($_POST['addNew'])) {
+		$table = 'banner';
+		$data = $_POST;
+		$data['status'] = (isset($data['status'])) ? isset($data['status']) : 0;
 
+		$sqlInsert = insertData($table, $data);
+
+		mysqli_query($conn, $sqlInsert) or die('lỗi thêm mới banner '.$sqlInsert);
+		header("location: index.php?module=banners");
+	}
+?>
 <div class="row">
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="page-header">
-			<h2 class="pageheader-title">Add new Banner table</h2>
+			<h2 class="pageheader-title">Add new Banner table  <a href="index.php?module=banners" class="badge badge-success">list</a></h2>
 			<p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
 			<div class="page-breadcrumb">
 				<nav aria-label="breadcrumb">
@@ -24,20 +35,16 @@
 			<div class="card-body">
 				<form action="" name="banner" method="POST" id="basicform" data-parsley-validate="">
 					<div class="form-group">
-						<label for="bannerName">Banner name</label>
-						<input id="bannerName" type="text" name="bannerName" required="" placeholder="Enter the category name"  class="form-control">
+						<label for="name">Banner name</label>
+						<input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="image">Banner image</label>
 						<input id="image" type="file" name="image" class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="price">ordering</label>
-						<input id="price" type="number" name="price" required=""  placeholder="Enter the price of banner"  class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="sale_price">Status</label>
-						<input id="sale_price" type="number" name="sale_price" required=""  placeholder="Enter the sale proce of banner"  class="form-control">
+						<label for="ordering">ordering</label>
+						<input id="ordering" type="number" name="ordering" required=""  placeholder="Enter the ordering of banner"  class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="created">created</label>
@@ -51,12 +58,12 @@
 					<div class="row">
 						<div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
 							<label class="be-checkbox custom-control custom-checkbox">
-								<input type="checkbox" name="status" value="0" class="custom-control-input"><span class="custom-control-label">status</span>
+								<input type="checkbox" name="status" value="1" class="custom-control-input"><span class="custom-control-label">status</span>
 							</label>
 						</div>
 						<div class="col-sm-6 pl-0">
 							<p class="text-right">
-								<button type="submit" name="addNew" class="btn btn-space btn-dark">Add new</button>
+								<button type="submit" name="addNew" class="btn btn-outline-primary">Add new</button>
 							</p>
 						</div>
 					</div>

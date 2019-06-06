@@ -23,7 +23,6 @@ if(isset($_POST['addNew'])) {
 	$data = $_POST;
 
 	// file upload
-	
 	$path = '../uploads/';
 	$fileName = '';
 	$type = [
@@ -105,8 +104,8 @@ if(isset($_POST['addNew'])) {
 						<select name="category_id" id="category_id" class="form-control">
 							<option value="">--Choose category type--</option>
 							<?php
-							$selectDataFromCat = "SELECT * FROM category";
-							$resultCat = mysqli_query($conn, $selectDataFromCat) or die("lỗi truy xuất danh mục sản phẩm".$selectDataFromCat);
+							$selectData = "SELECT * FROM category";
+							$resultCat = mysqli_query($conn, $selectData) or die("lỗi truy xuất danh mục sản phẩm".$selectData);
 							while($rowCat = mysqli_fetch_assoc($resultCat)) {
 								?>
 
