@@ -17,8 +17,6 @@
 			unset($cart[$id]);
 		}
 			$_SESSION["cart"] = $cart;
-			print_r("<pre>");
-			print_r($cart[$id]);
 
 		}
 
