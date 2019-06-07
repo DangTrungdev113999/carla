@@ -9,15 +9,15 @@ if (isset($_GET['module']) && isset($_GET['id'])) {
 	$imgOld .= $row['image'];
 }
 
-if(isset($_POST['addNew'])) {
+if (isset($_POST['addNew'])) {
 
-	$path = '../uploads/';
+	$path = '../public/img';
 	$fileName = "";
 	$type = [
-	'image/jpeg',
-	'image/jpg',
-	'image/png',
-	'image/gif'
+		'image/jpeg',
+		'image/jpg',
+		'image/png',
+		'image/gif'
 	];
 
 	if ($_FILES["image"]["name"]) {
@@ -28,7 +28,7 @@ if(isset($_POST['addNew'])) {
 					$filename = $_FILES["image"]["tmp_name"];
 					$destination = $path.$_FILES['image']['name'];
 					move_uploaded_file($filename, $destination);
-					$fileName .= 'uploads/'.$_FILES['image']['name'];
+					$fileName .= $_FILES['image']['name'];
 
 				} else {
 					echo 'lỗi file';
@@ -43,7 +43,6 @@ if(isset($_POST['addNew'])) {
 		$fileName = $imgOld;
 	}
 
-// die($imgOld.'asdf');
 
 	$table = 'product';
 	$data = $_POST;
@@ -51,8 +50,8 @@ if(isset($_POST['addNew'])) {
 	$data['image'] = $fileName;
 	$condition = " WHERE id = ".$_GET['id'];
 
-	$sqlInsert = updateData($table, $data, $condition);
-	mysqli_query($conn, $sqlInsert) or die("lỗi update sản phẩm ".$sqlInsert);
+	$sqlUpdate = updateData($table, $data, $condition);
+	mysqli_query($conn, $sqlUpdate) or die("lỗi update sản phẩm ".$sqlUpdate);
 	header("location: index.php?module=products");
 
 };

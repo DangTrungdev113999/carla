@@ -37,7 +37,7 @@
 				<form action="" name="product" method="POST" id="basicform" data-parsley-validate="">
 					<div class="form-group">
 						<label for="name">Account name</label>
-						<input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">
+						<input id="name" type="text" name="name" required="" placeholder="Enter the Account name"  class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="Email">Email</label>

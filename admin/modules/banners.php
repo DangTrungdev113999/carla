@@ -30,9 +30,10 @@
                             <th scope="col">#</th>
                             <th scope="col">Banner Name</th>
                             <th scope="col">Image</th>
-                            <th scope="col">created</th>
-                            <th scope="col">ordering</th>
                             <th scope="col">Content</th>
+                            <th scope="col">created</th>
+                            <th scope="col">status</th>
+                            <th scope="col">ordering</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -50,16 +51,17 @@
                             <th scope="row"><?php echo $i ?></th>
                             <td><?php echo $row['name'] ?></td>
                             <td>
-                                <img src="../<?php echo $row['image'] ?>" width="50" class="img-responsive img-thumbnail" alt="">
+                                <img src="../public/img/<?php echo $row['image'] ?>" width="50" class="img-responsive img-thumbnail" alt="">
                             </td>
-                            <td><?php echo $row['created'] ?></td>
-                            <td><?php echo $row['ordering'] ?></td>
                             <td><?php echo $row['content'] ?></td>
+                            <td><?php echo $row['created'] ?></td>
+                            <td><?php echo ($row['status']) ? 'shown' : 'hide' ?></td>
+                            <td><?php echo $row['ordering'] ?></td>
                             <td class="btn-group-xs">
                                 <a href="index.php?module=editBanner&id=<?php echo $row['id'] ?>" class="badge badge-primary">
                                     <i class="fas fa-edit fas-xs"></i>
                                 </a>
-                                <a href="index.php?module=delete&table=banner&location=banners&id=<?php echo $row['id'] ?>" class="badge badge-danger">
+                                <a href="index.php?module=delete&table=banner&location=banners&id=<?php echo $row['id'] ?>" class="badge badge-danger" onclick="return confirm('Are you sure want to delete it ?')">
                                     <i class="fas fa-trash-alt fas-xs"></i>
                                 </a>
                             </td>
