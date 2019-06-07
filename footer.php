@@ -114,7 +114,61 @@
 		
 		<!-- ===> MY JS <==== -->
 		<script src="public/js/common.js"></script>
-		<script src="public/js/ActionCart.js"></script>
+<script>
+	function addToCart(id,quantity){
+		$.post('uploads/addCart.php', {'id':id,'quantity':quantity},(data)=>{
+			img = $('#anh_'+id).attr("src");
+			$('#anhModal').attr({
+				'src':img,
+			})
+			$('#nameCart').text($('#nameProduct_'+id).text());
+			$('#priceCart').text($('#priceProduct_'+id).text());
+			$('#quantityCart').text(quantity);
+			$( "#sub-cart" ).load( "http://localhost:88/carla/shop-page.php #sub-cart");
+			$( "#sizeCart" ).load( "http://localhost:88/carla/shop-page.php #sizeCart2");
+		})
+		$('#myModal').modal();
+	}
+	function updateQuantity1(id){
+		quantity = $("#quantity_"+id).val();
+		$.post('uploads/updateCart.php', {"id":id, "quantity":quantity}, function(data){
+			$( "#listCart" ).load( "http://localhost:88/carla/cart.php #listCart");
+			$( "#totalPrice" ).load( "http://localhost:88/carla/cart.php #totalPrice");
+			$( "#sub-cart" ).load( "http://localhost:88/carla/shop-page.php #sub-cart");
+			$( "#sizeCart" ).load( "http://localhost:88/carla/shop-page.php #sizeCart2");
+		});
+		if(quantity <=0){
+			$( "#closeCheckout" ).load( "http://localhost:88/carla/cart.php #closeCheckout");
+			
+		}
+	}
+	function updateQuantity2(id, number){
+		quantity = $("#quantity_"+id).val();
+		quantity=parseInt(quantity) + number;
+		$.post('uploads/updateCart.php', {"id":id, "quantity":quantity}, function(data){
+			$( "#listCart" ).load( "http://localhost:88/carla/cart.php #listCart");
+			$( "#totalPrice" ).load( "http://localhost:88/carla/cart.php #totalPrice");
+			$( "#sub-cart" ).load( "http://localhost:88/carla/shop-page.php #sub-cart");
+			$( "#sizeCart" ).load( "http://localhost:88/carla/shop-page.php #sizeCart2");
+			console.log('asfdsaf');
+		});
+		if(quantity <=0){
+			$( "#closeCheckout" ).load( "http://localhost:88/carla/cart.php #closeCheckout");
+
+		}
+	}
+	function deleteProduct(id){
+		if(confirm('Do you want delete this product')){
+		$.post('uploads/deleteProduct.php', {"id":id}, function(data){
+			$( "#listCart" ).load( "http://localhost:88/carla/cart.php #listCart");
+			$( "#totalPrice" ).load( "http://localhost:88/carla/cart.php #totalPrice");
+			$( "#closeCheckout" ).load( "http://localhost:88/carla/cart.php #closeCheckout");
+			$( "#sub-cart" ).load( "http://localhost:88/carla #sub-cart");
+			$( "#sizeCart" ).load( "http://localhost:88/carla/shop-page.php #sizeCart2");
+		});
+	}
+	}
+</script>
 	</body>
 
 <!-- Mirrored from carla-html.buzline.org/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 May 2019 08:27:31 GMT -->

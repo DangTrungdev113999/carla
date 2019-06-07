@@ -1,5 +1,7 @@
 <?php 	// LẤY RA CÁC DANH MỤC THEO CATEFORY_ID
-$Woman = mysqli_query($conn, 'select * from product where category_id = 2');
+$Woman = mysqli_query($conn, 'SELECT p.id, p.image,p.content,p.price,p.sale_price FROM product p JOIN category c ON p.category_id = c.parent_id WHERE c.parent_id = 2
+group by p.id, p.image,p.content,p.price,p.sale_price
+');
 $Man = mysqli_query($conn, 'select * from product where category_id = 1');
 $Accessories = mysqli_query($conn, 'select * from product where category_id = 7');
 $Tranding = mysqli_query($conn, 'select * from product where category_id = 5');

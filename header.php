@@ -3,7 +3,9 @@ session_start();
 include 'config/connect.php ';
 	// test cart
 $products = mysqli_query($conn, 'select * from product');
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,7 +133,7 @@ $products = mysqli_query($conn, 'select * from product');
 					<div id="AcountContainer">
 						<div class="cart-count" >
 							<a 
-							style="color:blue;
+							style="color:black;
 							text-align: center;
 							font-size: 50px;
 							margin: 30px;" 
@@ -140,8 +142,9 @@ $products = mysqli_query($conn, 'select * from product');
 						</a>
 					</div>
 				</div>
+				<?php if($_SERVER['REQUEST_URI'] !== '/carla/cart.php'){ ?>
 				<div class="header-cart">
-					<div class="cart-count">
+					<div class="cart-count">						
 						<span class="mdi mdi-cart-outline"></span>
 						<div class="cart-count_number" id="sizeCart" >
 							<div class="cart-count_number" id="sizeCart2">
@@ -150,8 +153,10 @@ $products = mysqli_query($conn, 'select * from product');
 							}; ?>
 							</div>
 						</div>
+
 					</div>
 				</div>
+			<?php } ?>
 			</div>
 		</div>
 	</div>
