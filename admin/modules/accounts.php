@@ -59,7 +59,7 @@
                             	<a href="index.php?module=editProduct&id=<?php echo $row['id'] ?>" class="badge badge-primary">
                             		<i class="fas fa-edit fas-xs"></i>
                             	</a>
-                            	<a href="index.php?module=delete&table=account&location=accounts&id=<?php echo $row['id'] ?>" class="badge badge-danger">
+                            	<a href="index.php?module=delete&table=account&location=accounts&id=<?php echo $row['id'] ?>" class="badge badge-danger" onclick="return confirm('Are you sure want to delete it ?')">
                             		<i class="fas fa-trash-alt fas-xs"></i>
                             	</a>
                             </td>

@@ -1,54 +1,69 @@
 <?php
+	$imgOld = '';
+	if (isset($_GET['module']) && isset($_GET['id'])) {
+		$sqlSelect = "SELECT * FROM banner WHERE id = ".$_GET['id'];
+		$result = mysqli_query($conn, $sqlSelect);
+		$row = mysqli_fetch_assoc($result);
+		$imgOld = $row['image'];
+	}
+
 
 	if (isset($_POST['addNew'])) {
-
+		$path = '../public/img';
+		$fileName = "";
 		$type = [
+			'image/jpeg',
 			'image/jpg',
 			'image/png',
-			'image/gif',
-			'image/jpeg'
+			'image/gif'
 		];
-		$path = '../public/img/';
-		$fileName = '';
-		if (isset($_FILES['image'])) {
+
+		if ($_FILES["image"]["name"]) {
 			if (in_array($_FILES['image']['type'], $type)) {
-				if ($_FILES['image']['size'] < 99999999) {
+				if ($_FILES['image']['size'] <= 9999999) {
 					if ($_FILES['image']['error'] === 0) {
-						$filename = $_FILES['image']['tmp_name'];
+					// pass file to server
+						$filename = $_FILES["image"]["tmp_name"];
 						$destination = $path.$_FILES['image']['name'];
 						move_uploaded_file($filename, $destination);
-						$fileName .=$_FILES['image']['name'];
+						$fileName .= $_FILES['image']['name'];
+
 					} else {
-						echo 'lỗi upload';
+						echo 'lỗi file';
 					}
 				} else {
-					echo 'ảnh heo à sao mà dung lượng lớn vậy';
+					echo 'dung lượng ảnh quá lớn';
 				}
 			} else {
-				echo 'không đúng định dạng ảnh';
+				echo 'không đúng định dạng';
 			}
+		} else {
+			$fileName = $imgOld;
 		}
+
 
 		$table = 'banner';
 		$data = $_POST;
 		$data['status'] = (isset($data['status'])) ? isset($data['status']) : 0;
 		$data['image'] = $fileName;
-		$sqlInsert = insertData($table, $data);
-		mysqli_query($conn, $sqlInsert) or die('lỗi thêm mới banner '.$sqlInsert);
+		$condition = " WHERE id =".$_GET['id'];
+		$sqlUpdate = updateData($table, $data, $condition);
+		mysqli_query($conn, $sqlUpdate) or die("lỗi update banner");
 		header("location: index.php?module=banners");
 	}
+	
 ?>
 <div class="row">
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="page-header">
-			<h2 class="pageheader-title">Add new Banner table  <a href="index.php?module=banners" class="badge badge-success">list</a></h2>
+			<h2 class="pageheader-title">Update Banner table <a href="index.php?module=banners" class="badge badge-success">exit</a></h2>
 			<p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
 			<div class="page-breadcrumb">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Admin</a></li>
 						<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tables</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Banner Table</li>
+						<li class="breadcrumb-item active" aria-current="page">Update Banner Table</li>
 					</ol>
 				</nav>
 			</div>
@@ -64,15 +79,16 @@
 				<form action="" name="banner" method="POST" enctype="multipart/form-data" id="basicform" data-parsley-validate="">
 					<div class="form-group">
 						<label for="name">Banner name</label>
-						<input id="name" type="text" name="name" required="" placeholder="Enter the banner name"  class="form-control">
+						<input id="name" type="text" name="name" value="<?php echo $row['name'] ?>" required="" placeholder="Enter the Banner name"  class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="image">Banner image</label>
-						<input id="image" type="file" name="image" class="form-control">
+						<img src="../public/img/<?php echo $row['image'] ?>" width='100' class='img-responsive img-thumbnail' alt="">
+						<input id="image" type="file" name="image"  class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="ordering">ordering</label>
-						<input id="ordering" type="number" name="ordering" required=""  placeholder="Enter the ordering of banner"  class="form-control">
+						<input id="ordering" type="number" value="<?php echo $row['ordering'] ?>" name="ordering"  required=""  placeholder="Enter the ordering of banner"  class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="created">created</label>
@@ -80,18 +96,18 @@
 					</div>
 					<div class="form-group">
 						<label for="content">Content</label>
-						<textarea name="content" id="content" placeholder="Enter the discription" class="form-control" rows="10" cols="50"></textarea>
+						<textarea name="content" id="content"  placeholder="Enter the discription" class="form-control" rows="10" cols="50">value="<?php echo $row['content'] ?>"</textarea>
 					</div>
 
 					<div class="row">
 						<div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
 							<label class="be-checkbox custom-control custom-checkbox">
-								<input type="checkbox" name="status" value="1" class="custom-control-input"><span class="custom-control-label">status</span>
+								<input type="checkbox" name="status" value="1" class="custom-control-input" <?php echo ($row['status']) ? "checked" : ''?>><span class="custom-control-label">status</span>
 							</label>
 						</div>
 						<div class="col-sm-6 pl-0">
 							<p class="text-right">
-								<button type="submit" name="addNew" class="btn btn-outline-primary">Add new</button>
+								<button type="submit" name="addNew" class="btn btn-outline-primary">Update</button>
 							</p>
 						</div>
 					</div>
@@ -100,5 +116,3 @@
 		</div>
 	</div>
 </div>
-
-
