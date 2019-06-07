@@ -6,19 +6,19 @@ $Products = mysqli_query($conn, 'select * from product');
 $LastestProduct = mysqli_query($conn, 'SELECT  * FROM product
 	ORDER BY id DESC LIMIT 3');
 if($Categories === 'woman'){
-	$Products = mysqli_query($conn, 'select * from product where category_id = 2');
-	$LastestProduct = mysqli_query($conn, 'SELECT  * FROM product where category_id = 2
-		ORDER BY id DESC LIMIT 3');
+	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2');
+	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2
+		ORDER BY p.id DESC LIMIT 3');
 };
 if($Categories === 'man'){
-	$Products = mysqli_query($conn, 'select * from product where category_id = 1');
-	$LastestProduct = mysqli_query($conn, 'SELECT  * FROM product where category_id = 1
-		ORDER BY id DESC LIMIT 3');
+	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 1');
+	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 1
+		ORDER BY p.id DESC LIMIT 3');
 };
 if($Categories === 'accesories'){
-	$Products = mysqli_query($conn, 'select * from product where category_id = 7');
-	$LastestProduct = mysqli_query($conn, 'SELECT  * FROM product where category_id = 7
-		ORDER BY id DESC LIMIT 3');
+	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 5');
+	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 5
+		ORDER BY p.id DESC LIMIT 3');
 };
 
 
