@@ -1,11 +1,9 @@
 <?php 	// LẤY RA CÁC DANH MỤC THEO CATEFORY_ID
-$Woman = mysqli_query($conn, 'SELECT p.id, p.image,p.content,p.price,p.sale_price FROM product p JOIN category c ON p.category_id = c.parent_id WHERE c.parent_id = 2
-group by p.id, p.image,p.content,p.price,p.sale_price
-');
-$Man = mysqli_query($conn, 'select * from product where category_id = 1');
-$Accessories = mysqli_query($conn, 'select * from product where category_id = 7');
-$Tranding = mysqli_query($conn, 'select * from product where category_id = 5');
-$topRated = mysqli_query($conn, 'select * from product where category_id = 6');
+$Woman = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2');
+$Man = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 1');
+$Accessories = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 5');
+$Tranding = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 6');
+$topRated = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 7');
 ?>
 
 <section class="home-products">
@@ -25,9 +23,12 @@ $topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 						</ul>
 					</div>
 <div class="grid">
+		<?php if(isset($Woman)){
+			foreach($Woman as $n => $sp):
+			 ?>
 	<div class="grid-item group1">
-		<?php foreach($Woman as $n => $sp): ?>
-			<div class="product-card">
+	
+			<div class="product-card col-md-12">
 				<div class="product-card-logo">
 					<img src="public/img/<?php echo $sp['image'] ?>" 
 					alt="img"  
@@ -87,10 +88,13 @@ $topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 						</span></p>
 					</div>
 				</div>
-			<?php  endforeach; ?>
+			
 		</div>
+		<?php  endforeach; } ?>
+		<?php if(isset($Man)){
+			foreach($Man as $n => $sp):
+			 ?>
 		<div class="grid-item group2">
-			<?php foreach($Man as $n => $sp): ?>
 				<div class="product-card">
 					<div class="product-card-logo">
 						<img src="public/img/<?php echo $sp['image'] ?>" 
@@ -144,10 +148,13 @@ $topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 							</span></p>
 						</div>
 					</div>
-				<?php  endforeach; ?>
+				
 			</div>
+			<?php  endforeach; } ?>
+			<?php if(isset($Accessories)){
+			foreach($Accessories as $n => $sp):
+			 ?>
 			<div class="grid-item group3">
-				<?php foreach($Accessories as $n => $sp): ?>
 					<div class="product-card">
 						<div class="product-card-logo">
 							<img src="public/img/<?php echo $sp['image'] ?>" 
@@ -202,10 +209,12 @@ $topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 									</span></p>
 								</div>
 							</div>
-						<?php  endforeach; ?>
 					</div>
+					<?php  endforeach; } ?>
+					<?php if(isset($Tranding)){
+					foreach($Tranding as $n => $sp):
+					 ?>
 					<div class="grid-item group4">
-						<?php foreach($Tranding as $n => $sp): ?>
 							<div class="product-card">
 								<div class="product-card-logo">
 									<img src="public/img/<?php echo $sp['image'] ?>" 
@@ -259,10 +268,14 @@ $topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 										</span></p>
 									</div>
 								</div>
-							<?php  endforeach; ?>
+						
 						</div>
+							<?php  endforeach; } ?>
+							<?php if(isset($topRated)){
+							foreach($topRated as $n => $sp):
+							 ?>
 						<div class="grid-item group5">
-							<?php foreach($topRated as $n => $sp): ?>
+							
 								<div class="product-card">
 									<div class="product-card-logo">
 										<img src="public/img/<?php echo $sp['image'] ?>" 
@@ -316,8 +329,9 @@ $topRated = mysqli_query($conn, 'select * from product where category_id = 6');
 											</span></p>
 										</div>
 									</div>
-								<?php  endforeach; ?>
-							</div>								
+								
+							</div>	
+							<?php  endforeach; } ?>							
 						</div>
 						<a href="#" class="link">Load More</a>
 					</div>
