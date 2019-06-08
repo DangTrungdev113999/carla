@@ -103,6 +103,20 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-113" aria-controls="submenu-113"><i class="fas fa-bullseye"></i>Attribute</a>
+                        <div id="submenu-113" class="collapse submenu" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=addAttribute">Add new</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=attributes">list</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-13" aria-controls="submenu-13"><i class="fas fa-bullseye"></i>Product Image</a>
                         <div id="submenu-13" class="collapse submenu" style="">
                             <ul class="nav flex-column">

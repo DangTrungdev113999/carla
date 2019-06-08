@@ -39,7 +39,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $sqlSelect = "SELECT * FROM banner";
+                            $sqlSelect = "SELECT * FROM banner order by id desc";
                             $result = mysqli_query($conn, $sqlSelect);
                             if (mysqli_num_rows($result) > 0) {
                                 $i = 0;

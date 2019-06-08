@@ -48,20 +48,9 @@ CREATE TABLE IF NOT EXISTS product (
   created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-
-CREATE TABLE IF NOT EXISTS color (
-	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	name varchar(150) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS size (
-	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	name varchar(150) NOT NULL
-);
-insert into color(name)
-values('white'),('red'),('blue'),('yellow'),('green');
-insert into size(name)
-values('S'),('M'),('L'),('XL'),('XXL');
+ALTER TABLE product ADD 
+FOREIGN KEY FK_PRODUDT_CATEGORY (category_id)
+REFERENCES category(id);
 
 INSERT INTO product(name, image, content, category_id, price, sale_price)
 values('Beige Sweater','product-1.jpg','this is the content',3, 290, 133),
@@ -72,9 +61,7 @@ values('Beige Sweater','product-1.jpg','this is the content',3, 290, 133),
 ('Gray Sweater','product-6.jpg','this is the content!',6, 123, 69),
 ('Gray Sweater','product-7.jpg','this is the content!',7, 145, 122);
 
-ALTER TABLE product ADD 
-FOREIGN KEY FK_PRODUDT_CATEGORY (category_id)
-REFERENCES category(id);
+
 
 CREATE TABLE IF NOT EXISTS product_image (
   id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -86,6 +73,55 @@ CREATE TABLE IF NOT EXISTS product_image (
 ALTER TABLE product_image ADD 
 FOREIGN KEY FK_PRODUDT_IMAGE (product_id)
 REFERENCES product(id);
+
+CREATE TABLE IF NOT EXISTS attribute (
+	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name varchar(150) NOT NULL unique,
+	value varchar(150) NOT NULL,
+	type varchar(150) not null,
+	created timestamp not null default CURRENT_TIMESTAMP
+);
+
+INSERT INTO `attribute`(`name`, `value`, `type`) 
+VALUES ('red','red','color'),
+('green','green','color'),
+('yellow','yellow','color'),
+('blue','blue','color'),
+('white','#ffe','color'),
+('black','black','color'),
+('pink','pink','color'),
+('gray','gray','color'),
+('purple','purple','color'),
+('orange','orange','color'),
+('Extra Small','xs','size'),
+('Small','s','size'),
+('Medium ','m','size'),
+('Large ','l','size'),
+('Extra Large','xl','size'),
+('Extra Extra Large','xxl','size');
+
+
+CREATE TABLE IF NOT EXISTS product_attribute (
+	product_id int(11) not null  REFERENCES product(id),
+    attribute_id int(11) not null REFERENCES attribute(id)
+);
+-- ===============================================
+CREATE TABLE IF NOT EXISTS color (
+	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name varchar(150) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS size (
+	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name varchar(150) NOT NULL
+);
+
+insert into color(name)
+values('white'),('red'),('blue'),('yellow'),('green');
+insert into size(name)
+values('S'),('M'),('L'),('XL'),('XXL');
+
+-- ======================================
 
 CREATE TABLE IF NOT EXISTS orders (
 	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -150,7 +186,7 @@ CREATE TABLE IF NOT EXISTS banner (
 );
 
 insert into banner(name, image, ordering, content)
-	values('test1', 'girl-2.png', 2, 'deo co ahu hu');
+	values('test1', 'girl-2.png', 2, 'Lorem ipsum dolor sit amet, consectetur adipisicingue inventore us!');
 
 CREATE TABLE IF NOT EXISTS post (
 	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
