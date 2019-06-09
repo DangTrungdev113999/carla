@@ -36,7 +36,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $sqlSelect = "SELECT pi.*, p.name as 'proName' FROM product_image pi join product p on pi.product_id = p.id";
+                                        $sqlSelect = "SELECT pi.*, p.name as 'proName' FROM product_image pi join product p on pi.product_id = p.id ORDER BY id desc";
                                         $result = mysqli_query($conn, $sqlSelect) or die('lỗi truy vấn banner');
                                         if (mysqli_num_rows($result) > 0 ) {
                                             $i = 0;
