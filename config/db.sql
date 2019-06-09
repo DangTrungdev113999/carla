@@ -69,10 +69,19 @@ CREATE TABLE IF NOT EXISTS product_image (
   image varchar(200) NOT NULL,
   ordering int(11) NULL DEFAULT '0'
 );
-
 ALTER TABLE product_image ADD 
 FOREIGN KEY FK_PRODUDT_IMAGE (product_id)
 REFERENCES product(id);
+
+INSERT INTO product_image(product_id, image, ordering)
+VALUES (1, 'team-1.jpg', 1),(1, 'team-2.jpg', 2),(1, 'team-3.jpg', 3),
+(2, 'team-1.jpg', 1),(2, 'team-2.jpg', 2),(2, 'team-3.jpg', 3),
+(3, 'team-1.jpg', 1),(3, 'team-2.jpg', 2),(3, 'team-3.jpg', 3),
+(4, 'team-1.jpg', 1),(4, 'team-2.jpg', 2),(4, 'team-3.jpg', 3),
+(5, 'team-1.jpg', 1),(5, 'team-2.jpg', 2),(5, 'team-3.jpg', 3),
+(5, 'team-1.jpg', 1),(5, 'team-2.jpg', 2),(5, 'team-3.jpg', 3),
+(7, 'team-1.jpg', 1),(7, 'team-2.jpg', 2),(7, 'team-3.jpg', 3);
+
 
 CREATE TABLE IF NOT EXISTS attribute (
 	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -105,6 +114,17 @@ CREATE TABLE IF NOT EXISTS product_attribute (
 	product_id int(11) not null  REFERENCES product(id),
     attribute_id int(11) not null REFERENCES attribute(id)
 );
+
+INSERT INTO product_attribute (product_id, attribute_id) values
+(1, 1),(1, 2),(1, 3),(1, 4),(1, 5),(1, 6),(1, 11),(1, 12),(1, 13),(1, 14),(1, 15),(1, 16),
+(2, 1),(2, 2),(2, 3),(2, 4),(2, 5),(2, 6),(2, 11),(2, 12),(2, 13),(2, 14),(1, 15),(1, 16),
+(3, 1),(3, 2),(3, 3),(3, 4),(3, 5),(3, 6),(3, 11),(3, 12),(3, 13),(3, 14),(1, 15),(1, 16),
+(4, 1),(4, 2),(4, 3),(4, 4),(4, 5),(4, 6),(4, 11),(4, 12),(4, 13),(4, 14),(1, 15),(1, 16),
+(5, 1),(5, 2),(5, 3),(5, 4),(5, 5),(5, 6),(5, 11),(5, 12),(5, 13),(5, 14),(1, 15),(1, 16),
+(6, 1),(6, 2),(6, 3),(6, 4),(6, 5),(6, 6),(6, 11),(6, 12),(6, 13),(6, 14),(1, 15),(1, 16),
+(7, 1),(7, 2),(7, 3),(7, 4),(7, 5),(7, 6),(7, 11),(7, 12),(7, 13),(7, 14),(1, 15),(1, 16);
+
+
 -- ===============================================
 CREATE TABLE IF NOT EXISTS color (
 	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,

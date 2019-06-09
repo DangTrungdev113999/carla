@@ -41,10 +41,13 @@
 		$data['image'] = $fileName;
 		unset($data['color']);
 		unset($data['size']);
+		unset($data['images']);
 
  		$sqlInsert = insertData($table, $data);
 		if (mysqli_query($conn, $sqlInsert)) {
 			$product_id = mysqli_insert_id($conn);
+
+			// add attribute of product into product_attribute table
 			if (count($_POST['color']) || count($_POST['size'])) {
 			 	foreach ($_POST['color'] as $idColor) {
 			 		$sqlInsertAttr = "INSERT INTO product_attribute(product_id, attribute_id) VALUES('$product_id', '$idColor');";
@@ -56,7 +59,39 @@
 			 		mysqli_query($conn, $sqlInsertAttr);
 			 	}
 
-			 } 
+			 }
+
+			 // add images of product into product_image table
+			 if (isset($_FILES["images"]) && count($_FILES['images']['name']) > 0) {
+
+			 	$n = count($_FILES['images']['name']);
+			 	for ( $i = 0; $i < $n; $i++) {
+			 		$fileNames = '';
+				 	if (in_array($_FILES['images']['type'][$i], $type)) {
+
+				 		if ($_FILES['images']['size'][$i] <= 9999999) {
+
+				 			if ($_FILES['images']['error'][$i] === 0) {
+							// pass file to server
+				 				$filename = $_FILES["images"]["tmp_name"][$i];
+				 				$destination = $path.$_FILES['images']['name'][$i];
+				 				if (move_uploaded_file($filename, $destination)) {
+					 				$fileNames .= $_FILES['images']['name'][$i];
+					 				$sqlInsertPro_img = "INSERT INTO product_image(product_id, image) VALUES ('$product_id', '$fileNames')";
+					 				mysqli_query($conn, $sqlInsertPro_img) or die('lỗi thêm mới nhiều ảnh sản phẩm '.$sqlInsertPro_img);
+				 				}
+				 			} else {
+				 				echo 'lỗi file';
+				 			}
+				 		} else {
+				 			echo 'dung lượng ảnh quá lớn';
+				 		}
+				 	} else {
+				 		echo 'không đúng định dạng';
+				 	}
+			 	}
+
+		}; 
 			header("location: index.php?module=products");
 		} else {
 			die('lỗi thêm mới sản phẩm '.$sqlInsert);
@@ -121,12 +156,12 @@
 								<input id="image" type="file" name="image" class="form-control">
 							</div>
 						</div>
-<!-- 						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div class="form-group">
 								<label for="image">Product image</label>
-								<input id="image" type="file" name="image" class="form-control">
+								<input id="image" type="file" name="images[]" multiple class="form-control">
 							</div>
-						</div> -->
+						</div>
 					</div>
 
 					<div class="row">
