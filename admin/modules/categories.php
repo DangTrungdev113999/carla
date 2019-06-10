@@ -33,6 +33,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Category Name</th>
                             <th scope="col">Parent Category</th>
+                            <th scope="col">Quantity product</th>
                             <th scope="col">Status </th>
                             <th scope="col">Ordering</th>
                             <th scope="col">Created</th>
@@ -51,7 +52,8 @@
                         <tr>
                             <th scope="row"><?php echo $count ?></th>
                             <td><?php echo $row['name'] ?></td>
-                            <td><?php echo $row['parent_id'] ?></td>
+                            <td><?php echo ($row['parent_id'] === '0') ? 'Parent' :  $row['parent_id']?></td>
+                            <td><?php echo 999 ?></td>
                             <td><?php echo ($row['status']) ? 'Shown' : 'Hide' ?></td>
                             <td><?php echo $row['ordering'] ?></td>
                             <td><?php echo $row['created'] ?></td>

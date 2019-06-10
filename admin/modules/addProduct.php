@@ -72,7 +72,7 @@
 				 		if ($_FILES['images']['size'][$i] <= 9999999) {
 
 				 			if ($_FILES['images']['error'][$i] === 0) {
-							// pass file to server
+
 				 				$filename = $_FILES["images"]["tmp_name"][$i];
 				 				$destination = $path.$_FILES['images']['name'][$i];
 				 				if (move_uploaded_file($filename, $destination)) {
@@ -125,15 +125,15 @@
 				<form action="" name="product" method="POST" enctype="multipart/form-data" id="basicform" data-parsley-validate="">
 					<div class="row">
 						<div class="form-group  col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-							<label for="name">Product name</label>
+							<label for="name" class="text-dark">Product name</label>
 							<input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">
 						</div>
 							<div class="form-group  col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-							<label for="category_id">Category</label>
+							<label for="category_id" class="text-dark">Category</label>
 							<select name="category_id" id="category_id" class="form-control">
 								<option value="">--Choose category type--</option>
 								<?php
-								$selectData = "SELECT * FROM category";
+								$selectData = "SELECT * FROM category WHERE parent_id NOT IN (0) ";
 								$resultCat = mysqli_query($conn, $selectData) or die("lỗi truy xuất danh mục sản phẩm".$selectData);
 								while($rowCat = mysqli_fetch_assoc($resultCat)) {
 									?>
@@ -152,13 +152,13 @@
 					<div class="row">
 						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div class="form-group">
-								<label for="image">Avatar image</label>
+								<label for="image" class="text-dark">Avatar image</label>
 								<input id="image" type="file" name="image" class="form-control">
 							</div>
 						</div>
 						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div class="form-group">
-								<label for="image">Product image</label>
+								<label for="image" class="text-dark">Product image</label>
 								<input id="image" type="file" name="images[]" multiple class="form-control">
 							</div>
 						</div>
@@ -166,11 +166,11 @@
 
 					<div class="row">
 						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-							<label for="price">Price</label>
+							<label for="price" class="text-dark">Price</label>
 							<input id="price" type="number" name="price" required=""  placeholder="Enter the price of product"  class="form-control">
 						</div>
 						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-							<label for="sale_price">Sale price</label>
+							<label for="sale_price" class="text-dark">Sale price</label>
 							<input id="sale_price" type="number" name="sale_price" required=""  placeholder="Enter the sale proce of product"  class="form-control">
 						</div>
 					</div>
@@ -185,7 +185,8 @@
 								?>
 								<div class="checkbox d-inline-block ml-3">
 									<label class="be-checkbox custom-control custom-checkbox">
-										<input type="checkbox" name='color[]' value="<?php echo $rowAttr['id'] ?>" class="custom-control-input"><span class="custom-control-label"><?php echo  $rowAttr['name'] ?></span>
+										<input type="checkbox" name='color[]' value="<?php echo $rowAttr['id'] ?>" class="custom-control-input">
+										<span class="custom-control-label" style="background: <?php echo  $rowAttr['value'] ?>; height: 25px; width: 25px; border-radius: 100%; display: inline-block;box-shadow: 2px 2px 3px gray;"></span>
 									</label>
 								</div>
 							<?php endwhile; ?>
@@ -200,7 +201,7 @@
 								?>
 								<div class="checkbox d-inline-block ml-3">
 									<label class="be-checkbox custom-control custom-checkbox">
-										<input type="checkbox" name='size[]' value="<?php echo $rowAttr['id'] ?>" class="custom-control-input"><span class="custom-control-label"><?php echo  $rowAttr['name'] ?></span>
+										<input type="checkbox" name='size[]' value="<?php echo $rowAttr['id'] ?>" class="custom-control-input"><span class="custom-control-label"><?php echo  strtoupper($rowAttr['value']) ?></span>
 									</label>
 								</div>
 							<?php endwhile; ?>
@@ -208,12 +209,12 @@
 					</div>
 
 					<div class="form-group">
-						<label for="created">created</label>
+						<label for="created" class="text-dark">created</label>
 						<input id="created" type="date" name="created" value="" placeholder="Enter the created"  class="form-control">
 					</div>
 
 					<div class="form-group">
-						<label for="content">Content</label>
+						<label for="content" class="text-dark">Content</label>
 						<textarea name="content" id="content" placeholder="Enter the discription" class="form-control" rows="10" cols="50"></textarea>
 					</div>
 
