@@ -30,6 +30,7 @@
 									<a href="cart.php"><span class="mdi mdi-pencil"></span></a>
 									<span class="mdi mdi-close delete-product"
 									onclick= "deleteProduct(<?php echo $key; ?>)"
+
 									></span>
 								</div>
 							</div>

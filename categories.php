@@ -36,7 +36,7 @@
 									</a>
 								</div>
 								<div class="grid-item grid-width-2">
-									<a href="shop-page.php" class="categories-card">
+									<a href="shop-page.php?name=man" class="categories-card">
 										<span class="category-info">
 											<span class="category-info__text">Hot Sale</span>
 											<span class="category-name h2">Men</span>
@@ -45,7 +45,7 @@
 									</a>
 								</div>
 								<div class="grid-item grid-width-2">
-									<a href="shop-page.php" class="categories-card">
+									<a href="shop-page.php?name=shoes" class="categories-card">
 										<span class="category-info">
 											<span class="category-info__text">Hot Sale</span>
 											<span class="category-name h2">Shoes</span>
@@ -54,7 +54,7 @@
 									</a>
 								</div>
 								<div class="grid-item grid-width-2">
-									<a href="shop-page.php" class="categories-card">
+									<a href="shop-page.php?name=bags" class="categories-card">
 										<span class="category-info">
 											<span class="category-info__text">Hot Sale</span>
 											<span class="category-name h2">Bags</span>
@@ -63,7 +63,7 @@
 									</a>
 								</div>
 								<div class="grid-item grid-width-2">
-									<a href="shop-page.php" class="categories-card">
+									<a href="shop-page.php?name=dresses" class="categories-card">
 										<span class="category-info">
 											<span class="category-info__text">Hot Sale</span>
 											<span class="category-name h2">Dresses</span>
@@ -72,7 +72,7 @@
 									</a>
 								</div>
 								<div class="grid-item grid-width-1">
-									<a href="shop-page.php" class="categories-card">
+									<a href="shop-page.php?name=woman" class="categories-card">
 										<span class="category-info">
 											<span class="category-info__text">Hot Sale</span>
 											<span class="category-name h2">Woman</span>
@@ -81,7 +81,7 @@
 									</a>
 								</div>
 								<div class="grid-item grid-width-3">
-									<a href="shop-page.php" class="categories-card">
+									<a href="shop-page.php?name=jacets" class="categories-card">
 										<span class="category-info">
 											<span class="category-info__text">Hot Sale</span>
 											<span class="category-name h2">Jacets</span>
@@ -90,7 +90,7 @@
 									</a>
 								</div>
 								<div class="grid-item grid-width-4">
-									<a href="shop-page.php" class="categories-card">
+									<a href="shop-page.php?name=accessories" class="categories-card">
 										<span class="category-info">
 											<span class="category-info__text">Hot Sale</span>
 											<span class="category-name h2">Accessories</span>
@@ -99,7 +99,7 @@
 									</a>
 								</div>
 								<div class="grid-item grid-width-2">
-									<a href="shop-page.php" class="categories-card">
+									<a href="shop-page.php?name=underwear" class="categories-card">
 										<span class="category-info">
 											<span class="category-info__text">Hot Sale</span>
 											<span class="category-name h2">Underwear</span>

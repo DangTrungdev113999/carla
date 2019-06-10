@@ -48,7 +48,6 @@ $topRated = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.
 							<?php echo $sp['id']; ?>
 							,1)"></span></a></li>
 							<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-							<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 						</ul>
 					</div>
 					<div class="product-card-info">
@@ -115,7 +114,6 @@ $topRated = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.
 								<?php echo $sp['id']; ?>
 								,1)"></span></a></li>
 								<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-								<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 							</ul>
 						</div>
 						<div class="product-card-info">
@@ -175,7 +173,6 @@ $topRated = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.
 									<?php echo $sp['id']; ?>
 									,1)"></span></a></li>
 									<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-									<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 								</ul>
 							</div>
 							<div class="product-card-info">
@@ -235,7 +232,7 @@ $topRated = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.
 											<?php echo $sp['id']; ?>
 											,1)"></span></a></li>
 											<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-											<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
+
 										</ul>
 									</div>
 									<div class="product-card-info">
@@ -296,7 +293,6 @@ $topRated = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.
 												<?php echo $sp['id']; ?>
 												,1)"></span></a></li>
 												<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-												<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 											</ul>
 										</div>
 										<div class="product-card-info">

@@ -2,26 +2,39 @@
 include 'header.php';
 
 $Categories = $_GET['name'] ? $_GET['name'] : null;
-$Products = mysqli_query($conn, 'select * from product');
+
 $LastestProduct = mysqli_query($conn, 'SELECT  * FROM product
 	ORDER BY id DESC LIMIT 3');
 if($Categories === 'woman'){
 	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2');
 	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2
 		ORDER BY p.id DESC LIMIT 3');
-};
-if($Categories === 'man'){
+}
+else if($Categories === 'man'){
 	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 1');
 	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 1
 		ORDER BY p.id DESC LIMIT 3');
-};
-if($Categories === 'accesories'){
+}
+else if($Categories === 'accessories'){
 	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 5');
 	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 5
 		ORDER BY p.id DESC LIMIT 3');
-};
+}
+else{
+	if($Categories){
+		$IdCategory = mysqli_query($conn,"SELECT category.id from category where name = '$Categories' ");
+	$Products = mysqli_query($conn, "SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = '$IdCategory' ");
+	}else{
+		$Products = mysqli_query($conn, 'select * from product');
+	}
+}
 
 
+// get category
+
+
+$CategoryWoman = mysqli_query($conn,'select * from category where parent_id = 2');
+$CategoryMan = mysqli_query($conn,'select * from category where parent_id = 1');
 
 ?>
 <!-- End header -->
@@ -58,41 +71,26 @@ if($Categories === 'accesories'){
 									<li>
 										<a href="shop-page.php">Woman <span class="plus"></span></a>
 										<ul>
-											<li><a>Dresses <span>(26)</span></a></li>
-											<li><a>Underwear <span>(45)</span></a></li>
-											<li><a>Shirt <span>(15)</span></a></li>
-											<li><a>Jacets <span>(10)</span></a></li>
-											<li><a>Sweaters <span>(103)</span></a></li>
+											<?php foreach ($CategoryWoman as $key => $sp) { ?>
+												<li>
+													<a href="shop-page.php?name=<?php echo $sp['name']; ?>">
+														<?php echo $sp['name']; ?>			
+														</a>
+													</li>
+											<?php } ?>
 										</ul>
 									</li>
 									<li>
 										<a href="shop-page.php">Man <span class="plus"></span></a>
 										<ul>
-											<li><a>Dresses <span>(26)</span></a></li>
-											<li><a>Underwear <span>(45)</span></a></li>
-											<li><a>Shirt <span>(15)</span></a></li>
-											<li><a>Jacets <span>(10)</span></a></li>
-											<li><a>Sweaters <span>(103)</span></a></li>
-										</ul>
-									</li>
-									<li>
-										<a href="shop-page.php">Accessories <span class="plus"></span></a>
-										<ul>
-											<li><a>Dresses <span>(26)</span></a></li>
-											<li><a>Underwear <span>(45)</span></a></li>
-											<li><a>Shirt <span>(15)</span></a></li>
-											<li><a>Jacets <span>(10)</span></a></li>
-											<li><a>Sweaters <span>(103)</span></a></li>
-										</ul>
-									</li>
-									<li>
-										<a href="shop-page.php">Shoes <span class="plus"></span></a>
-										<ul>
-											<li><a>Dresses <span>(26)</span></a></li>
-											<li><a>Underwear <span>(45)</span></a></li>
-											<li><a>Shirt <span>(15)</span></a></li>
-											<li><a>Jacets <span>(10)</span></a></li>
-											<li><a>Sweaters <span>(103)</span></a></li>
+											<?php foreach ($CategoryMan as $key => $sp) { ?>
+												<li>
+													<a href="shop-page.php?name=<?php echo $sp['name']; ?>">
+													<?php echo $sp['name']; ?>
+														
+													</a>
+												</li>
+											<?php } ?>
 										</ul>
 									</li>
 								</ul>
