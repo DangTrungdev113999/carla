@@ -36,7 +36,6 @@ $newArrivals = mysqli_query($conn, 'SELECT * FROM PRODUCT ORDER BY ID DESC');
 													<?php echo $sp['id']; ?>
 													,1)"></span></a></li>
 													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-													<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
 												</ul>
 											</div>
 											<div class="product-card-info">
