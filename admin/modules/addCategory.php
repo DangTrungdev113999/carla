@@ -42,8 +42,17 @@ if (isset($_POST['addNew'])) {
 						<input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="parent_id">Parent id</label>
-						<input id="parent_id" type="number" name="parent_id" placeholder="Enter the Parent id"  class="form-control">
+						<label for="parent_id">Parent category</label>
+						<select name="parent_id" class="form-control">
+							<option value="">--choose the parent category--</option>\
+							<?php
+								 $sqlSelect = "SELECT * FROM category where parent_id = 0";
+								 $result = mysqli_query($conn, $sqlSelect);
+								 while ($row = mysqli_fetch_assoc($result)) :
+							?>
+								<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
+							<?php endwhile ?>
+						</select>
 					</div>
 					<div class="form-group">
 						<label for="created">Created</label>
@@ -62,7 +71,7 @@ if (isset($_POST['addNew'])) {
 						</div>
 						<div class="col-sm-6 pl-0">
 							<p class="text-right">
-								<button type="submit" name="addNew" class="btn btn-space btn-primary">Add new</button>
+								<button type="submit" name="addNew" class="btn btn-outline-primary">Add new</button>
 							</p>
 						</div>
 					</div>

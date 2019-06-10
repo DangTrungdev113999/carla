@@ -216,4 +216,81 @@ CREATE TABLE IF NOT EXISTS post (
 	status tinyint(1) DEFAULT '0' COMMENT '0 là chua duy?t, 1 là dã duy?t, 2 là dã giao hàng',
 	created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 
+-- btruy vấn chọn
+-- chọn ra danh sách sản pphaamr bao gồm tên danh mục sử dụng JOIN
+-- SELECT 
+-- 	product.id,
+-- 	product.name,
+-- 	product.price,
+-- 	product.sale_price,
+-- 	category.name as category_name
+-- FROM 
+-- 	product 
+-- JOIN 
+-- 	category 
+-- ON product.category_id = category.id;
+
+-- -- tính tống số sản phẩm của từng danh mục nhu sau
+
+-- SELECT 
+-- 	category.id,
+-- 	category.name,
+-- 	category.status,
+-- 	COUNT(product.id) as 'total_product'
+-- FROM
+-- 	category
+-- JOIN 
+-- 	product 
+-- ON product.category_id = category.id
+-- GROUP BY category.id
+-- -- lấy ra danh sách đơn hàng gồm thông tin của khách hàng
+
+-- SELECT
+-- 	orders.id, orders.created, customer.name, customer.email
+-- FROM orders JOIN customer ON orders.customer_id = customer.id;
+
+-- SELECT
+-- 	orders.id, 
+-- 	orders.created, 
+-- 	customer.name, 
+-- 	customer.email,
+-- 	SUM(order_detail.quantity*order_detail.price) as total_amount
+-- FROM orders JOIN customer ON orders.customer_id = customer.id
+-- JOIN order_detail ON order_detail.order_id = orders.id 
+-- GROUP BY orders.id
+-- -- Láy ra chi tiết sản phẩm của đơn hàng của đơn hàng nào đó theo id của dơn hàng
+-- SELECT 
+-- 	product.id, 
+-- 	product.name,
+-- 	order_detail.quantity,
+-- 	order_detail.price,
+-- 	SUM(order_detail.quantity*order_detail.price) as 'sub_total'
+-- FROM product JOIN order_detail ON product.id = order_detail.product_id
+-- WHERE order_detail.order_id = 1
+-- GROUP BY order_detail.product_id
+
+-- -- Code lấy danh sách các đơn hàng của khách hàng
+-- SELECT id, created
+-- FROM orders WHERE customer_id = 1
+
+-- -- code lấy ra sản phẩm đang sale
+-- SELECT * FROM product WHERE sale_price > 0
+
+-- -- code lấy ra sản phẩm đã bán ( đã bán sẽ có mặt trong order_detail )
+-- SELECT * FROM product WHERE id IN(SELECT DISTINCT(product_id) FROM order_detail)
+-- -- Code lấy ra các sản phẩm chưa bán ( sẽ không có mặt trong order_detail )
+-- SELECT * FROM product WHERE id NOT IN(SELECT DISTINCT(product_id) FROM order_detail)
+-- -- code lấy ra các sản phẩm theo danh mục
+-- SELECT * FROM product WHERE category_id = 1
+-- -- code sắp xếp giá giảm dần từ cao đến thấp
+-- SELECT * FROM product order By price DESC
+-- -- code sắp xếp giá tăng dẫn từ thấp đến cao 
+-- SELECT * FROM product order By price ASC
+-- -- code sắp xếp sản phẩm theo tên từ A-Z
+-- SELECT * FROM product order By name ASC
+-- -- CODE lấy ra sản phẩm có phân trang
+-- -- mỗi trang 3 sản phẩm
+-- SELECT * FROM product LIMIT 0,3
 	

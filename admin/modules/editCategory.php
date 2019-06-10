@@ -11,21 +11,6 @@
 		$ordering = $row[4];
 		$created = $row[5];
 	};
-
-
-	// if(isset($_POST['addNew'])) {
-	// 	$catName = $_POST['name'];
-	// 	$parent_id = $_POST['parent_id'];
-	// 	$ordering = $_POST['ordering'];
-	// 	$created = $_POST['created'];
-	// 	$status = (isset($_POST['status'])) ? isset($_POST['status']) : 0; 
-
-	// 	$sqlUpdate = "UPDATE category SET name = '$catName', parent_id = '$parent_id', 
-	// 	`status` = '$status', ordering = '$ordering', created = '$created' WHERE id=".$_GET['id'];
-
-	// 	mysqli_query($conn, $sqlUpdate) or die("lỗi update danh mục sản phẩm".$sqlUpdate);
-	// 	header("location: index.php?module=categories");
-	// };
 	
 
 	// using function to update data
@@ -67,19 +52,32 @@
 			<div class="card-body">
 				<form action="" name="" method="post" id="basicform" data-parsley-validate="">
 					<div class="form-group">
-						<label for="name">Category name</label>
+						<label for="name" class='text-dark'>Category name</label>
 						<input id="name" type="text" name="name" value="<?php echo $catName ?>" required="" placeholder="Enter the category name"  class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="parent_id">Parent id</label>
-						<input id="parent_id" type="number" value="<?php echo $parent_id ?>" name="parent_id" placeholder="Enter the Parent id"  class="form-control">
+						<label for="parent_id" class='text-dark'>Parent category</label>
+						<select name="parent_id" class="form-control">
+							<option value="">--choose the parent category--</option>\
+							<?php
+								 $sqlSelectParentt_id = "SELECT * FROM category where parent_id = 0 ";
+								 $resultParentt_id = mysqli_query($conn, $sqlSelectParentt_id);
+								 while ($rowParent_id = mysqli_fetch_assoc($resultParentt_id)) :
+								 	$selected = "";
+								 	if ($row[2] === $rowParent_id['id']) {
+								 		$selected = "selected";
+								 	}
+							?>
+								<option  <?php echo $selected ?> value="<?php echo $rowParent_id['id'] ?>"> <?php echo $rowParent_id['name'] ?></option>
+							<?php endwhile ?>
+						</select>
 					</div>
 					<div class="form-group">
-						<label for="created">Created</label>
+						<label for="created" class='text-dark'>Created</label>
 						<input id="created" type="date" value="<?php echo $created ?>" name="created" placeholder="Enter the created"  class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="ordering">Ordering</label>
+						<label for="ordering" class='text-dark'>Ordering</label>
 						<input id="ordering" type="number" value="<?php echo $ordering ?>" name="ordering"  placeholder="Enter the ordering"  class="form-control">
 					</div>
 
