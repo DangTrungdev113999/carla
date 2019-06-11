@@ -117,12 +117,12 @@ CREATE TABLE IF NOT EXISTS product_attribute (
 
 INSERT INTO product_attribute (product_id, attribute_id) values
 (1, 1),(1, 2),(1, 3),(1, 4),(1, 5),(1, 6),(1, 11),(1, 12),(1, 13),(1, 14),(1, 15),(1, 16),
-(2, 1),(2, 2),(2, 3),(2, 4),(2, 5),(2, 6),(2, 11),(2, 12),(2, 13),(2, 14),(1, 15),(1, 16),
-(3, 1),(3, 2),(3, 3),(3, 4),(3, 5),(3, 6),(3, 11),(3, 12),(3, 13),(3, 14),(1, 15),(1, 16),
-(4, 1),(4, 2),(4, 3),(4, 4),(4, 5),(4, 6),(4, 11),(4, 12),(4, 13),(4, 14),(1, 15),(1, 16),
-(5, 1),(5, 2),(5, 3),(5, 4),(5, 5),(5, 6),(5, 11),(5, 12),(5, 13),(5, 14),(1, 15),(1, 16),
-(6, 1),(6, 2),(6, 3),(6, 4),(6, 5),(6, 6),(6, 11),(6, 12),(6, 13),(6, 14),(1, 15),(1, 16),
-(7, 1),(7, 2),(7, 3),(7, 4),(7, 5),(7, 6),(7, 11),(7, 12),(7, 13),(7, 14),(1, 15),(1, 16);
+(2, 1),(2, 2),(2, 3),(2, 4),(2, 5),(2, 6),(2, 11),(2, 12),(2, 13),(2, 14),(2, 15),(2, 16),
+(3, 1),(3, 2),(3, 3),(3, 4),(3, 5),(3, 6),(3, 11),(3, 12),(3, 13),(3, 14),(3, 15),(3, 16),
+(4, 1),(4, 2),(4, 3),(4, 4),(4, 5),(4, 6),(4, 11),(4, 12),(4, 13),(4, 14),(4, 15),(4, 16),
+(5, 1),(5, 2),(5, 3),(5, 4),(5, 5),(5, 6),(5, 11),(5, 12),(5, 13),(5, 14),(5, 15),(5, 16),
+(6, 1),(6, 2),(6, 3),(6, 4),(6, 5),(6, 6),(6, 11),(6, 12),(6, 13),(6, 14),(6, 15),(6, 16),
+(7, 1),(7, 2),(7, 3),(7, 4),(7, 5),(7, 6),(7, 11),(7, 12),(7, 13),(7, 14),(7, 15),(7, 16);
 
 
 -- ===============================================
@@ -217,80 +217,4 @@ CREATE TABLE IF NOT EXISTS post (
 	created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- 
--- btruy vấn chọn
--- chọn ra danh sách sản pphaamr bao gồm tên danh mục sử dụng JOIN
--- SELECT 
--- 	product.id,
--- 	product.name,
--- 	product.price,
--- 	product.sale_price,
--- 	category.name as category_name
--- FROM 
--- 	product 
--- JOIN 
--- 	category 
--- ON product.category_id = category.id;
 
--- -- tính tống số sản phẩm của từng danh mục nhu sau
-
--- SELECT 
--- 	category.id,
--- 	category.name,
--- 	category.status,
--- 	COUNT(product.id) as 'total_product'
--- FROM
--- 	category
--- JOIN 
--- 	product 
--- ON product.category_id = category.id
--- GROUP BY category.id
--- -- lấy ra danh sách đơn hàng gồm thông tin của khách hàng
-
--- SELECT
--- 	orders.id, orders.created, customer.name, customer.email
--- FROM orders JOIN customer ON orders.customer_id = customer.id;
-
--- SELECT
--- 	orders.id, 
--- 	orders.created, 
--- 	customer.name, 
--- 	customer.email,
--- 	SUM(order_detail.quantity*order_detail.price) as total_amount
--- FROM orders JOIN customer ON orders.customer_id = customer.id
--- JOIN order_detail ON order_detail.order_id = orders.id 
--- GROUP BY orders.id
--- -- Láy ra chi tiết sản phẩm của đơn hàng của đơn hàng nào đó theo id của dơn hàng
--- SELECT 
--- 	product.id, 
--- 	product.name,
--- 	order_detail.quantity,
--- 	order_detail.price,
--- 	SUM(order_detail.quantity*order_detail.price) as 'sub_total'
--- FROM product JOIN order_detail ON product.id = order_detail.product_id
--- WHERE order_detail.order_id = 1
--- GROUP BY order_detail.product_id
-
--- -- Code lấy danh sách các đơn hàng của khách hàng
--- SELECT id, created
--- FROM orders WHERE customer_id = 1
-
--- -- code lấy ra sản phẩm đang sale
--- SELECT * FROM product WHERE sale_price > 0
-
--- -- code lấy ra sản phẩm đã bán ( đã bán sẽ có mặt trong order_detail )
--- SELECT * FROM product WHERE id IN(SELECT DISTINCT(product_id) FROM order_detail)
--- -- Code lấy ra các sản phẩm chưa bán ( sẽ không có mặt trong order_detail )
--- SELECT * FROM product WHERE id NOT IN(SELECT DISTINCT(product_id) FROM order_detail)
--- -- code lấy ra các sản phẩm theo danh mục
--- SELECT * FROM product WHERE category_id = 1
--- -- code sắp xếp giá giảm dần từ cao đến thấp
--- SELECT * FROM product order By price DESC
--- -- code sắp xếp giá tăng dẫn từ thấp đến cao 
--- SELECT * FROM product order By price ASC
--- -- code sắp xếp sản phẩm theo tên từ A-Z
--- SELECT * FROM product order By name ASC
--- -- CODE lấy ra sản phẩm có phân trang
--- -- mỗi trang 3 sản phẩm
--- SELECT * FROM product LIMIT 0,3
-	
