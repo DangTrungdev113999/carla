@@ -7,10 +7,18 @@ if (isset($_GET['module']) && isset($_GET['id'])) {
 	$result = mysqli_query($conn, $sqlSelect) or die('lỗi truy vấn sản phẩm '.$sqlSelect);
 	$row = mysqli_fetch_assoc($result);
 	$imgOld .= $row['image'];
+
+	$sqlSelectImg = "SELECT * FROM  product_image where product_id=".$_GET['id'];
+	$resultImg = mysqli_query($conn, $sqlSelectImg);
+	$rowImg = mysqli_fetch_assoc($resultImg);
 }
 
 if (isset($_POST['addNew'])) {
 
+			// echo '<pre>';
+			// print_r(count($rowImg));
+			// echo '</pre>';
+			// die;
 	$path = '../public/img';
 	$fileName = "";
 	$type = [
@@ -56,23 +64,65 @@ if (isset($_POST['addNew'])) {
 	$sqlUpdate = updateData($table, $data, $condition);
 
 	if (mysqli_query($conn, $sqlUpdate)) {
-		$product_id = mysqli_insert_id($conn);
+		$product_id = $_GET['id'];
+		$sqlUpdateAttr = '';
+		mysqli_query($conn, 'DELETE FROM `product_attribute` WHERE product_id ='.$_GET['id']);
 		if (count($_POST['color']) || count($_POST['size'])) {
 		 	foreach ($_POST['color'] as $idColor) {
-		 		$sqlUpdateAttr = "UPDATE product_attribute SET product_id = '$product_id', attribute_id = '$idColor' WHERE id =".$_GET['id'];
-		 		mysqli_query($conn, $sqlUpdateAttr);
+		 		$sqlInsertAttr = "INSERT INTO product_attribute(product_id, attribute_id) VALUES('$product_id', '$idColor');";
+		 		mysqli_query($conn, $sqlInsertAttr);
 		 	}
 
 		 	foreach ($_POST['size'] as $idSize) {
-		 		$sqlUpdateAttr = "UPDATE product_attribute SET product_id = '$product_id', attribute_id = '$idSize' WHERE id =".$_GET['id'];
-		 		mysqli_query($conn, $sqlUpdateAttr);
+		 		$sqlInsertAttr = "INSERT INTO product_attribute(product_id, attribute_id) VALUES('$product_id', '$idSize');";
+		 		mysqli_query($conn, $sqlInsertAttr);
 		 	}
+
 		 }
+
+		if (($_FILES["images"]['name']) && count($_FILES['images']['name']) > 0) {
+			mysqli_query($conn, "DELETE FROM product_image where product_id = ".$_GET['id']);
+		 	$n = count($_FILES['images']['name']);
+		 	for ( $i = 0; $i < $n; $i++) {
+		 		$fileNames = '';
+			 	if (in_array($_FILES['images']['type'][$i], $type)) {
+
+			 		if ($_FILES['images']['size'][$i] <= 9999999) {
+
+			 			if ($_FILES['images']['error'][$i] === 0) {
+
+			 				$filename = $_FILES["images"]["tmp_name"][$i];
+			 				$destination = $path.$_FILES['images']['name'][$i];
+			 				if (move_uploaded_file($filename, $destination)) {
+				 				$fileNames .= $_FILES['images']['name'][$i];
+				 				$sqlInsertPro_img = "INSERT INTO product_image(product_id, image) VALUES ('$product_id', '$fileNames')";
+				 				mysqli_query($conn, $sqlInsertPro_img) or die('lỗi thêm mới nhiều ảnh sản phẩm '.$sqlInsertPro_img);
+			 				}
+			 			} else {
+			 				echo 'lỗi file';
+			 			}
+			 		} else {
+			 			echo 'dung lượng ảnh quá lớn';
+			 		}
+			 	} else {
+			 		echo 'không đúng định dạng';
+			 	}
+		 	}
+		} else {
+			mysqli_query($conn, "DELETE FROM product_image where product_id = ".$_GET['id']);
+		 	$n = count($rowImg);
+		 	$defaultImg = ['team-1.jpg' , 'team-2.jpg', 'team-3.jpg'];
+		 	for ( $i = 0; $i < $n; $i++) {
+ 				$fileNames .= $defaultImg[$i];
+ 				$sqlInsertPro_img = "INSERT INTO product_image(product_id, image) VALUES ('$product_id', '$fileNames')";
+ 				mysqli_query($conn, $sqlInsertPro_img) or die('lỗi thêm mới nhiều ảnh sản phẩm '.$sqlInsertPro_img);
+		 	}
+		}
+
 		header("location: index.php?module=products");
 	} else {
 		die("lỗi update sản phẩm ".$sqlUpdate);
 	}
-
 };
 ?>
 
@@ -161,10 +211,11 @@ if (isset($_POST['addNew'])) {
 						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div>Color</div>
 							<?php 
-							$sqlSelectAttr = "SELECT a.*, pa.attribute_id as 'attributeId' FROM attribute a 
-							left join product_attribute pa on a.id = pa.attribute_id
+							$sqlSelectAttr = "SELECT a.*, pa.product_id as 'attributeId' FROM attribute a 
+							left join product_attribute pa on a.id = pa.product_id
 							WHERE a.type = 'color'
-							GROUP BY a.id ";
+							GROUP BY a.id
+							";
 							$resultAttr = mysqli_query($conn, $sqlSelectAttr);
 							while($rowAttr = mysqli_fetch_assoc($resultAttr)) :
 								$selectedColor = false;

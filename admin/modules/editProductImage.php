@@ -98,7 +98,7 @@
 					</div>
 					<div class="form-group">
 						<label for="image">Image</label>
-						<img src="../<?php echo $row['image'] ?>" width="200" class="img-responsive img-thumbnail">
+						<img src="../public/img/<?php echo $row['image'] ?>" width="200" class="img-responsive img-thumbnail">
 						<input id="image" type="file" name="image"  class="form-control">
 					</div class="form-group">
 					<div class="form-group">

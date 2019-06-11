@@ -13,7 +13,6 @@
 			if (in_array($_FILES['image']['type'], $type)) {
 				if ($_FILES['imge']['size'] < 999999) {
 					if ($_FILES['image']['error'] === 0) {
-
 						$filename = $_FILES['image']['tmp_name'];
 						$destination = $path.$_FILES['image']['name'];
 						move_uploaded_file($filename, $destination);
@@ -64,7 +63,7 @@
 					<div class="form-group">
 						<label for="product_id">Product's Image</label>
 						<select name="product_id" id="product_id" class="form-control">
-							<option value="">--Choose category type--</option>
+							<option value="">--Choose Product--</option>
 							<?php 
 								$sqlSelect = "SELECT * FROM product";
 								$result = mysqli_query($conn, $sqlSelect) or die("lỗi truy xuất sản phẩm".$sqlSelect);

@@ -90,8 +90,7 @@
 				 		echo 'không đúng định dạng';
 				 	}
 			 	}
-
-		}; 
+			}; 
 			header("location: index.php?module=products");
 		} else {
 			die('lỗi thêm mới sản phẩm '.$sqlInsert);

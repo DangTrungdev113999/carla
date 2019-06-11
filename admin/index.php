@@ -62,6 +62,9 @@
     <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- tiny -->
+    <script src="assets/tinymce/config.js"></script>
+    <script src="assets/tinymce/tinymce.min.js"></script>
     <!-- slimscroll js -->
     <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <!-- main js -->
