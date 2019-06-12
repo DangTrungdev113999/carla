@@ -165,6 +165,7 @@
 			$( "#closeCheckout" ).load( "http://localhost:88/carla/cart.php #closeCheckout");
 			$( "#sub-cart" ).load( "http://localhost:88/carla #sub-cart");
 			$( "#sizeCart" ).load( "http://localhost:88/carla/shop-page.php #sizeCart2");
+			$( "#checkoutCart" ).load( "http://localhost:88/carla/checkout.php #checkoutCart");
 		});
 	}
 	}

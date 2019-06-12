@@ -1,5 +1,10 @@
 <?php
-	include 'header.php'
+	include 'header.php';
+	if(isset($_SESSION['cart'])){
+		foreach ($_SESSION['cart'] as $key => $value) {
+			$total+=$value['price'];
+		}
+	}
 ?>
 		<!-- End header -->
 		<!-- Begin page name -->
@@ -67,10 +72,22 @@
 									<div class="invoice-info">
 										<div class="inner-invoice">
 											<div class="list-invoice">
-												<h5>Subtotal : <span>$335</span></h5>
+												<h5>Subtotal : 
+													<span><?php 
+													if(isset($total)){
+														echo $total;
+													}
+													else{
+														echo 0;
+													}
+													?> $
+													</span></h5>
 												<p>Shipping : <span>$10</span></p>
 											</div>
-											<h3>Order Total : <span>$345</span></h3>
+											<h3>Order Total : <span>
+												<?php echo isset($total) ? $total+=10 : '0' ?>
+													$
+												</span></h3>
 										</div>
 									</div>
 									<button type="submit" class="border">Complete Order</button>

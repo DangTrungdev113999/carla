@@ -113,7 +113,7 @@ $products = mysqli_query($conn, 'select * from product');
 								</li>
 								<li><a href="shop-page.php?name=woman">Woman</a></li>
 								<li><a href="shop-page.php?name=man">Man</a></li>
-								<li><a href="shop-page.php?name=accesories">Accesories</a></li>
+								<li><a href="shop-page.php?name=accessories">Accesories</a></li>
 							</ul>
 							<div class="header-search">
 								<span class="mdi mdi-magnify"></span>
