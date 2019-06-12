@@ -1,7 +1,7 @@
 <?php
 
 $imgOld = "";
-
+$id  = $_GET['id'];
 if (isset($_GET['module']) && isset($_GET['id'])) {
 	$sqlSelect = "SELECT * FROM product p WHERE p.id = ".$_GET['id'];
 	$result = mysqli_query($conn, $sqlSelect) or die('lỗi truy vấn sản phẩm '.$sqlSelect);
@@ -211,21 +211,25 @@ if (isset($_POST['addNew'])) {
 						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div>Color</div>
 							<?php 
-							$sqlSelectAttr = "SELECT a.*, pa.product_id as 'attributeId' FROM attribute a 
-							left join product_attribute pa on a.id = pa.product_id
-							WHERE a.type = 'color'
-							GROUP BY a.id
-							";
+							// lay nhung attr da gan cho sp nay
+							// 
+							$qratr_old = mysqli_query($conn,"SELECT DISTINCT(product_id),attribute_id FROM product_attribute WHERE product_id = $id");
+
+							$old_atr = [];
+
+							foreach($qratr_old as $atr){
+								$old_atr[] = $atr['attribute_id'];
+							}
+
+							$sqlSelectAttr = "SELECT * FROM attribute where type = 'color'";
 							$resultAttr = mysqli_query($conn, $sqlSelectAttr);
 							while($rowAttr = mysqli_fetch_assoc($resultAttr)) :
-								$selectedColor = false;
-								if ($rowAttr["id"] === $rowAttr['attributeId']) { //  need fix
-									$selectedColor = true;
-								}
+								$checked = in_array($rowAttr['id'], $old_atr ) ? 'checked' : '';
+
 								?>
 								<div class="checkbox d-inline-block ml-3">
 									<label class="be-checkbox custom-control custom-checkbox">
-										<input type="checkbox" 	<?php echo ($selectedColor) ? 'checked' : '' ?> name='color[]' value="<?php echo $rowAttr['id'] ?>" class="custom-control-input">
+										<input type="checkbox" 	<?php echo $checked ?> name='color[]' value="<?php echo $rowAttr['id'] ?>" class="custom-control-input">
 										<span class="custom-control-label" style="background: <?php echo  $rowAttr['value'] ?>; height: 25px; width: 25px; border-radius: 100%; display: inline-block;box-shadow: 2px 2px 3px gray;"></span>
 									</label>
 								</div>
@@ -235,20 +239,22 @@ if (isset($_POST['addNew'])) {
 						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div>Size</div>
 							<?php 
-							$sqlSelectAttr = "SELECT a.*, pa.attribute_id as 'attributeId' FROM attribute a 
-								left join product_attribute pa on a.id = pa.attribute_id
-								WHERE a.type = 'size'
-								GROUP BY a.id ";
+
+							$qratr_old = mysqli_query($conn,"SELECT DISTINCT(product_id),attribute_id FROM product_attribute WHERE product_id = $id");
+							$old_atr = [];
+
+							foreach($qratr_old as $atr){
+								$old_atr[] = $atr['attribute_id'];
+							}
+
+							$sqlSelectAttr = "SELECT * FROM attribute where type = 'size'";
 							$resultAttr = mysqli_query($conn, $sqlSelectAttr);
 							while($rowAttr = mysqli_fetch_assoc($resultAttr)) :
-								$selectedSize = false;
-								if ($rowAttr["id"] === $rowAttr['attributeId']) { //  need fix
-									$selectedSize = true;
-								}
+								$checked = (in_array($rowAttr['id'], $old_atr)) ? 'checked' : '';
 								?>
-								<div class="checkbox d-inline-block ml-3">
+								<div class="checkbox d-inline-block ml-3">	
 									<label class="be-checkbox custom-control custom-checkbox">
-										<input type="checkbox" <?php echo ($selectedSize) ? 'checked' : "" ?> name='size[]' value="<?php echo $rowAttr['id'] ?>" class="custom-control-input"><span class="custom-control-label"><?php echo  strtoupper($rowAttr['value']) ?></span>
+										<input type="checkbox" <?php echo $checked ?> name='size[]' value="<?php echo $rowAttr['id'] ?>" class="custom-control-input"><span class="custom-control-label"><?php echo  strtoupper($rowAttr['value']) ?></span>
 									</label>
 								</div>
 							<?php endwhile; ?>
