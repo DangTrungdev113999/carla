@@ -63,8 +63,8 @@
     <!-- bootstap bundle js -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- tiny -->
-    <script src="assets/tinymce/config.js"></script>
     <script src="assets/tinymce/tinymce.min.js"></script>
+    <script src="assets/tinymce/config.js"></script>
     <!-- slimscroll js -->
     <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <!-- main js -->
