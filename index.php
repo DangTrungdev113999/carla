@@ -1,8 +1,7 @@
 <?php
+ob_start();
 include 'header.php';
-
 $products = mysqli_query($conn, 'select * from product');
-
 ?>
 <!-- End header -->
 <!-- Begin home content -->

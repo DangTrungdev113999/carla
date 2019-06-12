@@ -28,9 +28,9 @@
 								</p>
 								<div class="inner-wrap">
 									<a href="cart.php"><span class="mdi mdi-pencil"></span></a>
-									<span class="mdi mdi-close delete-product"
+									<span class="mdi mdi-close"
 									onclick= "deleteProduct(<?php echo $key; ?>)"
-
+											
 									></span>
 								</div>
 							</div>

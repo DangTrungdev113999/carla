@@ -2,7 +2,8 @@
 include 'header.php';
 
 $Categories = $_GET['name'] ? $_GET['name'] : null;
-
+$IdCategory = mysqli_query($conn,'SELECT category.id from category where category.name = '.strval($Categories ));
+echo $IdCategory;
 $LastestProduct = mysqli_query($conn, 'SELECT  * FROM product
 	ORDER BY id DESC LIMIT 3');
 if($Categories === 'woman'){
@@ -21,9 +22,9 @@ else if($Categories === 'accessories'){
 		ORDER BY p.id DESC LIMIT 3');
 }
 else{
-	if($Categories){
-		$IdCategory = mysqli_query($conn,"SELECT category.id from category where name = '$Categories' ");
-	$Products = mysqli_query($conn, "SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = '$IdCategory' ");
+	if(isset($Categories)){
+
+			$Products = mysqli_query($conn, "SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = '$IdCategory' ");
 	}else{
 		$Products = mysqli_query($conn, 'select * from product');
 	}
@@ -44,11 +45,13 @@ $CategoryMan = mysqli_query($conn,'select * from category where parent_id = 1');
 		<!-- page-name.jpg -->
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Shop Page 1</h1>
+				<h1>Shop Page <?php 		
+				print_r($IdCategory); 		
+				print_r($Categories); ?></h1>
 				<ul class="bread-crumbs">
 					<li><a href="index.php">Home</a></li>
 					<li><p>Pages</p></li>
-					<li><p>Shop Page 1</p></li>
+					<li><p><?php echo $Categories; ?></p></li>
 				</ul>
 			</div>
 		</div>

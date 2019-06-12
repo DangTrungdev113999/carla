@@ -29,8 +29,8 @@
 							<div class="grid">
 								<div class="grid-item">
 									<div class="blog-card">
-										<a href="single-post.html" class="post-preview"><img src="public/img/blog-1.jpg" alt="img"></a>
-										<a href="single-post.html" class="h3">Fashion Trands 2019</a>
+										<a href="single-post.php" class="post-preview"><img src="public/img/blog-1.jpg" alt="img"></a>
+										<a href="single-post.php" class="h3">Fashion Trands 2019</a>
 										<ul class="article-meta">
 											<li>
 												<time datetime="2019-01-02">2 Jan 2019</time>
@@ -43,8 +43,8 @@
 								</div>
 								<div class="grid-item">
 									<div class="blog-card">
-										<a href="single-post.html" class="post-preview"><img src="public/img/blog-2.jpg" alt="img"></a>
-										<a href="single-post.html" class="h3">Little Black Dress</a>
+										<a href="single-post.php" class="post-preview"><img src="public/img/blog-2.jpg" alt="img"></a>
+										<a href="single-post.php" class="h3">Little Black Dress</a>
 										<ul class="article-meta">
 											<li>
 												<time datetime="2019-01-02">2 Jan 2019</time>
@@ -57,8 +57,8 @@
 								</div>
 								<div class="grid-item">
 									<div class="blog-card">
-										<a href="single-post.html" class="post-preview"><img src="public/img/blog-3.jpg" alt="img"></a>
-										<a href="single-post.html" class="h3">Street Fashion Look  Book</a>
+										<a href="single-post.php" class="post-preview"><img src="public/img/blog-3.jpg" alt="img"></a>
+										<a href="single-post.php" class="h3">Street Fashion Look  Book</a>
 										<ul class="article-meta">
 											<li>
 												<time datetime="2019-01-02">2 Jan 2019</time>
@@ -71,8 +71,8 @@
 								</div>
 								<div class="grid-item">
 									<div class="blog-card">
-										<a href="single-post.html" class="post-preview"><img src="public/img/blog-4.jpg" alt="img"></a>
-										<a href="single-post.html" class="h3">New York Fashion  Week</a>
+										<a href="single-post.php" class="post-preview"><img src="public/img/blog-4.jpg" alt="img"></a>
+										<a href="single-post.php" class="h3">New York Fashion  Week</a>
 										<ul class="article-meta">
 											<li>
 												<time datetime="2019-01-02">2 Jan 2019</time>
@@ -85,8 +85,8 @@
 								</div>
 								<div class="grid-item">
 									<div class="blog-card">
-										<a href="single-post.html" class="post-preview"><img src="public/img/blog-5.jpg" alt="img"></a>
-										<a href="single-post.html" class="h3">Fashion Jackets 2019</a>
+										<a href="single-post.php" class="post-preview"><img src="public/img/blog-5.jpg" alt="img"></a>
+										<a href="single-post.php" class="h3">Fashion Jackets 2019</a>
 										<ul class="article-meta">
 											<li>
 												<time datetime="2019-01-02">2 Jan 2019</time>
@@ -99,8 +99,8 @@
 								</div>
 								<div class="grid-item">
 									<div class="blog-card">
-										<a href="single-post.html" class="post-preview"><img src="public/img/blog-6.jpg" alt="img"></a>
-										<a href="single-post.html" class="h3">Street Fashion Look  Book 2019</a>
+										<a href="single-post.php" class="post-preview"><img src="public/img/blog-6.jpg" alt="img"></a>
+										<a href="single-post.php" class="h3">Street Fashion Look  Book 2019</a>
 										<ul class="article-meta">
 											<li>
 												<time datetime="2019-01-02">2 Jan 2019</time>
@@ -113,8 +113,8 @@
 								</div>
 								<div class="grid-item">
 									<div class="blog-card">
-										<a href="single-post.html" class="post-preview"><img src="public/img/blog-7.jpg" alt="img"></a>
-										<a href="single-post.html" class="h3">Clodia Fashion Store</a>
+										<a href="single-post.php" class="post-preview"><img src="public/img/blog-7.jpg" alt="img"></a>
+										<a href="single-post.php" class="h3">Clodia Fashion Store</a>
 										<ul class="article-meta">
 											<li>
 												<time datetime="2019-01-02">2 Jan 2019</time>
@@ -127,8 +127,8 @@
 								</div>
 								<div class="grid-item">
 									<div class="blog-card">
-										<a href="single-post.html" class="post-preview"><img src="public/img/blog-8.jpg" alt="img"></a>
-										<a href="single-post.html" class="h3">About Clodia Shop</a>
+										<a href="single-post.php" class="post-preview"><img src="public/img/blog-8.jpg" alt="img"></a>
+										<a href="single-post.php" class="h3">About Clodia Shop</a>
 										<ul class="article-meta">
 											<li>
 												<time datetime="2019-01-02">2 Jan 2019</time>
@@ -141,8 +141,8 @@
 								</div>
 								<div class="grid-item">
 									<div class="blog-card">
-										<a href="single-post.html" class="post-preview"><img src="public/img/blog-9.jpg" alt="img"></a>
-										<a href="single-post.html" class="h3">Clodia Fashion Shop</a>
+										<a href="single-post.php" class="post-preview"><img src="public/img/blog-9.jpg" alt="img"></a>
+										<a href="single-post.php" class="h3">Clodia Fashion Shop</a>
 										<ul class="article-meta">
 											<li>
 												<time datetime="2019-01-02">2 Jan 2019</time>
@@ -185,27 +185,27 @@
 								<ul class="latest-post-list">
 									<li>
 										<figure class="latest-post">
-											<a href="single-post.html"><img src="public/img/latest-post-1.jpg" alt="img"></a>
+											<a href="single-post.php"><img src="public/img/latest-post-1.jpg" alt="img"></a>
 											<figcaption class="latest-post__desc">
-												<a href="single-post.html" class="h5">Preaty Little White Dress</a>
+												<a href="single-post.php" class="h5">Preaty Little White Dress</a>
 												<time datetime="2018-10-27">27 Oct 2018</time>
 											</figcaption>
 										</figure>
 									</li>
 									<li>
 										<figure class="latest-post">
-											<a href="single-post.html"><img src="public/img/latest-post-2.jpg" alt="img"></a>
+											<a href="single-post.php"><img src="public/img/latest-post-2.jpg" alt="img"></a>
 											<figcaption class="latest-post__desc">
-												<a href="single-post.html" class="h5">Tranding Items 2019</a>
+												<a href="single-post.php" class="h5">Tranding Items 2019</a>
 												<time datetime="2018-10-27">27 Oct 2018</time>
 											</figcaption>
 										</figure>
 									</li>
 									<li>
 										<figure class="latest-post">
-											<a href="single-post.html"><img src="public/img/latest-post-3.jpg" alt="img"></a>
+											<a href="single-post.php"><img src="public/img/latest-post-3.jpg" alt="img"></a>
 											<figcaption class="latest-post__desc">
-												<a href="single-post.html" class="h5">Woman Fashion Tranding 2019</a>
+												<a href="single-post.php" class="h5">Woman Fashion Tranding 2019</a>
 												<time datetime="2018-10-27">27 Oct 2018</time>
 											</figcaption>
 										</figure>

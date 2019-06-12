@@ -90,7 +90,7 @@ include 'header.php'
 											<div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
 												<div class="cart-product_options">
 													<span 
-													class="mdi mdi-close delete-cart_product"
+													class="mdi mdi-close"
 													onclick="deleteProduct(<?php echo $key; ?>)"
 													></span>
 													<span class="mdi mdi-border-color correct_product"></span>
@@ -142,7 +142,7 @@ include 'header.php'
 						<?php if(isset($total)){ ?>
 							<div class="invoice" id="totalPrice">
 								<div class="invoice-info">
-									<div class="inner-invoice">
+									<div class="inner-invoice" id="checkoutCart">
 										<div class="list-invoice">
 											<h5>Subtotal : <span><?php 
 											if(isset($total)){
@@ -167,7 +167,7 @@ include 'header.php'
 										?></span></h3>
 									</div>
 								</div>
-								<a href="checkout.html" class="button border" 
+								<a href="checkout.php" class="button border" 
 								id="closeCheckout" >Procesed to Checkout</a>
 							</div>
 						<?php } ?>

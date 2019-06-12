@@ -113,7 +113,7 @@ $products = mysqli_query($conn, 'select * from product');
 								</li>
 								<li><a href="shop-page.php?name=woman">Woman</a></li>
 								<li><a href="shop-page.php?name=man">Man</a></li>
-								<li><a href="shop-page.php?name=accesories">Accesories</a></li>
+								<li><a href="shop-page.php?name=accessories">Accesories</a></li>
 							</ul>
 							<div class="header-search">
 								<span class="mdi mdi-magnify"></span>
@@ -131,9 +131,15 @@ $products = mysqli_query($conn, 'select * from product');
 						</nav>
 					</div>
 					<div id="AcountContainer">
+						<?php 
+						if(empty($_SESSION['login'])){
+							$color='black';
+						}else{
+							$color='blue';
+						} ?>
 						<div class="cart-count" >
 							<a 
-							style="color:black;
+							style="color:<?php echo $color; ?>;
 							text-align: center;
 							font-size: 50px;
 							margin: 30px;" 
