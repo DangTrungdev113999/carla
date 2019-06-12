@@ -131,9 +131,15 @@ $products = mysqli_query($conn, 'select * from product');
 						</nav>
 					</div>
 					<div id="AcountContainer">
+						<?php 
+						if(empty($_SESSION['login'])){
+							$color='black';
+						}else{
+							$color='blue';
+						} ?>
 						<div class="cart-count" >
 							<a 
-							style="color:black;
+							style="color:<?php echo $color; ?>;
 							text-align: center;
 							font-size: 50px;
 							margin: 30px;" 

@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS account (
 
 INSERT INTO account(name, email, phone, password, address, level) 
 VALUES("trung", "trung@gmail.com", "01234", "123123", "hà nội",1),
-("luan", "luan@gmail.com", "01234", "123123", "hà nội",1);
+("luan", "luan@gmail.com", "01234", "123123", "hà nội",1),
+("khach", "khach@gmail.com", "123", "123", "hà nội",0);
 
 CREATE TABLE IF NOT EXISTS category (
   id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
