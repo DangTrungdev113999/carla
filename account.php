@@ -29,17 +29,18 @@
 						<div class="account-block rbd">							
 							<h3>Log In Your Account</h3>						
 							<p>Aliquam sodales faucibus sapien, ut tristique quam imperdiet non. Nullam et felis eros. Cras vehicula convallis nisi.</p>
-							<form class="account-form">
-								<input type="text" placeholder="Login" id="_login" >
-								<input type="password"  placeholder="Password" id="_password">
+							<form class="account-form" method="POST" action="uploads/CreateAccount.php">
+								<input type="text" name="username" placeholder="Login" id="_login" >
+								<input type="password" name="password"  placeholder="Password" id="_password">
 								<div class="controls">
 									<input type="radio" name="keep" id="keep">
 									<label for="keep">Keep me logged in</label>
 									<a href="#">Forgot Password?</a>
 								</div>
-								<a class="btn btn-primary"
+								<button class="btn btn-primary"> Login </button>
+								<!-- <a class="btn btn-primary"
 								href="http://localhost:88/carla/account.php"
-								 onclick='Login()'>Login</a>
+								 onclick='Login()'>Login</a> -->
 							</form>
 						</div>
 					</div>
@@ -49,7 +50,7 @@
 						<div class="account-block">
 							<h3>Don`t Have an Acoount?</h3>
 							<p>Aliquam sodales faucibus sapien, ut tristique quam imperdiet non. Nullam et felis eros. Cras vehicula convallis nisi.</p>
-							<form  class="account-form">
+							<form  class="account-form" >
 								<div class="input-area">
 									<div class="input-wrap">
 										<input type="text" name="name" placeholder="Name">
@@ -105,12 +106,13 @@
 		<div class="bg-popup"></div>
 		<div class="back-top" id="backTop"><p>up!</p></div>
 		<script>
-			function Login(){
-				let login = _login.value;
-				let password = _password.value;
-				$.post('uploads/CreateAccount.php',{"username":login,"password":password},(data)=>{
-				})
-			}
+			// function Login(){
+			// 	let login = _login.value;
+			// 	let password = _password.value;
+			// 	$.post('uploads/CreateAccount.php',{"username":login,"password":password},(data)=>{
+			// 		console.log(data);
+			// 	})
+			// }
 			function logOut(){
 				if(confirm('Do you want log out ?')){
 				$.post('uploads/logOut.php',{},(data)=>{
