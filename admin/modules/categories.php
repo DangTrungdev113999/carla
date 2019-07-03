@@ -42,7 +42,7 @@
                     </thead>
                     <tbody>
                     <?php
-                    		$sqlSelect = "SELECT * FROM category";
+                    		$sqlSelect = "SELECT * FROM category order by id desc";
                     		$result = mysqli_query($conn, $sqlSelect) or die('lỗi truy xuất danh sách danh mục');
                     		if (mysqli_num_rows($result) > 0) {
                     			$count = 0;

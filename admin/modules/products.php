@@ -61,9 +61,12 @@
                             <td><?php echo ($row['status']) ? 'shown' : 'hide' ?></td>
                             <td><?php echo $row['created'] ?></td>
                             <td class="btn-group-xs">
-                            	<a href="index.php?module=editProduct&id=<?php echo $row['id'] ?>" class="badge badge-primary">
-                            		<i class="fas fa-edit fas-xs"></i>
+                            	<a href="index.php?module=showProduct&id=<?php echo $row['id'] ?>" class="badge badge-success">
+                            		<i class="fas fa-street-view"></i>
                             	</a>
+                                <a href="index.php?module=editProduct&id=<?php echo $row['id'] ?>" class="badge badge-primary">
+                                    <i class="fas fa-edit fas-xs"></i>
+                                </a>
                             	<a href="index.php?module=delete&table=product&location=products&id=<?php echo $row['id'] ?>" class="badge badge-danger" onclick="return confirm('Are you sure want to delete it ?')">
                             		<i class="fas fa-trash-alt fas-xs"></i>
                             	</a>

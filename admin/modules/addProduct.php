@@ -20,9 +20,9 @@
 					if ($_FILES['image']['error'] === 0) {
 						// pass file to server
 						$filename = $_FILES["image"]["tmp_name"];
-						$destination = $path.$_FILES['image']['name'];
+						$destination = $path.time().'-'.$_FILES['image']['name'];
 						move_uploaded_file($filename, $destination);
-						$fileName .= $_FILES['image']['name'];
+						$fileName .= time().'-'.$_FILES['image']['name'];
 					} else {
 						echo 'lỗi file';
 					}
@@ -74,9 +74,9 @@
 				 			if ($_FILES['images']['error'][$i] === 0) {
 
 				 				$filename = $_FILES["images"]["tmp_name"][$i];
-				 				$destination = $path.$_FILES['images']['name'][$i];
+				 				$destination = $path.time().'-'.$_FILES['images']['name'][$i];
 				 				if (move_uploaded_file($filename, $destination)) {
-					 				$fileNames .= $_FILES['images']['name'][$i];
+					 				$fileNames .= time().'-'.$_FILES['images']['name'][$i];
 					 				$sqlInsertPro_img = "INSERT INTO product_image(product_id, image) VALUES ('$product_id', '$fileNames')";
 					 				mysqli_query($conn, $sqlInsertPro_img) or die('lỗi thêm mới nhiều ảnh sản phẩm '.$sqlInsertPro_img);
 				 				}
@@ -149,33 +149,39 @@
 
 
 					<div class="row">
-						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
 							<div class="form-group">
 								<label for="image" class="text-dark">Avatar image</label>
 								<input id="image" type="file" name="image" class="form-control">
 							</div>
 						</div>
-						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">
+							<img src="" alt="" id="show_img" width="100">
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div class="form-group">
 								<label for="image" class="text-dark">Product image</label>
-								<input id="image" type="file" name="images[]" multiple class="form-control">
+								<input id="images" type="file" name="images[]" multiple class="form-control">
 							</div>
+							<div id="img_list">
+                    
+                 			</div>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<label for="price" class="text-dark">Price</label>
 							<input id="price" type="number" name="price" required=""  placeholder="Enter the price of product"  class="form-control">
 						</div>
-						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<label for="sale_price" class="text-dark">Sale price</label>
 							<input id="sale_price" type="number" name="sale_price" required=""  placeholder="Enter the sale proce of product"  class="form-control">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div>Color</div>
 							<?php 
 							$sqlSelectAttr = "SELECT * FROM attribute WHERE type = 'color'";
@@ -191,7 +197,7 @@
 							<?php endwhile; ?>
 						</div>
 						
-						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div>Size</div>
 							<?php 
 							$sqlSelectAttr = "SELECT * FROM attribute WHERE type = 'size'";

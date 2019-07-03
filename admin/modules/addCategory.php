@@ -32,37 +32,46 @@ if (isset($_POST['addNew'])) {
 </div>
 
 <div class="row">
-	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="card">
 			<h5 class="card-header">Add new Categories</h5>
 			<div class="card-body">
 				<form action="" name="" method="POST" id="basicform" data-parsley-validate="">
-					<div class="form-group">
-						<label for="name">Category name</label>
-						<input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">
+					<div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="name">Category name</label>
+								<input id="name" type="text" name="name" required="" placeholder="Enter the category name"  class="form-control">
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="parent_id">Parent category</label>
+								<select name="parent_id" class="form-control">
+									<option value="">--choose the parent category--</option>\
+									<?php
+										 $sqlSelect = "SELECT * FROM category where parent_id = 0";
+										 $result = mysqli_query($conn, $sqlSelect);
+										 while ($row = mysqli_fetch_assoc($result)) :
+									?>
+										<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
+									<?php endwhile ?>
+								</select>
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="created">Created</label>
+								<input id="created" type="date" name="created" placeholder="Enter the created"  class="form-control">
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="ordering">Ordering</label>
+								<input id="ordering" type="number" name="ordering"  placeholder="Enter the ordering"  class="form-control">
+							</div>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="parent_id">Parent category</label>
-						<select name="parent_id" class="form-control">
-							<option value="">--choose the parent category--</option>\
-							<?php
-								 $sqlSelect = "SELECT * FROM category where parent_id = 0";
-								 $result = mysqli_query($conn, $sqlSelect);
-								 while ($row = mysqli_fetch_assoc($result)) :
-							?>
-								<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
-							<?php endwhile ?>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="created">Created</label>
-						<input id="created" type="date" name="created" placeholder="Enter the created"  class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="ordering">Ordering</label>
-						<input id="ordering" type="number" name="ordering"  placeholder="Enter the ordering"  class="form-control">
-					</div>
-
 					<div class="row">
 						<div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
 							<label class="be-checkbox custom-control custom-checkbox">

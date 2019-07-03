@@ -15,9 +15,9 @@
 				if ($_FILES['image']['size'] < 99999999) {
 					if ($_FILES['image']['error'] === 0) {
 						$filename = $_FILES['image']['tmp_name'];
-						$destination = $path.$_FILES['image']['name'];
+						$destination = $path.time().'-'.$_FILES['image']['name'];
 						move_uploaded_file($filename, $destination);
-						$fileName .=$_FILES['image']['name'];
+						$fileName .= time().'-'.$_FILES['image']['name'];
 					} else {
 						echo 'lỗi upload';
 					}
@@ -57,32 +57,50 @@
 </div>
 
 <div class="row">
-	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="card">
 			<h5 class="card-header">Add new Banner</h5>
 			<div class="card-body">
 				<form action="" name="banner" method="POST" enctype="multipart/form-data" id="basicform" data-parsley-validate="">
-					<div class="form-group">
-						<label for="name">Banner name</label>
-						<input id="name" type="text" name="name" required="" placeholder="Enter the banner name"  class="form-control">
+					<div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="name">Banner name</label>
+								<input id="name" type="text" name="name" required="" placeholder="Enter the banner name"  class="form-control">
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="row">
+								<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+									<div class="form-group">
+										<label for="image">Banner image</label>
+										<input id="image" type="file" name="image" class="form-control">
+									</div>
+								</div>
+								<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+									<img src="" alt="" id="show_img" width="100">
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="ordering">ordering</label>
+								<input id="ordering" type="number" name="ordering" required=""  placeholder="Enter the ordering of banner"  class="form-control">
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="created">created</label>
+								<input id="created" type="date" name="created" value="" placeholder="Enter the created"  class="form-control">
+							</div>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="image">Banner image</label>
-						<input id="image" type="file" name="image" class="form-control">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<div class="form-group">
+							<label for="content">Content</label>
+							<textarea name="content" id="content" placeholder="Enter the discription" class="form-control" rows="10" cols="50"></textarea>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="ordering">ordering</label>
-						<input id="ordering" type="number" name="ordering" required=""  placeholder="Enter the ordering of banner"  class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="created">created</label>
-						<input id="created" type="date" name="created" value="" placeholder="Enter the created"  class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="content">Content</label>
-						<textarea name="content" id="content" placeholder="Enter the discription" class="form-control" rows="10" cols="50"></textarea>
-					</div>
-
 					<div class="row">
 						<div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
 							<label class="be-checkbox custom-control custom-checkbox">
