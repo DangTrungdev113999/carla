@@ -12,10 +12,17 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 	if(mysqli_num_rows($account) == 1){
 		$row = mysqli_fetch_row($account);
 		$_SESSION['login'] = $row;
-		header('location: ../index.php');
+		echo json_encode([
+			'success' => true,
+			'message' => 'Login succes'
+		]);
 	}
 	else{
-		header('location: ../account.php');
+		echo json_encode([
+			'success' => false,
+			'message' => 'Login failed ! ',
+			'error' => 'user name or password false'
+		]);
 	}
 }
 ?>

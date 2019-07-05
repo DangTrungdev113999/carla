@@ -2,8 +2,10 @@
 	include 'header.php';
 	if(isset($_SESSION['cart'])){
 		foreach ($_SESSION['cart'] as $key => $value) {
-			$total+=$value['price'];
+			$product = $value['quantity'] * $value['price'];
+			$total+=$product;
 		}
+
 	}
 ?>
 		<!-- End header -->
