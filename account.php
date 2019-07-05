@@ -154,7 +154,12 @@ include 'footer.php'
 			let newPhone = $('#newPhone').val();
 			let newPassWord = $('#newPassWord').val();
 			let RepeatPassWord = $('#RepeatPassWord').val();
-			if(newName && Address && newUsername && newPhone && newPassWord && RepeatPassWord){
+			function validateEmail(email) {
+		    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		    return re.test(String(email).toLowerCase());
+			}
+			let userRex = validateEmail(newUsername);
+			if(newName && Address && userRex && newPhone && newPassWord && RepeatPassWord){
 				$.ajax({
 					url:'uploads/Register.php',
 					type:'post',
@@ -171,14 +176,14 @@ include 'footer.php'
 					}
 				});
 			}else{
-				let error = [];
+				let error = [];		
 				if(!newName){
 					error.push("You don't have a name !");
 				}
 				if(!Address){
 					error.push("You don't have a address !");
 				}
-				if(!newUsername){
+				if(!userRex){
 					error.push("You don't have a username !");
 				}
 				if(!newPhone){
