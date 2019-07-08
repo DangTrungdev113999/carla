@@ -30,7 +30,6 @@
                             <th scope="col">#</th>
                             <th scope="col">Product Name</th>
                             <th scope="col">Image</th>
-                            <th scope="col">Content </th>
                             <th scope="col">Category</th>
                             <th scope="col">Price</th>
                             <th scope="col">Sale Price</th>
@@ -54,7 +53,6 @@
                             <td>
                                 <img src="../public/img/<?php echo $row['image'] ?>" width ='50' class='img-responsive' alt="">
                             </td>
-                            <td class=""><?php echo $row['content'] ?></td>
                             <td><?php echo $row['cat_name'] ?></td>
                             <td><?php echo $row['price'] ?></td>
                             <td><?php echo $row['sale_price'] ?></td>
