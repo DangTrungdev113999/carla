@@ -81,6 +81,48 @@
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('input#image').change(function(){
+      var _file = $(this).prop('files');
+
+      if (_file && _file[0]) {
+        var _r = new FileReader();
+        _r.onload = function(e){
+          var _img = e.target.result;
+          $('img#show_img').attr('src',_img);
+        }
+
+        _r.readAsDataURL(_file[0]);
+      }
+    }) 
+
+    $('input#images').change(function(){
+      var _file = $(this).prop('files');
+      
+      if (_file) {
+       
+        for (var i = 0; i < _file.length; i++) {
+          let _r = new FileReader();
+
+          _r.onload = function(e){
+
+            var _img_src = e.target.result;
+            var img = document.createElement("img");
+                img.className = "col-md-3 thumbnail";
+                img.src = _img_src;
+                $('#img_list').append(img);
+
+          }
+
+        _r.readAsDataURL(_file[i]);
+        }
+
+
+      }
+    })
+  });
+</script>
 </body>
  
 </html>
