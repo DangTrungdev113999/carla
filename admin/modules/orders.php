@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $selectData = "SELECT * FROM category c JOIN orders";
+                            $selectData = "SELECT * FROM orders";
                             $result = mysqli_query($conn, $selectData) or die("lỗi truy xuất danh sách sản phẩm".$selectData);
                             if(mysqli_num_rows($result) > 0) {
                                 $count = 0;
@@ -49,11 +49,12 @@
                         ?>
                         <tr>
                             <th scope="row"><?php echo $count ?></th>
+                            <td><?php echo $row["account_id"] ?></td>
                             <td><?php echo $row["name"] ?></td>
                             <td><?php echo $row["phone"] ?></td>
                             <td><?php echo $row['email'] ?></td>
                             <td><?php echo $row['address'] ?></td>
-                            <td><?php echo $row['sale_price'] ?></td>
+                            <td><?php echo $row['price'] ?></td>
                             <td><?php echo $row['created'] ?></td>
                             <td><?php echo ($row['status']) ? 'shown' : 'hide' ?></td>
                             <td><?php echo $row['created'] ?></td>

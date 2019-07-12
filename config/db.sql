@@ -3,14 +3,14 @@ DROP DATABASE IF EXISTS carla;
 CREATE DATABASE carla CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE carla;
 CREATE TABLE IF NOT EXISTS account (
-'  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name varchar(100) NOT NULL,
   email varchar(100) NOT NULL UNIQUE,
   phone varchar(50) NOT NULL,
   password varchar(100) NOT NULL,
   address varchar(100) NOT NULL,
-  level tinyint(1) DEFAULT '0' COMMENT '0 la khách hàng, 1 là qu?n tr?',
-  created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP'
+  level tinyint(1) DEFAULT '0' COMMENT '0 is customer, 1 is admin',
+  created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO account(name, email, phone, password, address, level) 
