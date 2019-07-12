@@ -118,11 +118,11 @@ $products = mysqli_query($conn, 'select * from product');
 							<div class="header-search">
 								<span class="mdi mdi-magnify"></span>
 								<span class="mdi mdi-close"></span>
-								<form action="#" class="header-search-form">
-									<select name="select" class="select-2">
-										<option value="1">All Categories</option>
-										<option value="2">Man</option>
-										<option value="3">Wooman</option>
+								<form action="shop-page.php" class="header-search-form">
+									<select name="name" class="select-2">
+										<option value="all">All Categories</option>
+										<option value="man">Man</option>
+										<option value="woman">Woman</option>
 									</select>
 									<input type="search" name="search" placeholder="Search here...">
 									<button type="submit"><span class="mdi mdi-magnify"></span></button>

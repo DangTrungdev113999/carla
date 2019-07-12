@@ -2,19 +2,25 @@
 include 'header.php';
 
 $Categories = $_GET['name'] ? $_GET['name'] : null;
+$Search = $_GET['search'] ? $_GET['search'] : null;
 $IdCategory = mysqli_query($conn,'SELECT category.id from category where category.name = '.strval($Categories ));
-echo $IdCategory;
 $LastestProduct = mysqli_query($conn, 'SELECT  * FROM product
 	ORDER BY id DESC LIMIT 3');
 if($Categories === 'woman'){
 	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2');
 	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2
 		ORDER BY p.id DESC LIMIT 3');
+	if(isset($Search)){
+
+	}
 }
 else if($Categories === 'man'){
 	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 1');
 	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 1
 		ORDER BY p.id DESC LIMIT 3');
+	if(isset($Search)){
+		
+	}
 }
 else if($Categories === 'accessories'){
 	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 5');
@@ -27,6 +33,13 @@ else{
 			$Products = mysqli_query($conn, "SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = '$IdCategory' ");
 	}else{
 		$Products = mysqli_query($conn, 'select * from product');
+	}
+}
+
+if($Categories === 'all'){
+	$Products = mysqli_query($conn, 'select * from product');
+	if(isset($Search)){
+		
 	}
 }
 

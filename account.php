@@ -78,25 +78,34 @@ include 'header.php'
 				<?php }?>
 				<?php if(!empty($_SESSION['login'])) {
 					?>
-					<h3 
-					style='color:red;float:right;margin:10px;font-size: 20px;text-decoration: underline' onclick="logOut()">
-				Log out</h3>
-				<div class="clearfix"></div>
-				<div style="border:gray 3px solid;padding: 20px 100px">
-					<h2 style="text-align: center">You Account</h2>
-					<h3><i class="glyphicon glyphicon-user"></i>  <span style="color:red;font-style: italic;"
-						><?php echo  $_SESSION['login'][1]?>
-					</span></h3>
-					<h3><i class="glyphicon glyphicon-envelope"></i>  <span style="color:blue;font-style: italic;">
-						<?php echo  $_SESSION['login'][2]?>
-					</span></h3>
-					<h3><i class="glyphicon glyphicon-phone"></i> <span style="color:#23456;font-style: italic;">
-						<?php echo  $_SESSION['login'][3]?>
-					</span></h3>
-					<h3>Your address: <span style="color:gray;font-style: italic;">
-						<?php echo  $_SESSION['login'][5]?>							
-					</span></h3>
-				</div>
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3 class="panel-title"
+						style='color:red;float:right;margin:10px;font-size: 20px;text-decoration: underline' onclick="logOut()">
+						Log out</h3>
+						<h2 style="text-align: center">You Account</h2>
+						</div>
+						<div class="panel-body">
+										
+						<div class="clearfix"></div>
+						<div style="padding: 20px 100px">
+							
+							<h3><i class="glyphicon glyphicon-user"></i>  <span style="color:red;font-style: italic;"
+								><?php echo  $_SESSION['login'][1]?>
+							</span></h3>
+							<h3><i class="glyphicon glyphicon-envelope"></i>  <span style="color:blue;font-style: italic;">
+								<?php echo  $_SESSION['login'][2]?>
+							</span></h3>
+							<h3><i class="glyphicon glyphicon-phone"></i> <span style="color:#23456;font-style: italic;">
+								<?php echo  $_SESSION['login'][3]?>
+							</span></h3>
+							<h3>Your address: <span style="color:gray;font-style: italic;">
+								<?php echo  $_SESSION['login'][5]?>							
+							</span></h3>
+						</div>
+						</div>
+					</div>
+				
 			<?php }?>
 
 		</div>
@@ -134,7 +143,6 @@ include 'footer.php'
 				data:{username:username,password:password},
 				success:function(res){
 					$('#modal-message .modal-title').html(res.message);
-					$('#modal-message .modal-error').html(res.error);
 					$('#modal-message').modal('show');
 					if (res.success==true) {
 						setTimeout(function(){
@@ -173,6 +181,9 @@ include 'footer.php'
 						$('#modal-message .modal-error').html(res.message);
 						$('#modal-message').modal('show');
 						return;
+					},
+					error:function(error){
+						alert(error);
 					}
 				});
 			}else{

@@ -8,13 +8,16 @@ if(isset($_POST['newName']) &&  isset($_POST['Address']) && isset($_POST['newUse
 	$newUsername = $_POST['newUsername'];
 	$newPhone = $_POST['newPhone'];
 	$newPassWord = $_POST['newPassWord'];
-	$Address = $_POST['Address'];   
-	mysqli_query($conn, "INSERT INTO account(name,email,phone,password,address)
-						VALUES('$newName', '$newUsername', '$newPhone', '$newPassWord', '$Address')");
-	echo json_encode([
+	$Address = $_POST['Address'];   	
+	$SameEmail = mysqli_query($conn, "SELECT * FROM account where email = '$newUsername'");
+
+		mysqli_query($conn, "INSERT INTO account(name,email,phone,password,address)
+					VALUES('$newName', '$newUsername', '$newPhone', '$newPassWord', '$Address')");
+		echo json_encode([
 		'success' => true,
 		'message' => 'Create Account Success !'
 	]);
+	
 
 
 }

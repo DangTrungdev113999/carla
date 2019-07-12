@@ -17,7 +17,8 @@ if(isset($_POST['id']) && isset($_POST['quantity'])  ){
 			'name' => $row[1],
 			'quantity'=> $quantity,
 			'price' => $price,
-			'image' => $row[2]
+			'image' => $row[2],
+			'idProduct' => $id
 		);
 	}else{
 		$cart = $_SESSION["cart"];
@@ -26,14 +27,16 @@ if(isset($_POST['id']) && isset($_POST['quantity'])  ){
 			'name' => $row[1],
 			'quantity'=> (int)$cart[$id]['quantity']+$quantity,
 			'price' => $price,
-			'image' => $row[2]
+			'image' => $row[2],
+			'idProduct' => $id
 		);
 		}else{
 			$cart[$id] = array(
 			'name' => $row[1],
 			'quantity'=> $quantity,
 			'price' => $price,
-			'image' => $row[2]
+			'image' => $row[2],
+			'idProduct' => $id
 		);
 		}
 	}
