@@ -34,7 +34,7 @@ if (isset($_POST['addNew'])) {
 				if ($_FILES['image']['error'] === 0) {
 					// pass file to server
 					$filename = $_FILES["image"]["tmp_name"];
-					$destination = $path.$_FILES['image']['name'];
+					$destination = $path.time().'-'.$_FILES['image']['name'];
 					move_uploaded_file($filename, $destination);
 					$fileName .= $_FILES['image']['name'];
 
@@ -92,7 +92,7 @@ if (isset($_POST['addNew'])) {
 			 			if ($_FILES['images']['error'][$i] === 0) {
 
 			 				$filename = $_FILES["images"]["tmp_name"][$i];
-			 				$destination = $path.$_FILES['images']['name'][$i];
+			 				$destination = $path.time().'-'.$_FILES['images']['name'][$i];
 			 				if (move_uploaded_file($filename, $destination)) {
 				 				$fileNames .= $_FILES['images']['name'][$i];
 				 				$sqlInsertPro_img = "INSERT INTO product_image(product_id, image) VALUES ('$product_id', '$fileNames')";
@@ -181,12 +181,14 @@ if (isset($_POST['addNew'])) {
 
 
 					<div class="row">
-						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="form-group col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
 							<div class="form-group">
 								<label for="image" class="text-dark">Avatar image</label> <br>
-								<img src="../public/img/<?php echo $row['image'] ?>" alt="" width='120' class='mb-2 img-thumbnail img-responsive'>
 								<input id="image" type="file" name="image" class="form-control">
 							</div>
+						</div>
+						<div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">
+								<img src="../public/img/<?php echo $row['image'] ?>" alt="" width='100' class='mb-2 img-thumbnail img-responsive'  id="show_img" >
 						</div>
 						<div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<div class="form-group">

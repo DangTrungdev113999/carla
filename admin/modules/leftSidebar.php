@@ -61,7 +61,7 @@
                     <!-- ================================= -->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-111" aria-controls="submenu-111"><i class="fas fa-align-left"></i> Account</a>
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-111" aria-controls="submenu-111"><i class="fas fa-list-ul"></i> Account</a>
                         <div id="submenu-111" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -75,7 +75,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11"><i class="fas fa-align-left"></i> Category</a>
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-11"><i class="fas fa-list-ul"></i> Category</a>
                         <div id="submenu-11" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -89,7 +89,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-12" aria-controls="submenu-12"><i class="fas fa-bullseye"></i> Product</a>
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-12" aria-controls="submenu-12"><i class="fas fa-list-ul"></i> Product</a>
                         <div id="submenu-12" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -103,7 +103,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-113" aria-controls="submenu-113"><i class="fas fa-bullseye"></i>Attribute</a>
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-113" aria-controls="submenu-113"><i class="fas fa-list-ul"></i>Attribute</a>
                         <div id="submenu-113" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -117,7 +117,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-13" aria-controls="submenu-13"><i class="fas fa-bullseye"></i>Product Image</a>
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-13" aria-controls="submenu-13"><i class="fas fa-list-ul"></i>Product Image</a>
                         <div id="submenu-13" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -131,7 +131,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-14" aria-controls="submenu-14"><i class="fas fa-bullseye"></i> Banner </a>
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-14" aria-controls="submenu-14"><i class="fas fa-list-ul"></i> Banner </a>
                         <div id="submenu-14" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -145,7 +145,7 @@
                     </li>
 
                    <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-17" aria-controls="submenu-17"><i class="fas fa-bullseye"></i> Post </a>
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-17" aria-controls="submenu-17"><i class="fas fa-list-ul"></i> Post </a>
                         <div id="submenu-17" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
@@ -159,22 +159,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-15" aria-controls="submenu-15"><i class="fas fa-bullseye"></i> Order </a>
+                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-15" aria-controls="submenu-15"><i class="fas fa-list-ul"></i> Order </a>
                         <div id="submenu-15" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.php?module=Orders">list</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-16" aria-controls="submenu-16"><i class="fas fa-bullseye"></i> comments </a>
-                        <div id="submenu-16" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=comments">list</a>
                                 </li>
                             </ul>
                         </div>

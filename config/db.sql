@@ -3,14 +3,14 @@ DROP DATABASE IF EXISTS carla;
 CREATE DATABASE carla CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE carla;
 CREATE TABLE IF NOT EXISTS account (
-  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+'  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name varchar(100) NOT NULL,
   email varchar(100) NOT NULL UNIQUE,
   phone varchar(50) NOT NULL,
   password varchar(100) NOT NULL,
   address varchar(100) NOT NULL,
   level tinyint(1) DEFAULT '0' COMMENT '0 la khách hàng, 1 là qu?n tr?',
-  created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP'
 );
 
 INSERT INTO account(name, email, phone, password, address, level) 
@@ -179,22 +179,6 @@ REFERENCES product(id);
 ALTER TABLE order_detail ADD 
 FOREIGN KEY FK_ORDERS_DETAIL (order_id)
 REFERENCES orders(id);
-
-CREATE TABLE IF NOT EXISTS comments (
-	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	account_id int NULL DEFAULT '0',
-	product_id int NOT NULL,
-	name varchar(100) NULL,
-	email varchar(100) NULL,
-	phone varchar(50) NULL,
-	content text NOT NULL,
-	status tinyint(1) DEFAULT '0' COMMENT '0 là chua duyệt, 1 là đã duyệt, 2 là dã giao hàng',
-	created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
-ALTER TABLE comments ADD 
-FOREIGN KEY FK_COMMENT_PRODUCT (product_id)
-REFERENCES product(id);
 
 CREATE TABLE IF NOT EXISTS banner (
 	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,

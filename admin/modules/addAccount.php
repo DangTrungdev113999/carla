@@ -30,41 +30,59 @@
 </div>
 
 <div class="row">
-	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="card">
 			<h5 class="card-header">Add new Account</h5>
 			<div class="card-body">
 				<form action="" name="product" method="POST" id="basicform" data-parsley-validate="">
-					<div class="form-group">
-						<label for="name">Account name</label>
-						<input id="name" type="text" name="name" required="" placeholder="Enter the Account name"  class="form-control">
+					<div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="name">Account name</label>
+								<input id="name" type="text" name="name" required="" placeholder="Enter the Account name"  class="form-control">
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="Email">Email</label>
+								<input id="Email" type="email" name="Email" required=""  placeholder="Enter the Email of product"  class="form-control">
+							</div>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="Email">Email</label>
-						<input id="Email" type="email" name="Email" required=""  placeholder="Enter the Email of product"  class="form-control">
+					<div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="phone">Phone</label>
+								<input id="phone" type="number" name="phone" required=""  placeholder="Enter the sale proce of product"  class="form-control">
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="address">Address</label>
+								<input id="address" type="text" name="address" value="" placeholder="Enter the password"  class="form-control">
+							</div>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="phone">Phone</label>
-						<input id="phone" type="number" name="phone" required=""  placeholder="Enter the sale proce of product"  class="form-control">
+					<div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="level">Level</label>
+								<input id="level" type="number" name="level" value="" placeholder="Enter the password"  class="form-control">
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input id="password" type="password" name="password" value="" placeholder="Enter the password"  class="form-control">
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="created">Created</label>
+								<input id="created" type="date" name="created" value=""  class="form-control">
+							</div>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="address">Address</label>
-						<input id="address" type="text" name="address" value="" placeholder="Enter the password"  class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="level">Level</label>
-						<input id="level" type="number" name="level" value="" placeholder="Enter the password"  class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="password">Password</label>
-						<input id="password" type="password" name="password" value="" placeholder="Enter the password"  class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="created">Created</label>
-						<input id="created" type="date" name="created" value=""  class="form-control">
-					</div>
-
-
 					<div class="row">
 						<div class="col-sm-12 pl-0">
 							<p class="text-right">

@@ -24,7 +24,7 @@
 					if ($_FILES['image']['error'] === 0) {
 					// pass file to server
 						$filename = $_FILES["image"]["tmp_name"];
-						$destination = $path.$_FILES['image']['name'];
+						$destination = $path.time().'-'.$_FILES['image']['name'];
 						move_uploaded_file($filename, $destination);
 						$fileName .= $_FILES['image']['name'];
 
@@ -98,7 +98,7 @@
 					</div>
 					<div class="form-group">
 						<label for="image">Image</label>
-						<img src="../public/img/<?php echo $row['image'] ?>" width="200" class="img-responsive img-thumbnail">
+						<img src="../public/img/<?php echo $row['image'] ?>" width="200" class="img-responsive img-thumbnail" id='show_img'>
 						<input id="image" type="file" name="image"  class="form-control">
 					</div class="form-group">
 					<div class="form-group">

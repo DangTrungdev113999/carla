@@ -14,9 +14,9 @@
 				if ($_FILES['imge']['size'] < 999999) {
 					if ($_FILES['image']['error'] === 0) {
 						$filename = $_FILES['image']['tmp_name'];
-						$destination = $path.$_FILES['image']['name'];
+						$destination = $path.time().'-'.$_FILES['image']['name'];
 						move_uploaded_file($filename, $destination);
-						$fileName .= $_FILES['image']['name'];
+						$fileName .= time().'-'.$_FILES['image']['name'];
 					} else {
 						echo 'lỗi file upload';
 					}
@@ -79,7 +79,8 @@
 					<div class="form-group">
 						<label for="image">Image</label>
 						<input id="image" type="file" name="image" required=""  class="form-control">
-					</div class="form-group">
+					</div>
+					<img src="" alt="" id="show_img" width="100">
 					<div class="form-group">
 						<label for="ordering">Ordering</label>
 						<input id="ordering" type="Number" name="ordering" required="" placeholder="Enter the ordering"  class="form-control">
