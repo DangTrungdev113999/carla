@@ -50,12 +50,6 @@
 									</div>
 								</div>
 								<input type="text" name="address-1" id="address" placeholder="Address">
-								<input type="text" name="city" id="city" placeholder="Town / City">
-								<div class="row-input">
-									<div class="input-wrap">
-										<input type="text" name="state"  id="Conuntry"placeholder="State / Country">
-									</div>
-								</div>
 								<div class="agree">
 									<input type="radio" name="agree" id="agree" required>
 									<label for="agree">I have read and agree to the Terms & Conditions</label>
