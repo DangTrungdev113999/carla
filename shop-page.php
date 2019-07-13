@@ -11,7 +11,7 @@ if($Categories === 'woman'){
 	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2
 		ORDER BY p.id DESC LIMIT 3');
 	if(isset($Search)){
-
+		
 	}
 }
 else if($Categories === 'man'){
@@ -21,11 +21,6 @@ else if($Categories === 'man'){
 	if(isset($Search)){
 		
 	}
-}
-else if($Categories === 'accessories'){
-	$Products = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 5');
-	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = 5
-		ORDER BY p.id DESC LIMIT 3');
 }
 else{
 	if(isset($Categories)){

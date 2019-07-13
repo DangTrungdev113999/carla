@@ -121,7 +121,7 @@ include 'header.php'
 			<div class="modal-header" style="text-align:center">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title">Alert !!! </h4>
-				<p class="modal-error" ></p>
+				<p class="modal-error" id="modal-error"></p>
 			</div>
 		</div>
 	</div>
@@ -143,6 +143,7 @@ include 'footer.php'
 				data:{username:username,password:password},
 				success:function(res){
 					$('#modal-message .modal-title').html(res.message);
+					$('#modal-error').html('');
 					$('#modal-message').modal('show');
 					if (res.success==true) {
 						setTimeout(function(){

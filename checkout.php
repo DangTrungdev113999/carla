@@ -31,7 +31,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<form action="uploads/userOrder.php" class="checkout-form" method="POST">
+						<form  action="uploads/userOrder.php"		
+						class="checkout-form" method="POST">
 							<?php if(empty($_SESSION['login'])){ ?>
 							<div class="user-info">
 								<h2>Billing Details</h2>
@@ -88,6 +89,7 @@
 					</div>
 							</div>
 						<?php } ?>
+						<?php if(isset($_SESSION['cart'])){ ?>
 							<div class="order-info">
 								<h2 >Your Order</h2>
 								<div class="invoice">
@@ -112,9 +114,20 @@
 												</span></h3>
 										</div>
 									</div>
-									<a  type="submit" class="border btn btn-primary"  id="userOrder" >Complete Order</a>
+									
+									<?php if(empty($_SESSION['login'])){ ?>
+									<button  type="submit" class="border btn btn-primary"  id="NoAccount" >Complete Order no account</button>
+									<?php }else{ ?>
+									<button  type="submit" class="border btn btn-primary"  id="userOrder" >Complete Order co account</button>
+									<?php } ?>
 								</div>
 							</div>
+						<?php  }else{?>
+							<div class="alert alert-info" style="height:100px; text-align: center;">
+								<strong>Your Cart Empty !</strong> <br> Would you like to see 
+								<a href="historyPayment.php" style="text-decoration: underline;">payment history</a> ?
+							</div>
+						<?php } ?>
 						</form>
 					</div>
 				</div>
@@ -125,10 +138,10 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Modal title</h4>
+						<h4 class="modal-title" id="modal-title">Modal title</h4>						
 					</div>
-					<div class="modal-body">
-						
+					<div class="modal-body" id="content-alert">
+	
 					</div>
 				</div>
 			</div>
@@ -144,32 +157,61 @@
 <script>
 		$(document).ready(function(){
 		$('#userOrder').click(function(e){
-			if(Account.id){
-				e.preventDefault();				
+				e.preventDefault();		
 				$.ajax({
 					url:'uploads/userOrder.php',
 					type:'post',
 					dataType:'json',
 					data:null,
 					success:function(res){
-						debugger;
-						$('#modal-id .modal-title').html(res.message);
-						$('#modal-id').modal('show');
 						if(res.success==true) {
+						$('#modal-id .modal-title').html(res.message);
+						$('#content-alert').html('');
+						$('#modal-id').modal('show');
 							setTimeout(function(){
 								location.reload();
-							},1500);
+							},1000);
+						}else{
+						$('#modal-title').html(()=> res.message);
+						$('#content-alert').html(() =>("<p style='color:red'>You need enter enough infomation or <a href='account.php'>Login</a></p>"));
+						$('#modal-id').modal('show');
 						}
 						
 					}
 				});
 
-
-			}
-			if(!Account.id){
-				alert('lasdfds');
-				return false;
-			}
 		})
+
+
+		$('#NoAccount').click(function(e){
+				e.preventDefault();	
+				let name = $('#name').val();
+				let email = $('#email').val();
+				let phone = $('#phone').val();
+				let address = $('#address').val();	
+				$.ajax({
+					url:'uploads/userOrder.php',
+					type:'post',
+					dataType:'json',
+					data:{name, email, phone, address},
+					success:function(res){
+						if(res.success==true) {
+						$('#modal-id .modal-title').html(res.message);
+						$('#content-alert').html('');
+						$('#modal-id').modal('show');
+							setTimeout(function(){
+								location.reload();
+							},1000);
+						}else{
+						$('#modal-title').html(()=> res.message);
+						$('#content-alert').html(() =>("<p style='color:red'>You need enter enough infomation or <a href='account.php'>Login</a></p>"));
+						$('#modal-id').modal('show');
+						}
+						
+					}
+				});
+
+		})
+
 	})
 </script>
