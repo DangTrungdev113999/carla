@@ -81,21 +81,7 @@ $products = mysqli_query($conn, 'select * from product');
 										<li><a href="about.php">About</a></li>
 										<li><a href="categories.php">Categories</a></li>
 										<li class="toggle-menu">
-											<a href="product-page.php">Product Page <span class="mdi mdi-chevron-right"></span></a>
-											<ul>
-												<li><a href="product-page-2.php">Product Page 2 </a></li>
-												<li><a href="product-page-3.php">Product Page 3 </a></li>
-												<li><a href="product-page-4.php">Product Page 4 </a></li>
-												<li><a href="product-page-5.php">Product Page 5 </a></li>
-												<li><a href="product-page-6.php">Product Page 6 </a></li>
-											</ul>
-										</li>
-										<li class="toggle-menu">
-											<a href="shop-page.php">Shop Page <span class="mdi mdi-chevron-right"></span></a>
-											<ul>
-												<li><a href="shop-page-2.php">Shop Page 2 </a></li>
-												<li><a href="shop-page-3.php">Shop Page 3 </a></li>
-											</ul>
+											<a href="shop-page.php">Shop Page</a>
 										</li>
 										<li class="toggle-menu">
 											<a href="blog.php">Blog <span class="mdi mdi-chevron-right"></span></a>
@@ -107,13 +93,11 @@ $products = mysqli_query($conn, 'select * from product');
 										<li><a href="account.php">My Account</a></li>
 										<li><a href="cart.php">Cart</a></li>
 										<li><a href="checkout.php">Checkout</a></li>
-										<li><a href="wish-list.php">Wish List</a></li>
-										<li><a href="typography.php">Typography</a></li>
 									</ul>
 								</li>
 								<li><a href="shop-page.php?name=woman">Woman</a></li>
 								<li><a href="shop-page.php?name=man">Man</a></li>
-								<li><a href="shop-page.php?name=accessories">Accesories</a></li>
+								<li><a href="historyPayment.php">History</a></li>
 							</ul>
 							<div class="header-search">
 								<span class="mdi mdi-magnify"></span>
@@ -137,7 +121,6 @@ $products = mysqli_query($conn, 'select * from product');
 						}else{
 							$color='blue';
 						} ?>
-						<div class="cart-count" >
 							<a 
 							style="color:<?php echo $color; ?>;
 							text-align: center;
@@ -146,7 +129,6 @@ $products = mysqli_query($conn, 'select * from product');
 							href="account.php" 
 							class='glyphicon glyphicon-user' >	
 						</a>
-					</div>
 				</div>
 				<?php if($_SERVER['REQUEST_URI'] !== '/carla/cart.php'){ ?>
 				<div class="header-cart">

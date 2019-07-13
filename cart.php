@@ -106,12 +106,12 @@ include 'header.php'
 									<a href="#" class="clear-cart button border">Clear Cart</a>
 									<a href="#" class="button white">Update Cart</a>
 								</div>
-								<a href="#" class="button border">Continue</a>
+								<a href="index.php" class="button border">Continue Buy</a>
 							</div>
 						</div>
 					<?php }else{
 						echo "<br/>
-						<h2>Your Cart don't have any products !!!</h2>";
+						<h2 class='alert alert-danger'>Your Cart don't have any products !!!</h2>";
 					} ?>
 				</div>
 			</div>
@@ -119,18 +119,6 @@ include 'header.php'
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="cart-form-list">
-					<form action="#" class="cart-form">
-						<h3>Coupon Discount :</h3>
-						<p>Nullam et felis eros. Cras vehicula convallis nisi.</p>
-						<select name="select" class="select-2">
-							<option value="1">Viet Nam</option>
-							<option value="2">Viet Nam 2</option>
-							<option value="3">Viet Nam 3</option>
-						</select>
-						<input type="text" name="city" placeholder="State / City">
-						<input type="text" name="zip" placeholder="Postcode (ZIP)">
-						<button type="submit" class="border">Get a Quote</button>
-					</form>
 					<form action="#" class="cart-form">
 						<h3>Coupon Discount :</h3>
 						<p>Nullam et felis eros. Cras vehicula convallis nisi.</p>
