@@ -2,7 +2,9 @@
 	include 'header.php';
 		$id = $_GET['id'];
 		$orderDetail = mysqli_query($conn, "SELECT * FROM order_detail o where order_id = '$id' ");	
-
+		print_r($id);
+		$Total = mysqli_query($conn, "SELECT sum(quantity * price) FROM order_detail  where order_id = '$id' ");
+		$Total = mysqli_fetch_row($Total);
 
 ?>
 		<section class="page-name">
@@ -47,7 +49,7 @@
 						</div>
 					</td>
 					<td>
-						<?php  
+						$ <?php  
 						echo $value['price'];
 						?>
 					</td>
@@ -59,8 +61,16 @@
 					</td>
 				</tr>
 			<?php } ?>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><h3>Sum : $ <?php  echo $Total[0]; ?></h3></td>
+			</tr>
 			</tbody>
 		</table>
+		<br>
+		
 
 		</div>
 		<br>
