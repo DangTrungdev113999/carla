@@ -11,7 +11,8 @@
 				"name"=>$cart[$id]['name'],
 				"quantity"=>$quantity,
 				"price"=>$cart[$id]["price"],
-				"image"=>$cart[$id]['image']
+				"image"=>$cart[$id]['image'],
+				'idProduct' => $id
 			);
 		}else{
 			unset($cart[$id]);
