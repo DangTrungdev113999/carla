@@ -31,16 +31,16 @@
                             <th scope="col">Customer Name</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Adress</th>
-                            <th scope="col">======</th>
-                            <th scope="col">Billing</th>
-                            <th scope="col">created</th>
+                            <th scope="col">order date</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            $selectData = "SELECT * FROM orders";
+
+                            $selectData = "SELECT od.*, ac.name as 'name', ac.phone as 'phone', ac.email as 'email' FROM orders od JOIN account ac ON ac.id = od.account_id ";
+
                             $result = mysqli_query($conn, $selectData) or die("lỗi truy xuất danh sách sản phẩm".$selectData);
                             if(mysqli_num_rows($result) > 0) {
                                 $count = 0;
@@ -49,15 +49,17 @@
                         ?>
                         <tr>
                             <th scope="row"><?php echo $count ?></th>
-                            <td><?php echo $row["account_id"] ?></td>
                             <td><?php echo $row["name"] ?></td>
                             <td><?php echo $row["phone"] ?></td>
-                            <td><?php echo $row['email'] ?></td>
-                            <td><?php echo $row['address'] ?></td>
-                            <td><?php echo $row['price'] ?></td>
+                            <td><?php echo $row["email"] ?></td>
                             <td><?php echo $row['created'] ?></td>
-                            <td><?php echo ($row['status']) ? 'shown' : 'hide' ?></td>
-                            <td><?php echo $row['created'] ?></td>
+                            <td>
+                                <?php if($row['status'] == 1) : ?>
+                                    <span class="badge badge-secondary">Đã duyệt</span>
+                                <?php else: ?>
+                                    <span class="badge badge-warning">Chờ duyệt</span>
+                                <?php endif; ?>
+                            </td>
                             <td class="btn-group-xs">
                                 <a href="index.php?module=orderDetail&id=<?php echo $row['id'] ?>" class="badge badge-success">
                                     <i class="fas fa-street-view"></i> Detail
@@ -69,6 +71,40 @@
                         </tr>
                                 <?php }
                             }?>
+
+                       <!--  <?php
+                                $selectData1 = "SELECT * FROM orders ";
+
+                                $result1 = mysqli_query($conn, $selectData1) or die("lỗi truy xuất danh sách sản phẩm".$selectData1);
+                                if(mysqli_num_rows($result1) > 0) {
+                                    $count = 0;
+                                    while($row1 = mysqli_fetch_assoc($result1)) {
+                                        $count++;
+                        ?>
+                        <tr>
+                            <th scope="row"><?php echo $row1["id"]?></th>
+                            <td><?php echo $row1["name"] ?></td>
+                            <td><?php echo $row1["phone"] ?></td>
+                            <td><?php echo $row1["email"] ?></td>
+                            <td><?php echo $row1['created'] ?></td>
+                            <td>
+                                <?php if($row1['status'] == 1) : ?>
+                                    <span class="badge badge-secondary">Đã duyệt</span>
+                                <?php else: ?>
+                                    <span class="badge badge-warning">Chờ duyệt</span>
+                                <?php endif; ?>
+                            </td>
+                            <td class="btn-group-xs">
+                                <a href="index.php?module=orderDetail&id=<?php echo $row1['id'] ?>" class="badge badge-success">
+                                    <i class="fas fa-street-view"></i> Detail
+                                </a>
+                                <a href="index.php?module=editProduct&id=<?php echo $row1['id'] ?>" class="badge badge-primary">
+                                    <i class="fas fa-edit fas-xs"></i> waitting
+                                </a>
+                            </td>
+                        </tr>
+                                <?php }
+                            }?> --> 
                     </tbody>
                 </table>
             </div>
