@@ -1,7 +1,11 @@
 <?php
 	include 'header.php';
-
-	$orders = mysqli_query($conn, "SELECT * FROM orders");
+	$orders = 0;
+	if($_SESSION['login']){
+		$id = $_SESSION['login'][0];
+		$orders = mysqli_query($conn, "SELECT * FROM orders where account_id = '$id' ");
+	}
+	
 
 
 ?>
@@ -70,6 +74,13 @@
 			<?php } ?>
 			</tbody>
 		</table>
+	<?php }else if(empty($_SESSION['login'])){ ?>
+		<br>
+		<div class="alert alert-warning">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>Suggestions!</strong><h3>History null, You have to login for get history payment !!</h3>
+		</div>
+		
 	<?php }else{ ?>
 		<h2>History Null !!!</h2>
 	<?php } ?>
