@@ -1,7 +1,7 @@
 <?php
     ob_start();
     session_start();
-    if (!$_SESSION['login']) {
+    if (!$_SESSION['loginAdmin']) {
         header("location: login.php");
     }
     include '../config/connect.php';

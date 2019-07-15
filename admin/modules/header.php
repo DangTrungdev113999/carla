@@ -99,8 +99,8 @@
                                     <h5 class="mb-0 text-white nav-user-name">
                                     <span class="status"></span><span class="ml-2">Hello</span>
                                         <?php
-                                            if (isset($_SESSION['login'])) {
-                                                    echo strtoupper($_SESSION['login']['name'])."!" ;
+                                            if (isset($_SESSION['loginAdmin'])) {
+                                                    echo strtoupper($_SESSION['loginAdmin']['name'])."!" ;
                                             }
                                         ?>
                                     </h5>
