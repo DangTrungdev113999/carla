@@ -170,15 +170,9 @@ else{
 									onclick="addToCart(<?php echo $sp['id'] ?>,quantity.value)" >
 										Add to Cart
 								</a>
-									<a href="#" class="control"><span class="mdi mdi-content-copy"></span></a>
-									<a href="#" class="control"><span class="mdi mdi-heart-outline"></span></a>
 								</div>
 							</form>
-							<ul class="product-more-info">
-								<li>
-									<p>Categories :</p>
-									<p>Woman, Dresses</p>
-								</li>
+							<ul class="product-more-info">							
 								<li>
 									<p>Brand :</p>
 									<p>Buzline</p>
@@ -214,7 +208,6 @@ else{
 					<div class="tab-wrap">
 						<div class="tab-head">
 							<h3 class="active-tab" data-tab='#tab-1'>Description</h3>
-							<h3 data-tab='#tab-2'>Reviews (2)</h3>
 							<h3 data-tab='#tab-3'>Additional Informations</h3>
 						</div>
 						<div class="tab-body-wrap">
@@ -245,38 +238,7 @@ else{
 							</div>
 							<h3 class="mobile-accordeon" data-tab='#tab-2'>Reviews (2) <span class="mdi mdi-chevron-down"></span></h3>
 							<div class="tab-content" id="tab-2">
-								<ul class="reviews-list">
-									<li>
-										<div class="reviews-block">
-											<div class="reviews-head">
-												<h5>Sarah Doe</h5> <time datetime="2018-10-23">23 Oct 2018</time>
-											</div>
-											<ul class="rating">
-												<li><span class="mdi mdi-star"></span></li>
-												<li><span class="mdi mdi-star"></span></li>
-												<li><span class="mdi mdi-star"></span></li>
-												<li><span class="mdi mdi-star-half"></span></li>
-												<li><span class="mdi mdi-star-outline"></span></li>
-											</ul>
-											<p>Nam vitae turpis congue, aliquet risus vitae, bibendum dolor. Curabitur gravida dictum eros non consequat. Morbi commodo diam augue, quis viverra lacus pharetra id. In eget tortor tempor, ullamcorper leo eget, sagittis lectus. Nam ultricies ex lorem, vel vulputate quam elementum vel. Fusce nisi orci, hendrerit nec euismod ac, aliquet a sem.</p>
-										</div>
-									</li>
-									<li>
-										<div class="reviews-block">
-											<div class="reviews-head">
-												<h5>Kate Doe</h5> <time datetime="2018-10-23">23 Oct 2018</time>
-											</div>
-											<ul class="rating">
-												<li><span class="mdi mdi-star"></span></li>
-												<li><span class="mdi mdi-star"></span></li>
-												<li><span class="mdi mdi-star"></span></li>
-												<li><span class="mdi mdi-star-half"></span></li>
-												<li><span class="mdi mdi-star-outline"></span></li>
-											</ul>
-											<p>Quisque erat nunc, mollis quis lectus a, sollicitudin porta turpis. Vestibulum fringilla pellentesque ante eget porta. Aenean maximus consequat ultrices. Vivamus congue gravida magna, ut finibus mauris sodales eu. Praesent in arcu eu tortor condimentum fringilla. Nunc mattis, tortor eleifend facilisis congue, tortor dui dictum arcu, sed maximus nibh mauris fermentum quam. Quisque erat nunc, mollis quis lectus a, sollicitudin porta turpis. Vestibulum fringilla pellentesque ante eget porta. Aenean maximus consequat ultrices. Vivamus congue gravida magna, ut finibus mauris sodales eu.</p>
-										</div>
-									</li>
-								</ul>
+							
 								<form action="#" class="reviews-form">
 									<h4>Add New Review</h4>
 									<p>Your email address will not be published. Required fields are marked *</p>
@@ -407,7 +369,8 @@ else{
 										?>
 										<span class="sale">
 											<?php 
-												if($sp['sale_price']) {									echo $sp['price'];				
+												if($sp['sale_price']) {									
+													echo $sp['price'];				
 												}
 													
 											?>

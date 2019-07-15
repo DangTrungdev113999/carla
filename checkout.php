@@ -83,7 +83,7 @@
 					</div>
 							</div>
 						<?php } ?>
-						<?php if(isset($_SESSION['cart'])){ ?>
+						<?php if(!empty($_SESSION['cart'])){ ?>
 							<div class="order-info">
 								<h2 >Your Order</h2>
 								<div class="invoice">
@@ -110,9 +110,9 @@
 									</div>
 									
 									<?php if(empty($_SESSION['login'])){ ?>
-									<button  type="submit" class="border btn btn-primary"  id="NoAccount" >Complete Order no account</button>
+									<button  type="submit" class="border btn btn-success"  id="NoAccount" >Complete Order</button>
 									<?php }else{ ?>
-									<button  type="submit" class="border btn btn-primary"  id="userOrder" >Complete Order co account</button>
+									<button  type="submit" class="border btn btn-primary"  id="userOrder" >Complete Order</button>
 									<?php } ?>
 								</div>
 							</div>

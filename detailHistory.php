@@ -5,6 +5,10 @@
 		print_r($id);
 		$Total = mysqli_query($conn, "SELECT sum(quantity * price) FROM order_detail  where order_id = '$id' ");
 		$Total = mysqli_fetch_row($Total);
+		$account = mysqli_query($conn, "SELECT account_id FROM orders o where id = '$id' ");	
+		$idAccount = mysqli_fetch_row($account);
+		$detailAccount = mysqli_query($conn, "SELECT * FROM account a where id = '$idAccount[0]' ");
+		print_r($detailAccount);
 
 ?>
 		<section class="page-name">
@@ -25,6 +29,32 @@
 		<br>
 		<br>
 		<div class="container">
+			<table class="table table-hover">
+				<caption><h3>User Information</h3></caption>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Address</th>
+						<th>Created</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- <?php print_r() ?> -->
+					<?php foreach ($detailAccount as $key=>$value) { ?>
+					<tr>
+						<td><?php  echo $value['name']; ?></td>
+						<td><?php  echo $value['email']; ?></td>
+						<td><?php  echo $value['phone']; ?></td>
+						<td><?php  echo $value['address']; ?></td>
+						<td><?php  echo $value['created']; ?></td>
+
+					</tr>
+				<?php } ?>
+				</tbody>
+			</table>
+			<br>
 			<table class="table table-hover">
 			<thead>
 				<h2>Detail History</h2>
