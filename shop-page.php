@@ -1,8 +1,8 @@
 <?php
 include 'header.php';
 
-$Categories = $_GET['name'] ? $_GET['name'] : null;
-$Search = $_GET['search'] ? $_GET['search'] : null;
+$Categories = isset($_GET['name']) ? $_GET['name'] : null;
+$Search = isset($_GET['search']) ? $_GET['search'] : null;
 $IdCategory = mysqli_query($conn,'SELECT category.id from category where category.name = '.strval($Categories ));
 $LastestProduct = mysqli_query($conn, 'SELECT  * FROM product
 	ORDER BY id DESC LIMIT 3');
@@ -11,7 +11,7 @@ if($Categories === 'woman'){
 	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2
 		ORDER BY p.id DESC LIMIT 3');
 	if(isset($Search)){
-		
+		$Products = mysqli_query($conn, "SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 2 and p.name like '%$Search%'  ");
 	}
 }
 else if($Categories === 'man'){
@@ -19,24 +19,19 @@ else if($Categories === 'man'){
 	$LastestProduct = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 1
 		ORDER BY p.id DESC LIMIT 3');
 	if(isset($Search)){
-		
+		$Products = mysqli_query($conn, "SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.parent_id = 1 and p.name like '%$Search%'  ");
 	}
 }
-else{
-	if(isset($Categories)){
-
-			$Products = mysqli_query($conn, "SELECT p.* FROM product p JOIN category c ON p.category_id = c.id WHERE c.id = '$IdCategory' ");
-	}else{
-		$Products = mysqli_query($conn, 'select * from product');
-	}
-}
-
-if($Categories === 'all'){
-	$Products = mysqli_query($conn, 'select * from product');
+else if($Categories === 'all'){
+	$Products = mysqli_query($conn,  "SELECT * from product");
 	if(isset($Search)){
-		
+		$Products = mysqli_query($conn,  "SELECT * from product where name like '%$Search%' ");
 	}
+}else{
+	$Products = mysqli_query($conn, 'select * from product');
 }
+
+
 
 
 // get category
