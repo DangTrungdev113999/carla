@@ -109,16 +109,16 @@
                                       aria-haspopup="true" 
                                       aria-expanded="false">
                                     <?php 
-                                        if ( $row['status'] == 0 ) echo 'chờ duyệt';
-                                        if ( $row['status'] == 1 ) echo 'đang dao hàng';
-                                        if ( $row['status'] == 2 ) echo 'nhận hàng';
-                                        if ( $row['status'] == 3 ) echo 'huỷ';
+                                        if ( $row['status'] == 0 ) echo 'Approve';
+                                        if ( $row['status'] == 1 ) echo 'Delivering';
+                                        if ( $row['status'] == 2 ) echo 'received';
+                                        if ( $row['status'] == 3 ) echo 'Cancel';
                                      ?>
                                   </span>
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="index.php?module=setStatue&value=1&condition=<?php echo $row['id'] ?>">Đang Giao Hàng</a>
-                                    <a class="dropdown-item" href="index.php?module=setStatue&value=2&condition=<?php echo $row['id'] ?>">Nhận hàng</a>
-                                    <a class="dropdown-item" href="index.php?module=setStatue&value=3&condition=<?php echo $row['id'] ?>">Huỷ</a>
+                                    <a class="dropdown-item" href="index.php?module=setStatue&value=1&condition=<?php echo $row['id'] ?>">Delivering</a>
+                                    <a class="dropdown-item" href="index.php?module=setStatue&value=2&condition=<?php echo $row['id'] ?>">Received</a>
+                                    <a class="dropdown-item" href="index.php?module=setStatue&value=3&condition=<?php echo $row['id'] ?>">Cancel</a>
                                   </div>
                                 </div>
                             </td>

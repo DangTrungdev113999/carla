@@ -129,7 +129,7 @@
 						</div>
 							<div class="form-group  col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<label for="category_id" class="text-dark">Category</label>
-							<select name="category_id" id="category_id" class="form-control">
+							<select name="category_id" id="category_id" class="form-control" required="">
 								<option value="">--Choose category type--</option>
 								<?php
 								$selectData = "SELECT * FROM category WHERE parent_id NOT IN (0) ";
@@ -176,7 +176,7 @@
 						</div>
 						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 							<label for="sale_price" class="text-dark">Sale price</label>
-							<input id="sale_price" type="number" name="sale_price" required=""  placeholder="Enter the sale proce of product"  class="form-control">
+							<input id="sale_price" type="number" name="sale_price"  placeholder="Enter the sale proce of product"  class="form-control">
 						</div>
 					</div>
 

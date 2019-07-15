@@ -58,13 +58,13 @@
                         <th>Trạng thái</th>
                         <td>
                             <?php if($od1['status'] == 0) : ?>
-                                <span class="label-primary label">Chờ duyệt</span>
+                                <span class="label-primary label">Approve</span>
                             <?php endif; ?>
                             <?php if($od1['status'] == 1) : ?>
-                                <span class="label-success label">Giao hàng</span>
+                                <span class="label-success label">Delivering</span>
                             <?php endif; ?>
                             <?php if($od1['status'] == 2) : ?>
-                                <span class="badge badge-warning">Nhận hàng</span>
+                                <span class="badge badge-warning">Received</span>
                             <?php endif; ?>
                             <?php if($od1['status'] == 3) : ?>
                                 <span class="label-danger label">huỷ</span>

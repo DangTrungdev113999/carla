@@ -83,7 +83,7 @@
 					<img src="" alt="" id="show_img" width="100">
 					<div class="form-group">
 						<label for="ordering">Ordering</label>
-						<input id="ordering" type="Number" name="ordering" required="" placeholder="Enter the ordering"  class="form-control">
+						<input id="ordering" type="Number" name="ordering" placeholder="Enter the ordering"  class="form-control">
 					</div>
 					<div class="row">
 						<div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
