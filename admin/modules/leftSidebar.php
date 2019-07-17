@@ -144,29 +144,8 @@
                         </div>
                     </li>
 
-                   <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-17" aria-controls="submenu-17"><i class="fas fa-list-ul"></i> Post </a>
-                        <div id="submenu-17" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=addPost">Add new</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=posts">list</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="collapse" aria-expanded="false" data-target="#submenu-15" aria-controls="submenu-15"><i class="fas fa-list-ul"></i> Order </a>
-                        <div id="submenu-15" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=Orders">list</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <a class="nav-link" href="index.php?module=Orders"><i class="fas fa-list-ul"></i> Order </a>
                     </li>
 
                     <!-- ====================================== -->

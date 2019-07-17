@@ -9,7 +9,7 @@
 
 
 	if (isset($_POST['addNew'])) {
-		$path = '../public/img';
+		$path = '../public/img/';
 		$fileName = "";
 		$type = [
 			'image/jpeg',
@@ -26,7 +26,7 @@
 						$filename = $_FILES["image"]["tmp_name"];
 						$destination = $path.time().'-'.$_FILES['image']['name'];
 						move_uploaded_file($filename, $destination);
-						$fileName .= $_FILES['image']['name'];
+						$fileName .= time().'-'.$_FILES['image']['name'];
 
 					} else {
 						echo 'lỗi file';

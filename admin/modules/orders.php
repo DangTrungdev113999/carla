@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="page-header">
-            <h2 class="pageheader-title">Orders list table <a href="index.php?module=o" class="badge badge-success">Add New</a></h2>
+            <h2 class="pageheader-title">Orders list table</h2>
             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
             <div class="page-breadcrumb">
                 <nav aria-label="breadcrumb">
@@ -38,8 +38,7 @@
                     </thead>
                     <tbody>
                         <?php
-
-                            $selectData = "SELECT od.*, ac.name as 'name', ac.phone as 'phone', ac.email as 'email' FROM orders od JOIN account ac ON ac.id = od.account_id ";
+                            $selectData = "SELECT * from orders";
 
                             $result = mysqli_query($conn, $selectData) or die("lỗi truy xuất danh sách sản phẩm".$selectData);
                             if(mysqli_num_rows($result) > 0) {
@@ -49,62 +48,91 @@
                         ?>
                         <tr>
                             <th scope="row"><?php echo $count ?></th>
-                            <td><?php echo $row["name"] ?></td>
-                            <td><?php echo $row["phone"] ?></td>
-                            <td><?php echo $row["email"] ?></td>
+                            <td>
+                                <?php 
+                                    if($row['name']) {
+                                         echo $row["name"] ;
+                                    } else  {
+                                        $selectDataFromAcc = "SELECT od.*, ac.name as 'name', ac.phone as 'phone', ac.email as 'email' FROM orders od JOIN account ac ON ac.id = od.account_id";
+                                        $resultAcc = mysqli_query($conn, $selectDataFromAcc) or die("lỗi truy xuất danh sách sản phẩm".$selectData);
+                                        $rowAcc = mysqli_fetch_assoc($resultAcc);
+                                        echo $rowAcc['name'];
+                                    }
+                                ?>     
+                            </td>
+                            <td>
+                                <?php 
+                                    if($row['phone']) {
+                                         echo $row["phone"] ;
+                                    } else  {
+                                        $selectDataFromAcc = "SELECT od.*, ac.name as 'name', ac.phone as 'phone', ac.email as 'email' FROM orders od JOIN account ac ON ac.id = od.account_id";
+                                        $resultAcc = mysqli_query($conn, $selectDataFromAcc) or die("lỗi truy xuất danh sách sản phẩm".$selectData);
+                                        $rowAcc = mysqli_fetch_assoc($resultAcc);
+                                        echo $rowAcc['phone'];
+                                    }
+                                ?> 
+                                    
+                            </td>
+                            <td>
+                                <?php 
+                                    if($row['email']) {
+                                         echo $row["email"] ;
+                                    } else  {
+                                        $selectDataFromAcc = "SELECT od.*, ac.name as 'name', ac.phone as 'phone', ac.email as 'email' FROM orders od JOIN account ac ON ac.id = od.account_id";
+                                        $resultAcc = mysqli_query($conn, $selectDataFromAcc) or die("lỗi truy xuất danh sách sản phẩm".$selectData);
+                                        $rowAcc = mysqli_fetch_assoc($resultAcc);
+                                        echo $rowAcc['email'];
+                                    }
+                                ?> 
+                                    
+                            </td>
                             <td><?php echo $row['created'] ?></td>
                             <td>
-                                <?php if($row['status'] == 1) : ?>
-                                    <span class="badge badge-secondary">Đã duyệt</span>
-                                <?php else: ?>
-                                    <span class="badge badge-warning">Chờ duyệt</span>
-                                <?php endif; ?>
+                                <div class="dropdown">
+                                  <span 
+                                        <?php if ( $row['status'] == 0 ) :?>
+                                         class="btn btn-primary btn-xs dropdown-toggle"
+                                        <?php endif; ?>
+                                        <?php if ( $row['status'] == 1 ) :?>
+                                         class="btn btn-success btn-xs dropdown-toggle"
+                                        <?php endif; ?>
+                                        <?php if ( $row['status'] == 2 ) :?>
+                                         class="btn btn-warning btn-xs dropdown-toggle"
+                                        <?php endif; ?>
+                                        <?php if ( $row['status'] == 3 ) :?>
+                                         class="btn btn-danger btn-xs dropdown-toggle"
+                                        <?php endif; ?>
+                                      class="btn btn-primary btn-xs dropdown-toggle" 
+                                      role="button" 
+                                      id="dropdownMenuLink" 
+                                      data-toggle="dropdown" 
+                                      aria-haspopup="true" 
+                                      aria-expanded="false">
+                                    <?php 
+                                        if ( $row['status'] == 0 ) echo 'Approve';
+                                        if ( $row['status'] == 1 ) echo 'Delivering';
+                                        if ( $row['status'] == 2 ) echo 'received';
+                                        if ( $row['status'] == 3 ) echo 'Cancel';
+                                     ?>
+                                  </span>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="index.php?module=setStatue&value=1&condition=<?php echo $row['id'] ?>">Delivering</a>
+                                    <a class="dropdown-item" href="index.php?module=setStatue&value=2&condition=<?php echo $row['id'] ?>">Received</a>
+                                    <a class="dropdown-item" href="index.php?module=setStatue&value=3&condition=<?php echo $row['id'] ?>">Cancel</a>
+                                  </div>
+                                </div>
                             </td>
                             <td class="btn-group-xs">
                                 <a href="index.php?module=orderDetail&id=<?php echo $row['id'] ?>" class="badge badge-success">
                                     <i class="fas fa-street-view"></i> Detail
                                 </a>
-                                <a href="index.php?module=editProduct&id=<?php echo $row['id'] ?>" class="badge badge-primary">
+<!--                                 <a href="index.php?module=editProduct&id=<?php echo $row['id'] ?>" class="badge badge-primary">
                                     <i class="fas fa-edit fas-xs"></i> waitting
-                                </a>
+                                </a> -->
                             </td>
                         </tr>
                                 <?php }
                             }?>
-
-                       <!--  <?php
-                                $selectData1 = "SELECT * FROM orders ";
-
-                                $result1 = mysqli_query($conn, $selectData1) or die("lỗi truy xuất danh sách sản phẩm".$selectData1);
-                                if(mysqli_num_rows($result1) > 0) {
-                                    $count = 0;
-                                    while($row1 = mysqli_fetch_assoc($result1)) {
-                                        $count++;
-                        ?>
-                        <tr>
-                            <th scope="row"><?php echo $row1["id"]?></th>
-                            <td><?php echo $row1["name"] ?></td>
-                            <td><?php echo $row1["phone"] ?></td>
-                            <td><?php echo $row1["email"] ?></td>
-                            <td><?php echo $row1['created'] ?></td>
-                            <td>
-                                <?php if($row1['status'] == 1) : ?>
-                                    <span class="badge badge-secondary">Đã duyệt</span>
-                                <?php else: ?>
-                                    <span class="badge badge-warning">Chờ duyệt</span>
-                                <?php endif; ?>
-                            </td>
-                            <td class="btn-group-xs">
-                                <a href="index.php?module=orderDetail&id=<?php echo $row1['id'] ?>" class="badge badge-success">
-                                    <i class="fas fa-street-view"></i> Detail
-                                </a>
-                                <a href="index.php?module=editProduct&id=<?php echo $row1['id'] ?>" class="badge badge-primary">
-                                    <i class="fas fa-edit fas-xs"></i> waitting
-                                </a>
-                            </td>
-                        </tr>
-                                <?php }
-                            }?> --> 
                     </tbody>
                 </table>
             </div>

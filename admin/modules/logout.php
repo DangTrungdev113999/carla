@@ -1,4 +1,4 @@
 <?php
-	session_destroy();
+	unset($_SESSION['loginAdim']);
 	header("location: login.php");
 ?>

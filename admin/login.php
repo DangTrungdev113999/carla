@@ -13,12 +13,12 @@
         }
 
 
-        $sqlSelect = "SELECT * FROM account WHERE email = '$email'AND `password` ='$password'";
+        $sqlSelect = "SELECT * FROM account WHERE email = '$email'AND `password` ='$password' AND level = 1";
         $result  = mysqli_query($conn, $sqlSelect);
         $row = mysqli_fetch_assoc($result);
 
         if (count($row)) {
-            $_SESSION['login'] = $row;
+            $_SESSION['loginAdmin'] = $row;
             header("location: index.php");
         } else {
             header("location: login.php");

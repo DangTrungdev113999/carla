@@ -22,11 +22,9 @@
             <h1>Orders Detial</h1>
         </div>
 
-        <?php if(isset($_SESSION['login'])) : 
-            $cus = $_SESSION['login'];
-            $cus_id = $cus[0];
+        <?php 
             $od_id = $_GET['id'];
-            $sql = "SELECT o.*,SUM(dt.price*dt.quantity) total FROM orders o JOIN order_detail dt ON o.id = dt.order_id WHERE o.account_id = $cus_id AND o.id = $od_id"  ;
+            $sql = "SELECT dt.*,SUM(dt.price*dt.quantity) total FROM order_detail dt where dt.order_id = $od_id group by dt.order_id ";
             // echo '<pre>';
             // print_r($sql);
             $rel = mysqli_query($conn, $sql);
@@ -43,7 +41,14 @@
                     </tr>
                     <tr>
                         <th>Ngày đặt</th>
-                        <td><?php echo $od['created'] ?></td>
+                        <td>
+                            <?php 
+                                $sql1 = "SELECT * from orders where id =".$_GET['id'];
+                                $rel1 = mysqli_query($conn, $sql1);
+                                $od1 = mysqli_fetch_assoc($rel1);
+                                echo $od1['created'];
+                             ?>
+                        </td>
                     </tr>
                      <tr>
                         <th>Tổng tiền</th>
@@ -52,10 +57,17 @@
                      <tr>
                         <th>Trạng thái</th>
                         <td>
-                            <?php if($od['status'] == 1) : ?>
-                                <span class="label-success label">Đã duyệt</span>
-                            <?php else: ?>
-                                <span class="label-danger label">Chờ duyệt</span>
+                            <?php if($od1['status'] == 0) : ?>
+                                <span class="label-primary label">Approve</span>
+                            <?php endif; ?>
+                            <?php if($od1['status'] == 1) : ?>
+                                <span class="label-success label">Delivering</span>
+                            <?php endif; ?>
+                            <?php if($od1['status'] == 2) : ?>
+                                <span class="badge badge-warning">Received</span>
+                            <?php endif; ?>
+                            <?php if($od1['status'] == 3) : ?>
+                                <span class="label-danger label">huỷ</span>
                             <?php endif; ?>
                         </td>
                     </tr>
@@ -89,72 +101,12 @@
                 </table>
             </div>
         </div>
-       <?php else: ?>
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <h3>Thông tin đơn hàng</h3>
-                <table class="table">
-                    <tr>
-                        <th>Id</th>
-                        <td><?php echo $od_id; ?></td>
-                    </tr>
-                    <tr>
-                        <th>Ngày đặt</th>
-                        <td><?php echo $od['created'] ?></td>
-                    </tr>
-                     <tr>
-                        <th>Tổng tiền</th>
-                        <td><?php echo number_format($od['total']) ?></td>
-                    </tr>
-                     <tr>
-                        <th>Trạng thái</th>
-                        <td>
-                            <?php if($od['status'] == 1) : ?>
-                                <span class="label-success label">Đã duyệt</span>
-                            <?php else: ?>
-                                <span class="label-danger label">Chờ duyệt</span>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <h3>Thông tin người nhận</h3>
-
-                <?php
-                    $selectData2 = "SELECT * from orders";
-                    $result2 = mysqli_query($conn, $selectData2) or die("lỗi truy xuất danh sách sản phẩm".$selectData2);
-                    $row2 = mysqli_fetch_assoc($result2);
-                ?>
-                <table class="table">
-                    <tr>
-                        <th>Name</th>
-                        <td><?php echo $row['name'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td><?php echo $row['email'] ?></td>
-                    </tr>
-                     <tr>
-                        <th>Phone</th>
-                        <td><?php echo $row['phone'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Address</th>
-                        <td><?php echo $row['address'] ?></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-       <?php endif; ?>
         <br>
         <h3>Chi tiết sản phẩm</h3>
         <?php 
             $od_id = $_GET['id'];
             $sql_dt = "SELECT dt.*,p.name,p.image FROM order_detail dt JOIN product p ON p.id = dt.product_id WHERE dt.order_id=$od_id";
-
             $products = mysqli_query($conn, $sql_dt) or die("lỗi truy xuất danh sách  chi tiết sản phẩm".$sql_dt);
-        
          ?>
         <table class="table table-hover">
             <thead>
