@@ -1,12 +1,12 @@
 <?php
 include 'header.php';
 
-$productdefault = 
+$productdefault = null;
 $idProduct = $_GET['id'] ? $_GET['id'] : null;
 if($idProduct){
 	//fix
 	$detail_product = mysqli_query($conn, "select * from product where id = '$idProduct' ");
-
+	$RelatedImg = mysqli_query($conn, "select * from product_image where product_id = '$idProduct' ");
 
 	$Related = mysqli_fetch_row($detail_product);
 	$RelatedProducts = mysqli_query($conn, "SELECT * from product WHERE category_id = '$Related[0]'
@@ -55,12 +55,13 @@ else{
 											alt="img">
 										</div>
 									<?php endforeach; ?>
-									<div class="slider-card">
-										<img src="public/img/product-page-sm-2.jpg" alt="img">
-									</div>
-									<div class="slider-card">
-										<img src="public/img/product-page-sm-3.jpg" alt="img">
-									</div>
+									<?php foreach($RelatedImg as $key => $sp): ?>
+										<div class="slider-card">
+											<img src="public/img/<?php echo $sp['image'] ?>" 
+											
+											alt="img">
+										</div>
+									<?php endforeach; ?>
 								</div>
 								<button type="button" class="vertical-nav prev"><span class="mdi mdi-arrow-up"></span></button>
 								<button type="button" class="vertical-nav next"><span class="mdi mdi-arrow-down"></span></button>
@@ -75,17 +76,18 @@ else{
 										</a>
 									</div>
 								<?php endforeach; ?>
-								<div class="slider-card">
-									<a href="img/product-page-big-1.jpg" itemprop="contentUrl" data-size="458x600">
-										<img src="public/img/product-page-big-1.jpg" itemprop="thumbnail" alt="Image description" width="100%">
-									</a>
-								</div>
+								<!-- $RelatedImg -->
 
-								<div class="slider-card">
-									<a href="img/product-page-big-1-3.jpg" itemprop="contentUrl" data-size="458x600">
-										<img src="public/img/product-page-big-1-3.jpg" itemprop="thumbnail" alt="Image description" width="100%">
-									</a>
-								</div>
+								<?php foreach($RelatedImg as $key => $sp): ?>
+									<div class="slider-card">										
+										<a href="public/img/<?php echo $sp['image'] ?>" itemprop="contentUrl" data-size="458x600">
+											<img src="public/img/<?php echo $sp['image'] ?>" itemprop="thumbnail" alt="Image description" 
+											id='anh_<?php echo $sp['id']; ?>' 
+											width="100%">
+										</a>
+									</div>
+								<?php endforeach; ?>
+
 							</div>
 						</div>
 						<div class="product-section-description all-description">
@@ -213,7 +215,11 @@ else{
 						<div class="tab-body-wrap">
 							<h3 class="mobile-accordeon active-tab" data-tab='#tab-1'>Description <span class="mdi mdi-chevron-down"></span></h3>
 							<div class="tab-content" id="tab-1">
-								<p>Mauris nec justo ut nisi elementum laoreet sit amet sed erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse venenatis turpis justo, sed pretium sapien interdum at. Aliquam rutrum cursus tristique. Fusce dignissim vestibulum blandit. Quisque ac lacus et urna pharetra efficitur nec eget urna. Phasellus turpis nisi, vulputate sed venenatis vel, luctus in magna. Morbi a eros et nulla dapibus consequat sit amet ut ex. Aliquam bibendum eget justo luctus commodo. Cras libero lacus, ornare vel interdum vitae, hendrerit eu tortor. Nulla a sem ac turpis interdum vestibulum. Aliquam lacinia velit ex, eu interdum felis interdum hendrerit. Nullam vitae ultrices purus. Phasellus malesuada hendrerit eleifend. In vitae ante ut mauris</p>
+								<p>
+									<?php $content = mysqli_fetch_row($detail_product);
+									echo $content[3];
+									 ?>
+								</p>
 								<table class="product-table">
 									<tbody>
 										<tr>
