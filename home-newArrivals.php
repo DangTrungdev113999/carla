@@ -19,7 +19,11 @@ $newArrivals = mysqli_query($conn, 'SELECT * FROM PRODUCT ORDER BY ID DESC');
 								<div class="slider-card">
 									<div class="product-card">
 										<div class="product-card-logo">
-											<img src="public/img/<?php echo $sp['image'] ?>" alt="img">
+											<img src="public/img/<?php echo $sp['image'] ?>"
+											width="262px"
+											height="270px"
+											 alt="img">
+
 											<div class="tag-list">
 												<div class="tag">New</div>
 												<div class="tag sale-tag">

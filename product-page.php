@@ -50,15 +50,18 @@ else{
 								<div class="vertical-slider-1">
 									<?php foreach($detail_product as $key => $sp): ?>
 										<div class="slider-card">
-											<img src="public/img/<?php echo $sp['image'] ?>" 
-											
-											alt="img">
+											<img src="public/img/<?php echo $sp['image'] ?>" 				
+											alt="img"
+											width="163px"
+											height="160px"
+											>
 										</div>
 									<?php endforeach; ?>
 									<?php foreach($RelatedImg as $key => $sp): ?>
 										<div class="slider-card">
 											<img src="public/img/<?php echo $sp['image'] ?>" 
-											
+											width="100%"
+											height="160px"
 											alt="img">
 										</div>
 									<?php endforeach; ?>
@@ -72,7 +75,9 @@ else{
 										<a href="public/img/<?php echo $sp['image'] ?>" itemprop="contentUrl" data-size="458x600">
 											<img src="public/img/<?php echo $sp['image'] ?>" itemprop="thumbnail" alt="Image description" 
 											id='anh_<?php echo $sp['id']; ?>' 
-											width="100%">
+											width="458px"
+											height="471px"
+											>
 										</a>
 									</div>
 								<?php endforeach; ?>
@@ -83,7 +88,9 @@ else{
 										<a href="public/img/<?php echo $sp['image'] ?>" itemprop="contentUrl" data-size="458x600">
 											<img src="public/img/<?php echo $sp['image'] ?>" itemprop="thumbnail" alt="Image description" 
 											id='anh_<?php echo $sp['id']; ?>' 
-											width="100%">
+											width="458px"
+											height="471px"
+											>											
 										</a>
 									</div>
 								<?php endforeach; ?>

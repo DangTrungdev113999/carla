@@ -28,6 +28,8 @@ $topRated = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.
 					<div class="product-card">
 						<div class="product-card-logo">
 							<img src="public/img/<?php echo $sp['image'] ?>" 
+							width="262px"
+							height="270px"
 							alt="img"
 							id="anh_<?php echo $sp['id']; ?>"
 							>
@@ -88,6 +90,8 @@ $topRated = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.
 								<div class="product-card-logo">
 									<img src="public/img/<?php echo $sp['image'] ?>" 
 									alt="img"
+									width="262px"
+									height="270px"
 									id="anh_<?php echo $sp['id']; ?>"
 									>
 									<div class="tag-list">
@@ -149,6 +153,8 @@ $topRated = mysqli_query($conn, 'SELECT p.* FROM product p JOIN category c ON p.
 									<div class="product-card-logo">
 										<img src="public/img/<?php echo $sp['image'] ?>" 
 										alt="img"
+										width="262px"
+										height="270px"
 										id="anh_<?php echo $sp['id']; ?>"
 										>
 										<div class="tag-list">

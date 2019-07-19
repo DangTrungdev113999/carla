@@ -173,9 +173,15 @@ $CategoryMan = mysqli_query($conn,'select * from category where parent_id = 1');
 							<?php foreach($LastestProduct as $key => $sp): ?>
 								<li>
 									<figure class="latest-product">
-										<a href="product-page.php?id=<?php echo $sp['id'] ?>"><img src="public/img/
+										<a href="product-page.php?id=<?php echo $sp['id'] ?>">
+											<img src="public/img/
 											<?php echo $sp['image'] ?>
-											" alt="img"></a>
+											" alt="img"
+											width="123px"
+											height="127px"
+											
+											>
+										</a>
 											<figcaption class="latest-product__desc">
 												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h5">
 													<?php echo $sp['name'] ?>
@@ -202,7 +208,6 @@ $CategoryMan = mysqli_query($conn,'select * from category where parent_id = 1');
 				<section class="shop-page-section">
 					<form action="#" class="page-filter">
 						<div class="types-card">
-							<a href="shop-page-3.php"><span class="mdi mdi-format-list-bulleted"></span></a>
 							<a href="shop-page.php" class="active"><span class="mdi mdi-view-grid"></span></a>
 						</div>
 						<div class="selects-wrap">
@@ -216,11 +221,6 @@ $CategoryMan = mysqli_query($conn,'select * from category where parent_id = 1');
 							</div>
 							<div class="select-block">
 								<h6>per page</h6>
-								<select name="count" class="select-2">
-									<option value="1">sort by</option>
-									<option value="2">Rating</option>
-									<option value="3">Price</option>
-								</select>
 							</div>
 						</div>
 					</form>
@@ -231,6 +231,8 @@ $CategoryMan = mysqli_query($conn,'select * from category where parent_id = 1');
 									<img src="public/img/<?php echo $sp['image'] ?>" 
 									alt="img"
 									id="anh_<?php echo $sp['id']; ?>"
+									width="262px"
+									height="270px"
 									>
 									<div class="tag-list">
 										<div class="tag">New</div>
@@ -255,13 +257,6 @@ $CategoryMan = mysqli_query($conn,'select * from category where parent_id = 1');
 											</ul>
 										</div>
 										<div class="product-card-info">
-											<ul class="rating">
-												<li><span class="mdi mdi-star"></span></li>
-												<li><span class="mdi mdi-star"></span></li>
-												<li><span class="mdi mdi-star"></span></li>
-												<li><span class="mdi mdi-star-half"></span></li>
-												<li><span class="mdi mdi-star-outline"></span></li>
-											</ul>
 											<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4"
 												id="nameProduct_<?php echo $sp["id"]; ?>"
 												>
