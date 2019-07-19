@@ -253,7 +253,6 @@ $CategoryMan = mysqli_query($conn,'select * from category where parent_id = 1');
 												,1)"
 												></span></a></li>
 												<li><a><span class="mdi mdi-heart-outline"></span></a></li>
-												<li><a><span class="mdi mdi-compare"></span></a></li>
 											</ul>
 										</div>
 										<div class="product-card-info">

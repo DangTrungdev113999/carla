@@ -27,11 +27,11 @@ else{
 		<!-- page-name.jpg -->
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Product Page 1</h1>
+				<h1>Detail Product</h1>
 				<ul class="bread-crumbs">
 					<li><a href="index.php">Home</a></li>
 					<li><p>Pages</p></li>
-					<li><p>Product Page 1</p></li>
+					<li><p>Detail Product</p></li>
 				</ul>
 			</div>
 		</div>

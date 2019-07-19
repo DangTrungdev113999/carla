@@ -191,7 +191,10 @@ CREATE TABLE IF NOT EXISTS banner (
 );
 
 insert into banner(name, image, ordering, content)
-	values('test1', 'girl-2.png', 2, 'Lorem ipsum dolor sit amet, consectetur adipisicingue inventore us!');
+	values("
+Communist Party of Vietnam",
+ 'girl-2.png', 2,
+  "The Communist Party of Vietnam has always determined that ideological and theoretical work is one of the most important activities of the Party, one of the important contents of leadership and the main leadership method. Party's in implementing the political tasks of each revolutionary period");
 
 CREATE TABLE IF NOT EXISTS post (
 	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,

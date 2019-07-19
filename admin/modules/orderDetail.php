@@ -33,14 +33,14 @@
         ?>
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <h3>Thông tin đơn hàng</h3>
+                <h3>Order Imformation</h3>
                 <table class="table">
                     <tr>
                         <th>Id</th>
                         <td><?php echo $od_id; ?></td>
                     </tr>
                     <tr>
-                        <th>Ngày đặt</th>
+                        <th>Order Date</th>
                         <td>
                             <?php 
                                 $sql1 = "SELECT * from orders where id =".$_GET['id'];
@@ -51,11 +51,11 @@
                         </td>
                     </tr>
                      <tr>
-                        <th>Tổng tiền</th>
+                        <th>Total</th>
                         <td><?php echo number_format($od['total']) ?></td>
                     </tr>
                      <tr>
-                        <th>Trạng thái</th>
+                        <th>Status</th>
                         <td>
                             <?php if($od1['status'] == 0) : ?>
                                 <span class="label-primary label">Approve</span>
@@ -74,7 +74,7 @@
                 </table>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <h3>Thông tin người nhận</h3>
+                <h3>User Imformation</h3>
 
                 <?php
                     $selectData = "SELECT od.*, ac.name as 'name', ac.phone as 'phone', ac.email as 'email', ac.address as 'address' FROM orders od JOIN account ac ON ac.id = od.account_id ";
@@ -102,7 +102,7 @@
             </div>
         </div>
         <br>
-        <h3>Chi tiết sản phẩm</h3>
+        <h3>Product Detail</h3>
         <?php 
             $od_id = $_GET['id'];
             $sql_dt = "SELECT dt.*,p.name,p.image FROM order_detail dt JOIN product p ON p.id = dt.product_id WHERE dt.order_id=$od_id";
@@ -112,11 +112,11 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Ảnh</th>
-                    <th>Tên</th>
-                    <th>Giá</th>
-                    <th>Số lượng</th>
-                    <th>Thành tiên</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quatity</th>
+                    <th>Total</th>
             </thead>
             <tbody>
             <?php foreach($products as $key => $pro) { ?>
