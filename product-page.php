@@ -354,21 +354,12 @@ else{
 											?>
 										</div>
 									</div>
-									<ul class="product-card__control">
-										<li><a href="#"><span class="mdi mdi-cart-outline"></span></a></li>
-										<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
-										<li><a href="#"><span class="mdi mdi-compare"></span></a></li>
+									<ul class="product-card__control">									
+										<li><a href="product-page.php?id=<?php echo $sp['id'] ?>"><span class="mdi mdi-heart-outline"></span></a></li>
 									</ul>
 								</div>
 								<div class="product-card-info">
-									<ul class="rating">
-										<li><span class="mdi mdi-star"></span></li>
-										<li><span class="mdi mdi-star"></span></li>
-										<li><span class="mdi mdi-star"></span></li>
-										<li><span class="mdi mdi-star-half"></span></li>
-										<li><span class="mdi mdi-star-outline"></span></li>
-									</ul>
-									<a href="product-card.php" class="h4">
+									<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4">
 										<?php echo $sp['name']; ?>
 									</a>
 									<p class="price">

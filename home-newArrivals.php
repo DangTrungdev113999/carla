@@ -39,17 +39,10 @@ $newArrivals = mysqli_query($conn, 'SELECT * FROM PRODUCT ORDER BY ID DESC');
 												<li><a><span class="mdi mdi-cart-outline" onclick="addToCart(
 													<?php echo $sp['id']; ?>
 													,1)"></span></a></li>
-													<li><a href="#"><span class="mdi mdi-heart-outline"></span></a></li>
+													<li><a href="product-page.php?id=<?php echo $sp['id'] ?>"><span class="mdi mdi-heart-outline"></span></a></li>
 												</ul>
 											</div>
 											<div class="product-card-info">
-												<ul class="rating">
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star"></span></li>
-													<li><span class="mdi mdi-star-half"></span></li>
-													<li><span class="mdi mdi-star-outline"></span></li>
-												</ul>
 												<a href="product-page.php?id=<?php echo $sp['id'] ?>" class="h4">
 													<?php echo $sp['name'] ?></a>
 													<p class="price">

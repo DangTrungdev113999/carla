@@ -16,9 +16,7 @@
 						<div class="product-card-small__content">
 							<a href="product-page.php?id=<?php echo $sp['id']; ?>" class="h5">
 								<?php  echo $sp['name'] ?><br>by Brand Name</a>
-								<div class="product-card-small__info">
-									<p>Size : <span>M</span></p>
-									<p>Color : <span class="pink"></span></p>
+								<div class="product-card-small__info">									
 								</div>
 							</div>
 							<div class="product-card-small__price">
